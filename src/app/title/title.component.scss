@@ -1,0 +1,65 @@
+.main-head {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.8);
+  height: 800px;
+  text-align: center;
+  margin-bottom: 0;
+  padding-top: 240px;
+}
+
+.btn-primary {
+  background-color: #f8f9fa;
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeInSlideDown 1s ease-in-out forwards;
+  animation-delay: 0s;
+}
+
+.btn-primary:hover {
+  background-color: black;
+  color: white;
+  border-color: white;
+}
+
+.company {
+  font-size: 1.5em;
+  font-weight: 700;
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeInSlideDown 1s ease-in-out forwards;
+  animation-delay: 0s;
+}
+
+.title {
+  font-size: 3em;
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeInSlideDown 1s ease-in-out forwards;
+  animation-delay: 0s;
+}
+
+.animated-text {
+
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.animated-text {
+  font-size: 2em;
+  color: #333;
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeInSlideDown 3s ease-in-out forwards;
+  animation-delay: 1s;
+}
+
+@keyframes fadeInSlideDown {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

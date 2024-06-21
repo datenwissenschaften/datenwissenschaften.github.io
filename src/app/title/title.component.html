@@ -1,0 +1,22 @@
+<div class="main-head" id="home">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h4 class="company">{{ subtitle }}</h4>
+        <div class="divider"></div>
+        <h1 class="title">
+          {{ title }}
+        </h1>
+        <a
+          *ngIf="showButton"
+          class="btn btn-primary btn-lg"
+          pageScroll
+          [pageScrollDuration]="500"
+          [pageScrollEasing]="easeInOutQuad"
+          href="#contact-section"
+          >Contact us now</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
