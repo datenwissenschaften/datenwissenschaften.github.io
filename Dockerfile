@@ -1,16 +1,30 @@
-FROM node:latest as build
-WORKDIR /usr/local/app
-COPY "package.json" "package.json"
-RUN npm install --force
-COPY ./ /usr/local/app/
-RUN npm run build
+# Stage 1: Build the Angular application
+FROM node:20 as build
 
-FROM nginx:latest
+WORKDIR /angular-app
+
+COPY package.json package-lock.json ./
+RUN npm install --force
+
+COPY . .
+RUN npm run build --prod
+
+# Stage 2: Serve the Angular application with Express
+FROM node:20-alpine
 
 LABEL maintainer="martin.franke@datenwissenschaften.com"
 LABEL version="1.0"
 LABEL description="Datenwissenschaften Website"
 LABEL name="datenwissenschaften/website"
 
-COPY --from=build /usr/local/app/dist/datenwissenschaften/browser /usr/share/nginx/html
-EXPOSE 80
+WORKDIR /app
+
+COPY express-proxy-server/package.json express-proxy-server/package-lock.json ./
+RUN npm install --production
+
+COPY --from=build /angular-app/dist/datenwissenschaften/browser ./dist/datenwissenschaften/browser
+COPY express-proxy-server/server.js .
+
+EXPOSE 3000
+
+CMD ["node", "server.js"]

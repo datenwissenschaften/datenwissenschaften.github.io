@@ -1,16 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import {
-  animate,
-  query,
-  stagger,
-  style,
-  transition,
-  trigger,
-} from '@angular/animations';
+import { animate, query, stagger, style, transition, trigger } from '@angular/animations';
 import { GithubService } from '../github.service';
+import { DockerHubService } from '../docker-hub.service'; // Import DockerHubService
 import { TruncatePipe } from '../truncate.pipe';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-animated-list',
@@ -25,27 +20,13 @@ import { TruncatePipe } from '../truncate.pipe';
           ':enter',
           [
             style({ opacity: 0, transform: 'scale(0.5)' }),
-            stagger(100, [
-              animate(
-                '500ms ease-out',
-                style({ opacity: 1, transform: 'scale(1)' }),
-              ),
-            ]),
+            stagger(100, [animate('500ms ease-out', style({ opacity: 1, transform: 'scale(1)' }))]),
           ],
-          { optional: true },
+          { optional: true }
         ),
-        query(
-          ':leave',
-          [
-            stagger(100, [
-              animate(
-                '200ms ease-in',
-                style({ opacity: 0, transform: 'scale(0.5)' }),
-              ),
-            ]),
-          ],
-          { optional: true },
-        ),
+        query(':leave', [stagger(100, [animate('200ms ease-in', style({ opacity: 0, transform: 'scale(0.5)' }))])], {
+          optional: true,
+        }),
       ]),
     ]),
   ],
@@ -147,11 +128,17 @@ export class AnimatedListComponent implements OnInit {
 
   filteredItems: any = [];
 
-  constructor(private githubService: GithubService) {}
+  constructor(
+    private githubService: GithubService,
+    private dockerHubService: DockerHubService
+  ) {}
 
   ngOnInit(): void {
-    this.githubService.getRepos('datenwissenschaften').subscribe((repos) => {
-      const repoItems = repos
+    forkJoin({
+      githubRepos: this.githubService.getRepos('datenwissenschaften'),
+      dockerRepos: this.dockerHubService.getRepositories(),
+    }).subscribe(({ githubRepos, dockerRepos }) => {
+      const repoItems = githubRepos
         .filter((repo) => !repo.archived)
         .map((repo) => {
           return {
@@ -163,28 +150,38 @@ export class AnimatedListComponent implements OnInit {
             url: repo.html_url,
           };
         });
-      // @ts-ignore
-      this.items = [...this.items, ...repoItems];
-      this.categories = this.items.map((item) => item.category);
-      this.categories = this.categories.filter(
-        (category, index) => this.categories.indexOf(category) === index,
-      );
-      this.categories.unshift('All');
-      this.filteredItems = this.items;
-      this.shuffleItems();
+
+      const dockerItems = dockerRepos.results.map((repo: any) => {
+        return {
+          name: repo.name,
+          category: 'Docker Hub',
+          description: repo.description || 'No description provided',
+          flipped: false,
+          image: 'https://www.docker.com/sites/default/files/d8/2019-07/Moby-logo.png',
+          url: `https://hub.docker.com/r/datenwissenschaften/${repo.name}`,
+        };
+      });
+
+      this.items = [...this.items, ...repoItems, ...dockerItems];
+      this.updateCategoriesAndItems();
     });
   }
 
+  updateCategoriesAndItems() {
+    this.categories = this.items.map((item) => item.category);
+    this.categories = this.categories.filter((category, index) => this.categories.indexOf(category) === index);
+    this.categories.unshift('All');
+    this.filteredItems = this.items;
+    this.shuffleItems();
+  }
+
   filterItems(category: string) {
-    // this.filteredItems = []; // Trigger leave animation
     setTimeout(() => {
       if (category === 'All') {
         this.filteredItems = this.items;
         this.shuffleItems();
       } else {
-        this.filteredItems = this.items.filter(
-          (item) => item.category === category,
-        );
+        this.filteredItems = this.items.filter((item) => item.category === category);
         this.shuffleItems();
       }
     }, 100);
