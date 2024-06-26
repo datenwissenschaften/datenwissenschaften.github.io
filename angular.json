@@ -31,7 +31,8 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "baseHref": "/"
           },
           "configurations": {
             "production": {
