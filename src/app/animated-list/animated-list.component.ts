@@ -157,7 +157,7 @@ export class AnimatedListComponent implements OnInit {
           category: 'Docker Hub',
           description: repo.description || 'No description provided',
           flipped: false,
-          image: 'https://www.docker.com/sites/default/files/d8/2019-07/Moby-logo.png',
+          image: 'https://www.svgrepo.com/show/349342/docker.svg',
           url: `https://hub.docker.com/r/datenwissenschaften/${repo.name}`,
         };
       });

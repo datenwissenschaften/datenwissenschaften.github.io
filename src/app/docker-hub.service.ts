@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class DockerHubService {
-  private baseUrl: string = 'https://www.datenwissenschaften.com/dockerhub';
+  private baseUrl: string = `${window.location.origin}/dockerhub`;
 
   constructor(private http: HttpClient) {}
 
