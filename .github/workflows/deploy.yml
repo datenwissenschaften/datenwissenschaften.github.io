@@ -19,10 +19,10 @@ jobs:
           node-version: 18
 
       - name: Install Dependencies
-        run: npm install
+        run: npm install --force 
 
       - name: Build Angular App
-        run: npm run build --force -- --output-path=dist --base-href "/${{ github.event.repository.name }}/"
+        run: npm run build -- --output-path=dist --base-href "/${{ github.event.repository.name }}/"
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
