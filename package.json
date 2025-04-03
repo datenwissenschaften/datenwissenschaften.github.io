@@ -1,6 +1,6 @@
 {
   "name": "datenwissenschaften",
-  "version": "2025.04.02",
+  "version": "2025.04.03",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --ssl",
