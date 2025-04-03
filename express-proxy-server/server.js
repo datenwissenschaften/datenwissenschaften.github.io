@@ -8,21 +8,30 @@ const port = 3000;
 
 app.use(cors());
 
+const CACHE_DURATION = 60 * 60 * 1000; // 1 hour
 let cache = null;
 let cacheTimestamp = null;
-const CACHE_DURATION = 60 * 60 * 1000; // 1 hour
+
+// Middleware to redirect to www. if not present
+app.use((req, res, next) => {
+  const host = req.headers.host || '';
+  if (!host.startsWith('www.') && !host.startsWith('localhost')) {
+    return res.redirect(301, `https://www.${host}${req.originalUrl}`);
+  }
+  next();
+});
 
 // Proxy endpoint for Docker Hub with caching
 app.get('/dockerhub', async (req, res) => {
   const currentTime = Date.now();
 
-  // Check if cache is valid
+  // Serve from cache if valid
   if (cache && cacheTimestamp && currentTime - cacheTimestamp < CACHE_DURATION) {
     console.log('Serving from cache');
     return res.json(cache);
   }
 
-  // Fetch new data from Docker Hub
+  // Fetch and update cache
   try {
     const response = await axios.get('https://hub.docker.com/v2/repositories/datenwissenschaften');
     cache = response.data;
@@ -30,6 +39,7 @@ app.get('/dockerhub', async (req, res) => {
     console.log('Fetching new data from Docker Hub');
     res.json(response.data);
   } catch (error) {
+    console.error('Error fetching data from Docker Hub:', error.message);
     res.status(500).send('Error fetching data from Docker Hub');
   }
 });
