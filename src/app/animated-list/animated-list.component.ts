@@ -47,7 +47,7 @@ export class AnimatedListComponent implements OnInit {
       name: 'Health Care',
       category: 'Projects',
       description:
-        'BODYVISER GmbH offers mobile solutions to tackle chronic stress, connect with experts, and establish an adaptive lifestyle for inner balance..',
+        'BODYVISER GmbH offers mobile solutions to tackle chronic stress, connect with experts, and establish an adaptive lifestyle for inner balance.',
       flipped: false,
       image: '/assets/img/portfolio/healthcare-project-image.png',
       url: '',
@@ -136,8 +136,8 @@ export class AnimatedListComponent implements OnInit {
   ngOnInit(): void {
     forkJoin({
       githubRepos: this.githubService.getRepos('datenwissenschaften'),
-      dockerRepos: this.dockerHubService.getRepositories(),
-    }).subscribe(({ githubRepos, dockerRepos }) => {
+      // dockerRepos: this.dockerHubService.getRepositories(),
+    }).subscribe(({ githubRepos }) => {
       const repoItems = githubRepos
         .filter((repo) => !repo.archived)
         .map((repo) => {
@@ -151,18 +151,18 @@ export class AnimatedListComponent implements OnInit {
           };
         });
 
-      const dockerItems = dockerRepos.results.map((repo: any) => {
-        return {
-          name: repo.name,
-          category: 'Docker Hub',
-          description: repo.description || 'No description provided',
-          flipped: false,
-          image: 'https://www.svgrepo.com/show/349342/docker.svg',
-          url: `https://hub.docker.com/r/datenwissenschaften/${repo.name}`,
-        };
-      });
+      // const dockerItems = dockerRepos.results.map((repo: any) => {
+      //   return {
+      //     name: repo.name,
+      //     category: 'Docker Hub',
+      //     description: repo.description || 'No description provided',
+      //     flipped: false,
+      //     image: 'https://www.svgrepo.com/show/349342/docker.svg',
+      //     url: `https://hub.docker.com/r/datenwissenschaften/${repo.name}`,
+      //   };
+      // });
 
-      this.items = [...this.items, ...repoItems, ...dockerItems];
+      this.items = [...this.items, ...repoItems];
       this.updateCategoriesAndItems();
     });
   }

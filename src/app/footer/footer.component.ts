@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import packageJson from '../../../package.json';
 
 @Component({
   selector: 'app-footer',
@@ -9,4 +10,7 @@ import { RouterLink } from '@angular/router';
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss',
 })
-export class FooterComponent {}
+export class FooterComponent {
+  year = new Date().getFullYear();
+  build = packageJson.version;
+}
