@@ -4909,7 +4909,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chokidar@npm:^3.6.0, chokidar@npm:^4.0.0":
+"chokidar@npm:^3.6.0":
   version: 3.6.0
   resolution: "chokidar@npm:3.6.0"
   dependencies:
@@ -4925,6 +4925,15 @@ __metadata:
     fsevents:
       optional: true
   checksum: 10c0/8361dcd013f2ddbe260eacb1f3cb2f2c6f2b0ad118708a343a5ed8158941a39cb8fb1d272e0f389712e74ee90ce8ba864eece9e0e62b9705cb468a2f6d917462
+  languageName: node
+  linkType: hard
+
+"chokidar@npm:^4.0.0":
+  version: 4.0.3
+  resolution: "chokidar@npm:4.0.3"
+  dependencies:
+    readdirp: "npm:^4.0.1"
+  checksum: 10c0/a58b9df05bb452f7d105d9e7229ac82fa873741c0c40ddcc7bb82f8a909fbe3f7814c9ebe9bc9a2bef9b737c0ec6e2d699d179048ef06ad3ec46315df0ebe6ad
   languageName: node
   linkType: hard
 
@@ -5297,8 +5306,8 @@ __metadata:
     eslint: "npm:^9.3.0"
     husky: "npm:^9.1.7"
     jasmine-core: "npm:~5.1.0"
-    ngx-page-scroll: "npm:^12.0.0"
-    ngx-page-scroll-core: "npm:^12.0.0"
+    ngx-page-scroll: "npm:^14.0.0"
+    ngx-page-scroll-core: "npm:^14.0.0"
     prettier: "npm:3.3.2"
     rxjs: "npm:~7.8.0"
     tslib: "npm:^2.3.0"
@@ -8100,28 +8109,28 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ngx-page-scroll-core@npm:^12.0.0":
-  version: 12.0.0
-  resolution: "ngx-page-scroll-core@npm:12.0.0"
+"ngx-page-scroll-core@npm:^14.0.0":
+  version: 14.0.1
+  resolution: "ngx-page-scroll-core@npm:14.0.1"
   dependencies:
     tslib: "npm:^2.6.2"
   peerDependencies:
-    "@angular/common": ^17.0.6
-    "@angular/core": ^17.0.6
-  checksum: 10c0/93f639ae0bea9a67bce07dd424116c4d20885a0e63383e15feaa7dae1dd394b6772f09a297e5c28b5c5395ddb7c90c53b54ac1c2f91733eb47b6b7bd4f6f022d
+    "@angular/common": ^19.0.6
+    "@angular/core": ^19.0.6
+  checksum: 10c0/a686553cc67004333c7c4bd0b6152be7c19a88ef2cdf32a37b2fe621f8e2b14c502c31f23b2a5cf6f0f127a45c5b1afab1ba25f48483d6faa5396834ad4bb6cd
   languageName: node
   linkType: hard
 
-"ngx-page-scroll@npm:^12.0.0":
-  version: 12.0.0
-  resolution: "ngx-page-scroll@npm:12.0.0"
+"ngx-page-scroll@npm:^14.0.0":
+  version: 14.0.1
+  resolution: "ngx-page-scroll@npm:14.0.1"
   dependencies:
     tslib: "npm:^2.6.2"
   peerDependencies:
-    "@angular/common": ^17.0.6
-    "@angular/core": ^17.0.6
-    ngx-page-scroll-core: 12.0.0
-  checksum: 10c0/a959895a61988b04ab81fc8d0c54805f9c6f3e1dcd34f7a27eef134dc5797cacba2d80157cba17edb04836da591657eb60cdca63153e163a873226fa3ecb794b
+    "@angular/common": ^19.0.6
+    "@angular/core": ^19.0.6
+    ngx-page-scroll-core: 14.0.1
+  checksum: 10c0/551259b8f25fd61a6d47d29edd1a97abf40ec8c55984e66c0beb6af66e64c87e21ea791207f1aa20c296953a4d69819801767dea3ffacf7c153d27724a468f58
   languageName: node
   linkType: hard
 
@@ -9125,6 +9134,13 @@ __metadata:
     string_decoder: "npm:^1.1.1"
     util-deprecate: "npm:^1.0.1"
   checksum: 10c0/e37be5c79c376fdd088a45fa31ea2e423e5d48854be7a22a58869b4e84d25047b193f6acb54f1012331e1bcd667ffb569c01b99d36b0bd59658fb33f513511b7
+  languageName: node
+  linkType: hard
+
+"readdirp@npm:^4.0.1":
+  version: 4.1.2
+  resolution: "readdirp@npm:4.1.2"
+  checksum: 10c0/60a14f7619dec48c9c850255cd523e2717001b0e179dc7037cfa0895da7b9e9ab07532d324bfb118d73a710887d1e35f79c495fa91582784493e085d18c72c62
   languageName: node
   linkType: hard
 
