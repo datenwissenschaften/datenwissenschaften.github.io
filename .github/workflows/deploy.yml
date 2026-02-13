@@ -28,10 +28,7 @@ jobs:
         run: npm ci --legacy-peer-deps
 
       - name: Build Angular App
-        run: npm run build -- --base-href /
-
-      - name: Fix 404 on GitHub Pages
-        run: cp dist/datenwissenschaften/browser/index.html dist/datenwissenschaften/browser/404.html
+        run: npm run build
 
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3

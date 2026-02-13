@@ -33,7 +33,7 @@ export class AnimatedListComponent implements OnInit {
       description:
         'Developing automated statistical analysis of driving behavior, combining sensor and user data on a big data platform to detect patterns for analysis and automated reactions.',
       flipped: false,
-      image: '/assets/img/portfolio/automotive-project-image.png',
+      image: 'assets/img/portfolio/automotive-project-image.png',
       url: '',
     },
     {
@@ -42,7 +42,7 @@ export class AnimatedListComponent implements OnInit {
       description:
         'BODYVISER GmbH offers mobile solutions to tackle chronic stress, connect with experts, and establish an adaptive lifestyle for inner balance.',
       flipped: false,
-      image: '/assets/img/portfolio/healthcare-project-image.png',
+      image: 'assets/img/portfolio/healthcare-project-image.png',
       url: '',
     },
     {
@@ -51,7 +51,7 @@ export class AnimatedListComponent implements OnInit {
       description:
         'Social Sweethearts GmbH, a top digital publisher, optimizes fortune-telling quizzes on Facebook, enhancing user targeting and increasing share rates and ad impressions.',
       flipped: false,
-      image: '/assets/img/portfolio/content-publishing-project-image.png',
+      image: 'assets/img/portfolio/content-publishing-project-image.png',
       url: '',
     },
     {
@@ -60,7 +60,7 @@ export class AnimatedListComponent implements OnInit {
       description:
         'The long-term project aimed to migrate the data warehouse from PostgreSQL to Apache Hadoop, integrating 30+ data sources for key KPI extraction.',
       flipped: false,
-      image: '/assets/img/portfolio/media-project-image.png',
+      image: 'assets/img/portfolio/media-project-image.png',
       url: '',
     },
     {
@@ -69,7 +69,7 @@ export class AnimatedListComponent implements OnInit {
       description:
         'Assess your data, identify improvements, and create a strategy aligned with your goals. We ensure effective data use from governance to architecture.',
       flipped: false,
-      image: '/assets/img/portfolio/service.png',
+      image: 'assets/img/portfolio/service.png',
       url: '',
     },
     {
@@ -78,7 +78,7 @@ export class AnimatedListComponent implements OnInit {
       description:
         'Empower your team with customized training and workshops in data science. Equip them to leverage data effectively and boost your data initiatives’ success.',
       flipped: false,
-      image: '/assets/img/portfolio/service.png',
+      image: 'assets/img/portfolio/service.png',
       url: '',
     },
     {
@@ -87,7 +87,7 @@ export class AnimatedListComponent implements OnInit {
       description:
         'Stay ahead with our predictive analytics solutions. Using advanced models, we forecast future outcomes so you can tackle challenges and seize opportunities.',
       flipped: false,
-      image: '/assets/img/portfolio/service.png',
+      image: 'assets/img/portfolio/service.png',
       url: '',
     },
     {
@@ -96,7 +96,7 @@ export class AnimatedListComponent implements OnInit {
       description:
         'Transform raw data into compelling stories with our visualization and reporting services. We create clear visuals that turn insights into actionable information.',
       flipped: false,
-      image: '/assets/img/portfolio/service.png',
+      image: 'assets/img/portfolio/service.png',
       url: '',
     },
     {
@@ -105,7 +105,7 @@ export class AnimatedListComponent implements OnInit {
       description:
         'Navigate vast data with confidence. Our big data analytics services extract insights from complex datasets, uncovering patterns and opportunities missed by traditional methods.',
       flipped: false,
-      image: '/assets/img/portfolio/service.png',
+      image: 'assets/img/portfolio/service.png',
       url: '',
     },
     {
@@ -114,7 +114,7 @@ export class AnimatedListComponent implements OnInit {
       description:
         'Automate tasks, enhance customer experiences with chatbots, and optimize processes with machine learning for greater efficiency and innovation.',
       flipped: false,
-      image: '/assets/img/portfolio/service.png',
+      image: 'assets/img/portfolio/service.png',
       url: '',
     },
   ];
