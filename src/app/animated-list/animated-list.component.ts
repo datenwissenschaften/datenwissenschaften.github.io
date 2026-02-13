@@ -1,38 +1,31 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, signal } from '@angular/core';
+
 import { FormsModule } from '@angular/forms';
 import { animate, query, stagger, style, transition, trigger } from '@angular/animations';
 import { GithubService } from '../github.service';
-import { DockerHubService } from '../docker-hub.service'; // Import DockerHubService
 import { TruncatePipe } from '../truncate.pipe';
-import { forkJoin } from 'rxjs';
 
 @Component({
-  selector: 'app-animated-list',
-  standalone: true,
-  imports: [CommonModule, FormsModule, TruncatePipe],
-  templateUrl: './animated-list.component.html',
-  styleUrls: ['./animated-list.component.scss'],
-  animations: [
-    trigger('listAnimation', [
-      transition('* => *', [
-        query(
-          ':enter',
-          [
-            style({ opacity: 0, transform: 'scale(0.5)' }),
-            stagger(100, [animate('500ms ease-out', style({ opacity: 1, transform: 'scale(1)' }))]),
-          ],
-          { optional: true }
-        ),
-        query(':leave', [stagger(100, [animate('200ms ease-in', style({ opacity: 0, transform: 'scale(0.5)' }))])], {
-          optional: true,
-        }),
-      ]),
-    ]),
-  ],
+    selector: 'app-animated-list',
+    imports: [FormsModule, TruncatePipe],
+    templateUrl: './animated-list.component.html',
+    styleUrls: ['./animated-list.component.scss'],
+    animations: [
+        trigger('listAnimation', [
+            transition('* => *', [
+                query(':enter', [
+                    style({ opacity: 0, transform: 'scale(0.5)' }),
+                    stagger(100, [animate('500ms ease-out', style({ opacity: 1, transform: 'scale(1)' }))]),
+                ], { optional: true }),
+                query(':leave', [stagger(100, [animate('200ms ease-in', style({ opacity: 0, transform: 'scale(0.5)' }))])], {
+                    optional: true,
+                }),
+            ]),
+        ]),
+    ]
 })
 export class AnimatedListComponent implements OnInit {
-  categories: string[] = [];
+  categories = signal<string[]>([]);
   items = [
     {
       name: 'Automotive',
@@ -126,18 +119,14 @@ export class AnimatedListComponent implements OnInit {
     },
   ];
 
-  filteredItems: any = [];
+  filteredItems = signal<any[]>([]);
 
   constructor(
     private githubService: GithubService,
-    private dockerHubService: DockerHubService
   ) {}
 
   ngOnInit(): void {
-    forkJoin({
-      githubRepos: this.githubService.getRepos('datenwissenschaften'),
-      // dockerRepos: this.dockerHubService.getRepositories(),
-    }).subscribe(({ githubRepos }) => {
+    this.githubService.getRepos('datenwissenschaften').subscribe((githubRepos) => {
       const repoItems = githubRepos
         .filter((repo) => !repo.archived)
         .map((repo) => {
@@ -151,44 +140,34 @@ export class AnimatedListComponent implements OnInit {
           };
         });
 
-      // const dockerItems = dockerRepos.results.map((repo: any) => {
-      //   return {
-      //     name: repo.name,
-      //     category: 'Docker Hub',
-      //     description: repo.description || 'No description provided',
-      //     flipped: false,
-      //     image: 'https://www.svgrepo.com/show/349342/docker.svg',
-      //     url: `https://hub.docker.com/r/datenwissenschaften/${repo.name}`,
-      //   };
-      // });
-
       this.items = [...this.items, ...repoItems];
       this.updateCategoriesAndItems();
     });
   }
 
   updateCategoriesAndItems() {
-    this.categories = this.items.map((item) => item.category);
-    this.categories = this.categories.filter((category, index) => this.categories.indexOf(category) === index);
-    this.categories.unshift('All');
-    this.filteredItems = this.items;
+    const cats = this.items.map((item) => item.category);
+    const uniqueCategories = cats.filter((category, index) => cats.indexOf(category) === index);
+    uniqueCategories.unshift('All');
+    this.categories.set(uniqueCategories);
+    this.filteredItems.set(this.items);
     this.shuffleItems();
   }
 
   filterItems(category: string) {
     setTimeout(() => {
       if (category === 'All') {
-        this.filteredItems = this.items;
+        this.filteredItems.set(this.items);
         this.shuffleItems();
       } else {
-        this.filteredItems = this.items.filter((item) => item.category === category);
+        this.filteredItems.set(this.items.filter((item) => item.category === category));
         this.shuffleItems();
       }
     }, 100);
   }
 
   shuffleItems() {
-    this.filteredItems = this.filteredItems.sort(() => Math.random() - 0.5);
+    this.filteredItems.set([...this.filteredItems()].sort(() => Math.random() - 0.5));
   }
 
   toggleFlip(item: any) {

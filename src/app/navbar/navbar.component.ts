@@ -5,15 +5,14 @@ import { NgxPageScrollModule } from 'ngx-page-scroll';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-navbar',
-  standalone: true,
-  imports: [
-    NgOptimizedImage,
-    NgxPageScrollCoreModule,
-    NgxPageScrollModule,
-    RouterLink,
-  ],
-  templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.scss',
+    selector: 'app-navbar',
+    imports: [
+        NgOptimizedImage,
+        NgxPageScrollCoreModule,
+        NgxPageScrollModule,
+        RouterLink,
+    ],
+    templateUrl: './navbar.component.html',
+    styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent {}

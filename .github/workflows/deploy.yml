@@ -5,6 +5,11 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -16,17 +21,30 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
+          cache: 'npm'
 
       - name: Install Dependencies
-        run: npm install --force 
+        run: npm ci
 
       - name: Build Angular App
-        run: npm run build -- --output-path=dist --base-href "/${{ github.event.repository.name }}/"
+        run: npm run build -- --base-href /
 
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
+      - name: Fix 404 on GitHub Pages
+        run: cp dist/datenwissenschaften/browser/index.html dist/datenwissenschaften/browser/404.html
+
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          branch: gh-pages
-          folder: dist/browser
-          clean: true
+          path: dist/datenwissenschaften/browser
+
+  deploy:
+    needs: build-and-deploy
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -3,47 +3,51 @@
     <div class="col-md-12">
       <nav class="centered-pills clearfix">
         <ul class="nav nav-pills">
-          <li
-            *ngFor="let category of categories"
-            (click)="filterItems(category)"
-          >
-            <a class="filter" data-filter=".templates">{{ category }}</a>
-          </li>
+          @for (category of categories(); track category) {
+            <li
+              (click)="filterItems(category)"
+              >
+              <a class="filter" data-filter=".templates">{{ category }}</a>
+            </li>
+          }
         </ul>
       </nav>
     </div>
   </div>
 </div>
 
-<div
-  class="masonry-container"
-  *ngIf="filteredItems.length > 0"
-  [@listAnimation]
->
+@if (filteredItems().length > 0) {
   <div
-    *ngFor="let item of filteredItems"
-    class="masonry-item"
-    (click)="toggleFlip(item)"
-  >
-    <div class="flip-card" [class.flipped]="item.flipped">
-      <div class="flip-card-inner">
-        <div class="flip-card-front">
-          <img [src]="item.image" alt="{{ item.name }}" />
-          <h2>{{ item.name | truncate: 12 }}</h2>
-          <p>{{ item.category }}</p>
-        </div>
-        <div class="flip-card-back">
-          <h2>
-            <ng-container *ngIf="item.url; else noUrl">
-              <a href="{{ item.url }}" target="_blank">{{
-                item.name | truncate: 18
-              }}</a>
-            </ng-container>
-            <ng-template #noUrl>{{ item.name }}</ng-template>
-          </h2>
-          <p>{{ item.description }}</p>
+    class="masonry-container"
+    [@listAnimation]
+    >
+    @for (item of filteredItems(); track item) {
+      <div
+        class="masonry-item"
+        (click)="toggleFlip(item)"
+        >
+        <div class="flip-card" [class.flipped]="item.flipped">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img [src]="item.image" alt="{{ item.name }}" />
+              <h2>{{ item.name | truncate: 12 }}</h2>
+              <p>{{ item.category }}</p>
+            </div>
+            <div class="flip-card-back">
+              <h2>
+                @if (item.url) {
+                  <a href="{{ item.url }}" target="_blank">{{
+                    item.name | truncate: 18
+                  }}</a>
+                } @else {
+                  {{ item.name }}
+                }
+              </h2>
+              <p>{{ item.description }}</p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    }
   </div>
-</div>
+}

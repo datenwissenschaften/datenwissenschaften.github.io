@@ -4,11 +4,10 @@ import { EasingLogic } from 'ngx-page-scroll-core';
 import { NgxPageScrollModule } from 'ngx-page-scroll';
 
 @Component({
-  selector: 'app-about',
-  standalone: true,
-  imports: [NgOptimizedImage, NgxPageScrollModule],
-  templateUrl: './about.component.html',
-  styleUrl: './about.component.scss',
+    selector: 'app-about',
+    imports: [NgOptimizedImage, NgxPageScrollModule],
+    templateUrl: './about.component.html',
+    styleUrl: './about.component.scss'
 })
 export class AboutComponent {
   public easeInOutQuad: EasingLogic = (

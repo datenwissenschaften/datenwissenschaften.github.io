@@ -2,25 +2,20 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
-  OnInit,
   Renderer2,
-  ViewChild,
+  viewChild
 } from '@angular/core';
 
 @Component({
-  selector: 'app-contact',
-  standalone: true,
-  imports: [],
-  templateUrl: './contact.component.html',
-  styleUrl: './contact.component.scss',
+    selector: 'app-contact',
+    imports: [],
+    templateUrl: './contact.component.html',
+    styleUrl: './contact.component.scss'
 })
 export class ContactComponent implements AfterViewInit {
-  @ViewChild('calendlyContainer', { static: false })
-  calendlyContainer!: ElementRef;
+  readonly calendlyContainer = viewChild.required<ElementRef>('calendlyContainer');
 
   constructor(private renderer: Renderer2) {}
-
-  ngOnInit(): void {}
 
   ngAfterViewInit(): void {
     this.loadCalendlyWidgetScript();
@@ -36,7 +31,7 @@ export class ContactComponent implements AfterViewInit {
       this.initializeCalendlyWidget();
     };
 
-    this.renderer.appendChild(this.calendlyContainer.nativeElement, script);
+    this.renderer.appendChild(this.calendlyContainer().nativeElement, script);
   }
 
   initializeCalendlyWidget(): void {
@@ -45,7 +40,7 @@ export class ContactComponent implements AfterViewInit {
       // @ts-ignore
       window['Calendly'].initInlineWidget({
         url: 'https://calendly.com/datenwissenschaften',
-        parentElement: this.calendlyContainer.nativeElement,
+        parentElement: this.calendlyContainer().nativeElement,
       });
     }
   }

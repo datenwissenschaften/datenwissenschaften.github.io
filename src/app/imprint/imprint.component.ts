@@ -5,11 +5,10 @@ import { TitleComponent } from '../title/title.component';
 import { FooterComponent } from '../footer/footer.component';
 
 @Component({
-  selector: 'app-imprint',
-  standalone: true,
-  imports: [NavbarComponent, SectionComponent, TitleComponent, FooterComponent],
-  templateUrl: './imprint.component.html',
-  styleUrl: './imprint.component.scss',
+    selector: 'app-imprint',
+    imports: [NavbarComponent, SectionComponent, TitleComponent, FooterComponent],
+    templateUrl: './imprint.component.html',
+    styleUrl: './imprint.component.scss'
 })
 export class ImprintComponent implements AfterViewInit {
   constructor(private renderer: Renderer2) {}

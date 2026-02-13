@@ -1,19 +1,18 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { NgxPageScrollModule } from 'ngx-page-scroll';
 import { EasingLogic } from 'ngx-page-scroll-core';
-import { NgIf } from '@angular/common';
+
 
 @Component({
-  selector: 'app-title',
-  standalone: true,
-  imports: [NgxPageScrollModule, NgIf],
-  templateUrl: './title.component.html',
-  styleUrl: './title.component.scss',
+    selector: 'app-title',
+    imports: [NgxPageScrollModule],
+    templateUrl: './title.component.html',
+    styleUrl: './title.component.scss'
 })
 export class TitleComponent {
-  @Input() public title: string = '';
-  @Input() public subtitle: string = '';
-  @Input() public showButton: boolean = false;
+  public readonly title = input<string>('');
+  public readonly subtitle = input<string>('');
+  public readonly showButton = input<boolean>(false);
 
   public easeInOutQuad: EasingLogic = (
     t: number,
