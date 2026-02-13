@@ -18,30 +18,18 @@ export class ContactComponent implements AfterViewInit {
   constructor(private renderer: Renderer2) {}
 
   ngAfterViewInit(): void {
-    this.loadCalendlyWidgetScript();
+    this.initializeCalendlyIframe();
   }
 
-  loadCalendlyWidgetScript(): void {
-    // Load the Calendly widget script
-    const script = this.renderer.createElement('script');
-    script.type = 'text/javascript';
-    script.src = 'https://assets.calendly.com/assets/external/widget.js';
-    script.onload = () => {
-      // Initialize the Calendly widget once the script is loaded
-      this.initializeCalendlyWidget();
-    };
+  initializeCalendlyIframe(): void {
+    const iframe = this.renderer.createElement('iframe');
+    this.renderer.setAttribute(iframe, 'src', 'https://calendly.com/datenwissenschaften?embed_domain=www.datenwissenschaften.com&embed_type=Inline&hide_landing_page_details=1&hide_gdpr_banner=1');
+    this.renderer.setAttribute(iframe, 'width', '100%');
+    this.renderer.setAttribute(iframe, 'height', '700');
+    this.renderer.setAttribute(iframe, 'frameborder', '0');
+    this.renderer.setStyle(iframe, 'min-width', '320px');
+    this.renderer.setStyle(iframe, 'height', '700px');
 
-    this.renderer.appendChild(this.calendlyContainer().nativeElement, script);
-  }
-
-  initializeCalendlyWidget(): void {
-    // @ts-ignore
-    if (window['Calendly']) {
-      // @ts-ignore
-      window['Calendly'].initInlineWidget({
-        url: 'https://calendly.com/datenwissenschaften',
-        parentElement: this.calendlyContainer().nativeElement,
-      });
-    }
+    this.renderer.appendChild(this.calendlyContainer().nativeElement, iframe);
   }
 }
