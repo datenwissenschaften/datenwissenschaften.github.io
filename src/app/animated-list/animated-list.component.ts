@@ -127,19 +127,19 @@ export class AnimatedListComponent implements OnInit {
 
   ngOnInit(): void {
     this.githubService.getRepos('datenwissenschaften').subscribe((githubRepos) => {
-      const repoItems = githubRepos
-        .filter((repo) => !repo.archived)
-        .map((repo) => {
-          return {
-            name: repo.name,
-            category: 'Open Source',
-            description: repo.description || 'No description provided',
-            flipped: false,
-            image: 'https://www.svgrepo.com/show/361509/github-logo.svg',
-            url: repo.html_url,
-          };
-        });
-
+      // const repoItems = githubRepos
+      //   .filter((repo) => !repo.archived)
+      //   .map((repo) => {
+      //     return {
+      //       name: repo.name,
+      //       category: 'Open Source',
+      //       description: repo.description || 'No description provided',
+      //       flipped: false,
+      //       image: 'https://www.svgrepo.com/show/361509/github-logo.svg',
+      //       url: repo.html_url,
+      //     };
+      //   });
+      const repoItems: any[] = [];
       this.items = [...this.items, ...repoItems];
       this.updateCategoriesAndItems();
     });
