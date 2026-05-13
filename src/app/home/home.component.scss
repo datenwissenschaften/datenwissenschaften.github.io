@@ -1,0 +1,108 @@
+.animation-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.node {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: rgba(0, 255, 255, 0.4);
+  border-radius: 50%;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
+  animation: float 15s infinite ease-in-out;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(150px, 80px); }
+  50% { transform: translate(80px, 200px); }
+  75% { transform: translate(-80px, 120px); }
+}
+
+.node-1 { top: 15%; left: 5%; animation-delay: 0s; }
+.node-2 { top: 65%; left: 15%; animation-delay: -3s; }
+.node-3 { top: 35%; left: 85%; animation-delay: -6s; }
+.node-4 { top: 5%; left: 55%; animation-delay: -9s; }
+.node-5 { top: 75%; left: 45%; animation-delay: -1.5s; }
+.node-6 { top: 25%; left: 35%; animation-delay: -4.5s; }
+.node-7 { top: 55%; left: 75%; animation-delay: -7.5s; }
+.node-8 { top: 85%; left: 5%; animation-delay: -10.5s; }
+
+.loading-container {
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  width: 100%;
+  max-width: 500px;
+  padding: 0 20px;
+}
+
+.loading-steps {
+  color: #00ffff;
+  font-family: 'Courier New', Courier, monospace;
+  text-align: left;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 15px;
+  border-left: 2px solid #00ffff;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+}
+
+.step {
+  opacity: 0;
+  margin-bottom: 8px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  animation: stepIn 0.8s forwards;
+  
+  &::before {
+    content: "> ";
+    color: #fff;
+    font-weight: bold;
+  }
+}
+
+.step-1 { animation-delay: 1.5s; }
+.step-2 { animation-delay: 3.5s; }
+.step-3 { animation-delay: 5.5s; }
+.step-4 { animation-delay: 7.5s; }
+.step-5 { animation-delay: 9.5s; }
+.step-6 { animation-delay: 11.5s; }
+
+@keyframes stepIn {
+  from { 
+    opacity: 0; 
+    transform: translateX(-10px);
+    text-shadow: 0 0 10px #00ffff;
+  }
+  to { 
+    opacity: 1; 
+    transform: translateX(0);
+    text-shadow: none;
+  }
+}
+
+:host ::ng-deep {
+  .main-head {
+    background-color: rgba(0, 0, 0, 0.75) !important;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  }
+  
+  .company {
+    color: #00ffff !important;
+    letter-spacing: 2px;
+  }
+  
+  .divider {
+    background: #00ffff !important;
+    box-shadow: 0 0 10px #00ffff;
+  }
+}
