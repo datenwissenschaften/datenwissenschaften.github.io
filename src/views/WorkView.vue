@@ -15,9 +15,11 @@ import { projects } from '../data'
         <div class="case-index">{{ String(index + 1).padStart(2, '0') }}</div>
         <div class="project-image"><img :src="project.image" :alt="`${project.sector} data science work`" /></div>
         <div class="case-copy">
-          <p class="eyebrow">{{ project.sector }}</p>
+          <p class="eyebrow">{{ project.sector }} · {{ project.period }}</p>
+          <p class="case-role">{{ project.role }}<br /><span>{{ project.organisation }}</span></p>
           <h2>{{ project.title }}</h2>
           <p>{{ project.text }}</p>
+          <p class="case-result"><strong>Outcome</strong>{{ project.result }}</p>
           <div class="tag-row"><span v-for="tag in project.tags" :key="tag">{{ tag }}</span></div>
         </div>
       </article>

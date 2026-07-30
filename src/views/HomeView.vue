@@ -8,11 +8,11 @@ import { projects, services } from '../data'
   <div>
     <section class="hero wrap">
       <div class="hero-copy">
-        <p class="eyebrow"><span class="status-dot" /> Independent data science consultant</p>
+        <p class="eyebrow"><span class="status-dot" /> Data Science & AI Transformation</p>
         <h1>Less complexity.<br /><em>More intelligence.</em></h1>
         <p class="hero-lead">
-          I’m Dr. Martin Franke. I design lean data systems, useful AI and high-leverage automations—so your business
-          gets results without building an empire of tools.
+          With 15 years in machine learning and AI transformation, I design production-grade
+          systems that turn complex data into faster, safer decisions.
         </p>
         <div class="button-row">
           <RouterLink to="/contact" class="button button-primary">Start a conversation <ArrowIcon /></RouterLink>
@@ -35,14 +35,28 @@ import { projects, services } from '../data'
         <div class="visual-foot"><span>Resources ↓</span><span>Automation ↑</span><span>Clarity ↑</span></div>
       </div>
       <div class="hero-proof">
+        <span>15 years’ experience</span>
         <span>PhD-trained thinking</span>
-        <span>Full-stack delivery</span>
-        <span>Business-first decisions</span>
+        <span>Production-grade delivery</span>
+        <span>Team leadership</span>
       </div>
     </section>
 
-    <section class="marquee" aria-label="Areas of expertise">
-      <div>Strategy <i /> Machine learning <i /> Data engineering <i /> Automation <i /> Analytics <i /> Strategy <i /> Machine learning</div>
+    <section class="capability-strip" aria-labelledby="capability-strip-title">
+      <div class="wrap capability-strip-inner">
+        <div>
+          <p class="eyebrow">Core capabilities</p>
+          <h2 id="capability-strip-title">Senior expertise across the AI lifecycle.</h2>
+        </div>
+        <ul>
+          <li><span>01</span>AI strategy</li>
+          <li><span>02</span>Machine learning</li>
+          <li><span>03</span>Data engineering</li>
+          <li><span>04</span>LLM systems</li>
+          <li><span>05</span>MLOps</li>
+          <li><span>06</span>Model governance</li>
+        </ul>
+      </div>
     </section>
 
     <section class="section wrap">
@@ -51,7 +65,7 @@ import { projects, services } from '../data'
           <p class="eyebrow">What I do</p>
           <h2>From difficult data<br />to simple decisions.</h2>
         </div>
-        <p>I work across strategy, engineering and machine learning—one accountable partner from first question to working system.</p>
+        <p>I work across strategy, engineering, machine learning and governance—one accountable partner from first question to reliable production system.</p>
       </div>
       <div class="service-list">
         <RouterLink v-for="service in services" :key="service.number" to="/services" class="service-row">
