@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dr. Franke — Data Science Consultant</title>
+    <script>
+      const path = window.location.pathname
+      window.location.replace(
+        '/?/' +
+          path
+            .split('/')
+            .filter(Boolean)
+            .map((value) => encodeURIComponent(value))
+            .join('/') +
+          window.location.search.replace(/&/g, '~and~') +
+          window.location.hash,
+      )
+    </script>
+  </head>
+  <body></body>
+</html>
