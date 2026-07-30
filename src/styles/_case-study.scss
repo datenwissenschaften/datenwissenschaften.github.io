@@ -1,0 +1,322 @@
+/* Public case study */
+.case-overview {
+  display: grid;
+  grid-template-columns: 0.38fr 1fr;
+  gap: clamp(60px, 10vw, 150px);
+  padding-block: 120px 140px;
+}
+
+.case-facts {
+  align-self: start;
+}
+
+.case-facts dl {
+  margin: 0;
+  border-top: 1px solid var(--line);
+}
+
+.case-facts dl div {
+  padding: 17px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.case-facts dt {
+  margin-bottom: 4px;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.case-facts dd {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.case-facts .status-dot {
+  margin-right: 7px;
+}
+
+.case-narrative h2 {
+  max-width: 830px;
+  margin-bottom: 38px;
+  font-size: clamp(2.8rem, 5vw, 5.5rem);
+}
+
+.case-narrative > p:not(.eyebrow) {
+  max-width: 790px;
+  color: var(--muted);
+  font-size: 17px;
+}
+
+.case-narrative .case-lead {
+  color: var(--text);
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(1.35rem, 2vw, 1.75rem);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1.45;
+}
+
+.case-link-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  align-items: center;
+  margin-top: 42px;
+}
+
+.case-gallery {
+  padding-bottom: 140px;
+}
+
+.case-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+.case-gallery-grid figure {
+  margin: 0;
+}
+
+.case-gallery-image {
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.case-gallery-image img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.5s ease;
+}
+
+.case-gallery-grid figure:hover img {
+  transform: scale(1.012);
+}
+
+.case-gallery-grid figcaption {
+  display: grid;
+  grid-template-columns: 0.35fr 1fr;
+  gap: 24px;
+  padding-top: 18px;
+}
+
+.case-gallery-grid figcaption span {
+  color: var(--accent);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.case-gallery-grid figcaption p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.case-system-section {
+  padding-block: 140px;
+  background: var(--bg-elevated);
+}
+
+.speedlab-system {
+  position: relative;
+  padding: 25px 28px 28px;
+  border: 1px solid var(--line-strong);
+  background:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px),
+    color-mix(in srgb, var(--bg) 92%, transparent);
+  background-size: 38px 38px;
+  overflow: hidden;
+}
+
+.speedlab-system::after {
+  position: absolute;
+  top: 60px;
+  bottom: 55px;
+  left: -18%;
+  width: 18%;
+  content: '';
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--accent) 9%, transparent), transparent);
+  animation: data-sweep 8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  pointer-events: none;
+}
+
+.system-head,
+.system-foot {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.system-head {
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--line);
+}
+
+.system-head i {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 7px;
+  border-radius: 50%;
+  background: #50d890;
+  box-shadow: 0 0 0 4px rgba(80, 216, 144, 0.1);
+}
+
+.speedlab-system ol {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  padding: 72px 0;
+  margin: 0;
+  list-style: none;
+}
+
+.speedlab-system li {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 160px;
+  padding: 28px 22px;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+}
+
+.speedlab-system li:not(:last-child) {
+  border-right: 0;
+}
+
+.speedlab-system li:not(:last-child)::after {
+  position: absolute;
+  top: 50%;
+  right: -10px;
+  z-index: 3;
+  display: grid;
+  width: 20px;
+  height: 20px;
+  place-items: center;
+  color: var(--accent);
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  content: '→';
+  background: var(--bg);
+  font-size: 11px;
+  transform: translateY(-50%);
+}
+
+.speedlab-system li span {
+  margin-bottom: 32px;
+  color: var(--accent);
+  font-family: 'Manrope', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.speedlab-system li strong {
+  margin-bottom: 7px;
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+}
+
+.speedlab-system li small {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.system-foot {
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+}
+
+.case-evidence {
+  padding-block: 140px;
+}
+
+.case-evidence-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.case-evidence-grid article {
+  min-height: 280px;
+  padding: 34px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.case-evidence-grid article > span {
+  color: var(--accent);
+  font-family: 'Manrope', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.045em;
+}
+
+.case-evidence-grid h3 {
+  margin: 55px 0 15px;
+  font-size: 1.4rem;
+}
+
+.case-evidence-grid p {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.case-closing {
+  color: var(--on-accent);
+  background: var(--accent);
+}
+
+.case-closing .wrap {
+  padding-block: 110px;
+}
+
+.case-closing .eyebrow {
+  color: color-mix(in srgb, var(--on-accent) 62%, transparent);
+}
+
+.case-closing h2 {
+  max-width: 1000px;
+  margin-bottom: 30px;
+  font-size: clamp(3.5rem, 7.5vw, 7.5rem);
+}
+
+.case-closing h2 em {
+  color: var(--on-accent);
+}
+
+.case-closing > .wrap > p:not(.eyebrow) {
+  max-width: 660px;
+  font-size: 17px;
+}
+
+.case-button-light {
+  color: var(--text);
+  background: var(--bg);
+}
+
+.case-plain-link {
+  padding-bottom: 4px;
+  border-bottom: 1px solid color-mix(in srgb, var(--on-accent) 45%, transparent);
+  font-size: 13px;
+  font-weight: 700;
+}
+

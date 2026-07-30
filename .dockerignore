@@ -1,6 +1,0 @@
-node_modules
-.angular
-dist
-express-proxy-server/node_modules
-.codex
-package-lock.json

@@ -1,4 +1,4 @@
-name: Deploy Angular to GitHub Pages
+name: Deploy Vue app to GitHub Pages
 
 on:
   push:
@@ -24,15 +24,15 @@ jobs:
           node-version: 20
 
       - name: Install Dependencies
-        run: npm install --legacy-peer-deps
+        run: npm ci
 
-      - name: Build Angular App
+      - name: Build Vue App
         run: npm run build
 
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist/datenwissenschaften/browser
+          path: dist
 
   deploy:
     needs: build-and-deploy

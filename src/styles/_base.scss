@@ -1,0 +1,127 @@
+:root {
+  --bg: #0b0d0f;
+  --bg-elevated: #111418;
+  --surface: #15191d;
+  --surface-soft: #1b2025;
+  --text: #f2f2ed;
+  --muted: #9da2a4;
+  --line: rgba(255, 255, 255, 0.13);
+  --line-strong: rgba(255, 255, 255, 0.24);
+  --accent: #ff5b35;
+  --accent-soft: #ff8a6e;
+  --on-accent: #130906;
+  --grid: rgba(255, 255, 255, 0.045);
+  --max: 1240px;
+}
+
+:root[data-theme='light'] {
+  --bg: #f4f3ee;
+  --bg-elevated: #ebeae4;
+  --surface: #e3e2db;
+  --surface-soft: #dad9d1;
+  --text: #111315;
+  --muted: #656a6c;
+  --line: rgba(17, 19, 21, 0.14);
+  --line-strong: rgba(17, 19, 21, 0.28);
+  --accent: #e34523;
+  --accent-soft: #c9381c;
+  --on-accent: #fff7f3;
+  --grid: rgba(17, 19, 21, 0.055);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  color: var(--text);
+  background: var(--bg);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  content: '';
+  background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 52px 52px;
+  mask-image: linear-gradient(to bottom, black, transparent 80%);
+  pointer-events: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Manrope', sans-serif;
+}
+
+h1,
+h2 {
+  letter-spacing: -0.055em;
+  line-height: 0.98;
+}
+
+h1 {
+  font-size: clamp(3.65rem, 7.7vw, 7.9rem);
+}
+
+h2 {
+  font-size: clamp(2.45rem, 5vw, 5rem);
+}
+
+h3 {
+  letter-spacing: -0.035em;
+  line-height: 1.15;
+}
+
+em {
+  color: var(--accent);
+  font-family: Georgia, serif;
+  font-weight: 400;
+}
+
+svg {
+  width: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.7;
+}
+
+.wrap {
+  width: min(calc(100% - 64px), var(--max));
+  margin-inline: auto;
+}

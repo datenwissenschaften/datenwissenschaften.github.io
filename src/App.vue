@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { onMounted, ref, watch } from 'vue'
 import { RouterLink, RouterView, useRoute } from 'vue-router'
+import footerLogo from './assets/img/logo-white.png'
+import headerLogo from './assets/img/logo.png'
+import headerWordmark from './assets/img/logo-white-text.png'
 
 const route = useRoute()
 const menuOpen = ref(false)
@@ -32,8 +35,8 @@ function toggleTheme() {
   <div class="site-shell">
     <header class="site-header">
       <RouterLink to="/" class="brand" aria-label="Dr. Franke home">
-        <span class="brand-mark">df</span>
-        <span class="brand-name">Dr. Franke<br /><b>Datenwissenschaften</b></span>
+        <img class="header-logo" :src="headerLogo" alt="" />
+        <img class="header-wordmark" :src="headerWordmark" alt="" />
       </RouterLink>
 
       <nav :class="{ open: menuOpen }" aria-label="Main navigation">
@@ -41,6 +44,7 @@ function toggleTheme() {
         <RouterLink to="/work">Work</RouterLink>
         <RouterLink to="/about">About</RouterLink>
         <RouterLink to="/contact">Contact</RouterLink>
+        <RouterLink to="/case-study">Case study</RouterLink>
       </nav>
 
       <div class="header-actions">
@@ -63,7 +67,9 @@ function toggleTheme() {
 
     <footer class="site-footer">
       <div>
-        <RouterLink to="/" class="footer-brand">Dr. Franke <span>/ Datenwissenschaften</span></RouterLink>
+        <RouterLink to="/" class="footer-brand" aria-label="Dr. Franke Datenwissenschaften home">
+          <img class="footer-logo" :src="footerLogo" alt="Dr. Franke Datenwissenschaften" />
+        </RouterLink>
         <p>Lean systems. Useful intelligence.<br />Built to keep working.</p>
       </div>
       <div class="footer-nav">
@@ -71,6 +77,7 @@ function toggleTheme() {
         <RouterLink to="/services">Services</RouterLink>
         <RouterLink to="/work">Work</RouterLink>
         <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/case-study">Case study</RouterLink>
       </div>
       <div class="footer-nav">
         <p class="eyebrow">Connect</p>

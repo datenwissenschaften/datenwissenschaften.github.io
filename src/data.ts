@@ -3,25 +3,25 @@ export const services = [
     number: '01',
     title: 'Data & AI Strategy',
     text: 'A clear path from fragmented data to dependable AI. I define target architectures, semantic data layers and governance models that connect business priorities with production delivery.',
-    outcome: 'AI roadmaps · architecture · model governance',
+    outcome: 'AI roadmaps · Architecture · Model Governance',
   },
   {
     number: '02',
     title: 'Applied Machine Learning',
     text: 'Production-grade models and AI agents for forecasting, classification, behavioral analytics and natural-language data exploration—supported by explainability, evaluation and feedback loops.',
-    outcome: 'Predictive ML · LLM systems · explainability',
+    outcome: 'Predictive ML · LLM systems · Explainability',
   },
   {
     number: '03',
     title: 'Data Platforms',
     text: 'Reliable data and ML foundations for high-volume workloads. I build tested pipelines, feature stores and analytical services with Python, Spark, Airflow and Databricks.',
-    outcome: 'Spark pipelines · feature stores · observability',
+    outcome: 'Spark pipelines · Feature Stores · Observability',
   },
   {
     number: '04',
     title: 'MLOps & Delivery',
     text: 'Operationalise models with reproducible workflows, CI/CD, monitoring and auditable controls. I also mentor teams in clean code, testing and sustainable delivery practices.',
-    outcome: 'CI/CD · monitoring · team enablement',
+    outcome: 'CI/CD · Monitoring · Team Enablement',
   },
 ]
 

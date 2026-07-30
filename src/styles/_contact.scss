@@ -1,0 +1,76 @@
+/* Contact */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 0.65fr;
+  gap: clamp(50px, 10vw, 150px);
+  padding-block: 120px;
+}
+
+.email-link {
+  display: inline-block;
+  margin-bottom: 50px;
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(1.7rem, 4vw, 4.2rem);
+  font-weight: 600;
+  letter-spacing: -0.055em;
+  line-height: 1.1;
+}
+
+.email-link:hover {
+  color: var(--accent);
+}
+
+.contact-primary > p:not(.eyebrow) {
+  color: var(--muted);
+}
+
+.contact-primary .button {
+  margin-top: 12px;
+}
+
+.contact-aside {
+  border-top: 1px solid var(--line);
+}
+
+.contact-aside > div {
+  padding: 27px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.contact-aside .eyebrow {
+  margin-bottom: 12px;
+}
+
+.contact-aside p:not(.eyebrow),
+.contact-aside ul {
+  margin-bottom: 0;
+  padding-left: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.contact-aside ul {
+  padding-left: 18px;
+}
+
+.contact-aside li {
+  margin-bottom: 7px;
+}
+
+.contact-note {
+  display: flex;
+  justify-content: space-between;
+  padding-block: 45px;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(1.2rem, 2.2vw, 2rem);
+}
+
+.contact-note span::before {
+  margin-right: 12px;
+  color: var(--accent);
+  content: '•';
+}
+

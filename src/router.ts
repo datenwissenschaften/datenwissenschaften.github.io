@@ -12,6 +12,7 @@ const router = createRouter({
     { path: '/work', name: 'work', component: () => import('./views/WorkView.vue') },
     { path: '/about', name: 'about', component: () => import('./views/AboutView.vue') },
     { path: '/contact', name: 'contact', component: () => import('./views/ContactView.vue') },
+    { path: '/case-study', name: 'case-study', component: () => import('./views/CaseStudyView.vue') },
     { path: '/imprint', name: 'imprint', component: () => import('./views/ImprintView.vue') },
     { path: '/:pathMatch(.*)*', redirect: '/' },
   ],
@@ -22,11 +23,12 @@ router.afterEach((to) => {
     home: 'Data Science Consultant',
     services: 'Services',
     work: 'Selected Work',
+    'case-study': 'Public Case Study',
     about: 'About',
     contact: 'Start a Project',
     imprint: 'Imprint & Privacy',
   }
-  document.title = `${labels[String(to.name)] ?? 'Data Science Consultant'} — Dr. Franke`
+  document.title = `${labels[String(to.name)] ?? 'Data Science Consultant'} — Dr. Franke Datenwissenschaften`
 })
 
 export default router

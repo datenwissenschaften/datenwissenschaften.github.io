@@ -72,7 +72,7 @@ import { experience } from '../data'
       <div class="toolkit-groups">
         <article>
           <h3>AI & machine learning</h3>
-          <div><span>scikit-learn</span><span>Keras</span><span>PyCaret</span><span>Ollama</span><span>llama-factory</span><span>FiftyOne</span></div>
+          <div><span>scikit-learn</span><span>PyCaret</span><span>Ollama</span><span>llama-factory</span><span>FiftyOne</span></div>
         </article>
         <article>
           <h3>Languages & services</h3>
@@ -80,15 +80,15 @@ import { experience } from '../data'
         </article>
         <article>
           <h3>Data & pipelines</h3>
-          <div><span>Apache Spark</span><span>Databricks</span><span>Airflow</span><span>Matillion</span><span>Pentaho</span><span>PostgreSQL</span></div>
+          <div><span>Apache Spark</span><span>Databricks</span><span>Airflow</span><span>Matillion</span><span>PostgreSQL</span></div>
         </article>
         <article>
-          <h3>Cloud & delivery</h3>
-          <div><span>Azure Data Lake</span><span>Azure ML</span><span>AWS S3</span><span>Redshift</span><span>EC2</span><span>BigQuery</span><span>Dataflow</span><span>CI/CD</span></div>
+          <h3>Cloud services</h3>
+          <div><span>Azure Cloud</span><span>AWS</span><span>Google Cloud</span></div>
         </article>
-        <article>
+        <article class="toolkit-wide">
           <h3>Governance & collaboration</h3>
-          <div><span>Model governance</span><span>Bias audits</span><span>A/B testing</span><span>GDPR</span><span>NIST SP 800-53</span><span>Scrum</span><span>Kanban</span><span>SAFe</span><span>GitHub</span><span>Jira</span><span>Confluence</span></div>
+          <div><span>Model governance</span><span>Bias audits</span><span>A/B testing</span><span>GDPR</span><span>NIST SP 800-53</span><span>CI/CD</span><span>Scrum</span><span>Kanban</span><span>SAFe</span><span>GitHub</span><span>Jira</span><span>Confluence</span></div>
         </article>
       </div>
     </section>

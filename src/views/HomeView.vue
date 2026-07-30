@@ -114,7 +114,10 @@ import { projects, services } from '../data'
           <p>{{ project.text }}</p>
         </article>
       </div>
-      <RouterLink to="/work" class="button button-outline">View all work <ArrowIcon /></RouterLink>
+      <div class="project-actions">
+        <RouterLink to="/work" class="button button-outline">View all work <ArrowIcon /></RouterLink>
+        <RouterLink to="/case-study" class="text-link">Explore the public case study <ArrowIcon /></RouterLink>
+      </div>
     </section>
 
     <section class="cta-band">

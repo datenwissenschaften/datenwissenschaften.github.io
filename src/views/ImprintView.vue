@@ -5,7 +5,6 @@ import PageIntro from '../components/PageIntro.vue'
 <template>
   <div>
     <PageIntro
-      index="05"
       title="Imprint &"
       accent="privacy."
       copy="Company information, intellectual property terms and data protection details for Dr. Franke Datenwissenschaften OÜ."

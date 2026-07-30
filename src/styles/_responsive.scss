@@ -1,0 +1,432 @@
+@media (max-width: 900px) {
+  .site-header {
+    grid-template-columns: 1fr auto;
+    padding-inline: 24px;
+  }
+
+  .site-header nav {
+    position: fixed;
+    top: 84px;
+    right: 0;
+    left: 0;
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    align-items: stretch;
+    padding: 18px 24px 30px;
+    border-bottom: 1px solid var(--line);
+    background: var(--bg);
+  }
+
+  .site-header nav.open {
+    display: flex;
+  }
+
+  .site-header nav a {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 16px;
+  }
+
+  .site-header nav a::after {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    border: 0;
+    background: transparent;
+  }
+
+  .menu-toggle span {
+    width: 100%;
+    height: 1px;
+    background: var(--text);
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding-top: 70px;
+  }
+
+  .hero-visual {
+    min-height: 480px;
+  }
+
+  .capability-strip-inner {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .split-heading,
+  .approach-grid,
+  .about-profile,
+  .contact-grid,
+  .case-overview {
+    grid-template-columns: 1fr;
+  }
+
+  .split-heading {
+    gap: 30px;
+  }
+
+  .project-grid {
+    gap: 60px 20px;
+  }
+
+  .service-detail {
+    grid-template-columns: 8% 1fr;
+  }
+
+  .service-deliverables {
+    grid-column: 2;
+  }
+
+  .work-case {
+    grid-template-columns: 7% 1fr;
+  }
+
+  .work-case .project-image,
+  .work-case .case-copy {
+    grid-column: 2;
+  }
+
+  .case-copy {
+    padding-left: 0;
+  }
+
+  .experience-list article {
+    grid-template-columns: 100px 0.8fr 1fr;
+    gap: 25px;
+  }
+
+  .speedlab-system ol {
+    grid-template-columns: 1fr;
+    padding-block: 45px;
+  }
+
+  .speedlab-system li {
+    min-height: auto;
+  }
+
+  .speedlab-system li:not(:last-child) {
+    border-right: 1px solid var(--line);
+    border-bottom: 0;
+  }
+
+  .speedlab-system li:not(:last-child)::after {
+    top: auto;
+    right: auto;
+    bottom: -10px;
+    left: 50%;
+    content: '↓';
+    transform: translateX(-50%);
+  }
+
+  .speedlab-system li span {
+    margin-bottom: 15px;
+  }
+
+  .case-evidence-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .site-footer {
+    grid-template-columns: 1.5fr 1fr 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .wrap,
+  .site-footer {
+    width: min(calc(100% - 40px), var(--max));
+  }
+
+  .site-header {
+    min-height: 72px;
+    padding-inline: 20px;
+  }
+
+  .site-header nav {
+    top: 72px;
+  }
+
+  .header-wordmark,
+  .theme-toggle .sun,
+  .theme-toggle .moon {
+    display: none;
+  }
+
+  h1 {
+    font-size: clamp(3rem, 14vw, 4.5rem);
+  }
+
+  h2 {
+    font-size: clamp(2.35rem, 11vw, 3.6rem);
+  }
+
+  .hero {
+    gap: 55px;
+    min-height: auto;
+    padding-block: 60px 30px;
+  }
+
+  .button-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .hero-visual {
+    min-height: 430px;
+  }
+
+  .orbit {
+    inset-inline: 10px;
+  }
+
+  .visual-head,
+  .visual-foot {
+    font-size: 9px;
+  }
+
+  .data-node b {
+    font-size: 14px;
+  }
+
+  .capability-strip ul {
+    grid-template-columns: 1fr;
+  }
+
+  .capability-strip li:nth-child(odd) {
+    border-right: 0;
+  }
+
+  .capability-strip li:nth-child(even) {
+    padding-left: 0;
+  }
+
+  .hero-proof {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .section,
+  .approach-section,
+  .process-section,
+  .principles-section {
+    padding-block: 90px;
+  }
+
+  .section-heading {
+    margin-bottom: 45px;
+  }
+
+  .service-row {
+    grid-template-columns: 42px 1fr 20px;
+    min-height: 95px;
+  }
+
+  .service-row p {
+    display: none;
+  }
+
+  .approach-graphic {
+    min-height: 420px;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card:nth-child(even) {
+    margin-top: 0;
+  }
+
+  .project-actions,
+  .case-link-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .case-overview,
+  .case-gallery,
+  .case-system-section,
+  .case-evidence {
+    padding-block: 90px;
+  }
+
+  .case-gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 55px;
+  }
+
+  .speedlab-system {
+    padding-inline: 18px;
+  }
+
+  .system-head,
+  .system-foot {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .case-evidence-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .case-evidence-grid article {
+    min-height: 240px;
+  }
+
+  .case-closing .wrap {
+    padding-block: 85px;
+  }
+
+  .cta-band .wrap {
+    padding-block: 80px 140px;
+  }
+
+  .round-link {
+    right: auto;
+    bottom: 45px;
+    left: 20px;
+    width: 80px;
+    height: 80px;
+  }
+
+  .site-footer {
+    grid-template-columns: 1fr 1fr;
+    gap: 45px 25px;
+    padding-top: 70px;
+  }
+
+  .site-footer > div:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .page-intro {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding-block: 65px 70px;
+  }
+
+  .page-intro-index {
+    margin-bottom: 35px;
+  }
+
+  .page-intro-unindexed > div {
+    margin-left: 0;
+  }
+
+  .page-intro h1 {
+    font-size: clamp(3rem, 13vw, 4.8rem);
+  }
+
+  .page-lead {
+    margin-left: 0;
+  }
+
+  .service-detail-list {
+    padding-bottom: 80px;
+  }
+
+  .service-detail {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding-block: 50px;
+  }
+
+  .service-deliverables {
+    grid-column: 1;
+  }
+
+  .process-grid,
+  .principles-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .experience-list article,
+  .toolkit-groups {
+    grid-template-columns: 1fr;
+  }
+
+  .experience-list article {
+    gap: 10px;
+  }
+
+  .process-grid article {
+    min-height: auto;
+  }
+
+  .process-grid h3 {
+    margin-top: 55px;
+  }
+
+  .inline-cta {
+    flex-direction: column;
+    gap: 40px;
+    align-items: flex-start;
+    padding-block: 80px;
+  }
+
+  .work-list {
+    padding-block: 50px 90px;
+  }
+
+  .work-case {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .work-case .project-image,
+  .work-case .case-copy {
+    grid-column: 1;
+  }
+
+  .about-profile {
+    padding-block: 80px;
+  }
+
+  .portrait-frame {
+    max-width: 400px;
+  }
+
+  .contact-grid {
+    padding-block: 80px;
+  }
+
+  .email-link {
+    font-size: clamp(1.45rem, 7.4vw, 2.2rem);
+  }
+
+  .contact-note {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .legal-grid {
+    grid-template-columns: 1fr;
+    padding-block: 70px;
+  }
+
+  .legal-grid aside {
+    position: static;
+  }
+
+  .legal-facts div {
+    grid-template-columns: 1fr;
+    gap: 3px;
+  }
+}
