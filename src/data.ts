@@ -33,7 +33,7 @@ export const projects = [
     organisation: 'CARIAD SE · Cognizant Mobility GmbH',
     title: 'Automotive AI, from BUS data to decisions',
     text: 'Led the strategy and delivery of production ML systems for driver behavior, safety analytics, AD/ADAS, homologation and issue resolution. Unified CAN, LIN and FlexRay data on Azure Databricks and introduced an LLM-powered analytics layer for natural-language dataset discovery and PySpark generation.',
-    result: 'Reduced complex engineering analysis from hours to minutes. Earlier platform work for Audi, Porsche and Volkswagen was selected over three internal alternatives for code quality, reliability and delivery speed, with governance aligned to GDPR and NIST SP 800-53.',
+    result: 'Reduced complex engineering analysis from hours to minutes. This platform for Audi, Porsche and Volkswagen was selected over three internal alternatives for code quality, reliability and delivery speed, with governance aligned to GDPR and NIST SP 800-53.',
     image: new URL('./assets/img/portfolio/automotive-project-image.png', import.meta.url).href,
     tags: ['Azure Databricks', 'PySpark', 'Feature store', 'MLOps'],
   },
