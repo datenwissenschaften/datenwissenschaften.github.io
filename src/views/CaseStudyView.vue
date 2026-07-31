@@ -122,12 +122,59 @@ import runImage from '../assets/img/speedlab/run.png'
             <span>Retro Speedlab / production workflow</span>
             <span><i /> Operational</span>
           </div>
-          <ol>
-            <li><span>01</span><strong>Design</strong><small>Visual training builder</small></li>
-            <li><span>02</span><strong>Train</strong><small>Python · CUDA · Podman</small></li>
-            <li><span>03</span><strong>Validate</strong><small>stable-retro · FFmpeg</small></li>
-            <li><span>04</span><strong>Publish</strong><small>FastAPI · PocketBase · Pocketflow</small></li>
-            <li><span>05</span><strong>Observe</strong><small>Umami · Bugsink · Live Metrics</small></li>
+          <ol class="system-stages">
+            <li style="--stage: 0">
+              <div class="stage-top">
+                <span class="stage-number">01</span>
+                <div class="stage-cogs" aria-hidden="true"><i>⚙</i><i>⚙</i></div>
+              </div>
+              <div class="data-channel" aria-hidden="true"><i /><i /><i /></div>
+              <strong>Design</strong>
+              <small>Visual training builder</small>
+              <em>Schema ready</em>
+            </li>
+            <li style="--stage: 1">
+              <div class="stage-top">
+                <span class="stage-number">02</span>
+                <div class="stage-cogs" aria-hidden="true"><i>⚙</i><i>⚙</i></div>
+              </div>
+              <div class="data-channel" aria-hidden="true"><i /><i /><i /></div>
+              <strong>Train</strong>
+              <small>Python · CUDA · Podman</small>
+              <em>Model learning</em>
+            </li>
+            <li class="decision-stage" style="--stage: 2">
+              <div class="stage-top">
+                <span class="stage-number">03</span>
+                <div class="stage-cogs" aria-hidden="true"><i>⚙</i><i>⚙</i></div>
+              </div>
+              <div class="data-channel" aria-hidden="true"><i /><i /><i /></div>
+              <strong>Validate</strong>
+              <small>stable-retro · FFmpeg</small>
+              <div class="decision-gate" aria-label="Quality gate: pass to publish, otherwise retry training">
+                <span>pass → publish</span><span>fail ↺ retry</span>
+              </div>
+            </li>
+            <li style="--stage: 3">
+              <div class="stage-top">
+                <span class="stage-number">04</span>
+                <div class="stage-cogs" aria-hidden="true"><i>⚙</i><i>⚙</i></div>
+              </div>
+              <div class="data-channel" aria-hidden="true"><i /><i /><i /></div>
+              <strong>Publish</strong>
+              <small>FastAPI · PocketBase · Pocketflow</small>
+              <em>Release live</em>
+            </li>
+            <li style="--stage: 4">
+              <div class="stage-top">
+                <span class="stage-number">05</span>
+                <div class="stage-cogs" aria-hidden="true"><i>⚙</i><i>⚙</i></div>
+              </div>
+              <div class="data-channel" aria-hidden="true"><i /><i /><i /></div>
+              <strong>Observe</strong>
+              <small>Umami · Bugsink · Live Metrics</small>
+              <em>Feedback loop</em>
+            </li>
           </ol>
           <div class="system-foot">
             <span>Self-hosted source & CI/CD</span>

@@ -115,6 +115,10 @@
     min-height: auto;
   }
 
+  .data-channel {
+    margin-inline: -23px;
+  }
+
   .speedlab-system li:not(:last-child) {
     border-right: 1px solid var(--line);
     border-bottom: 0;

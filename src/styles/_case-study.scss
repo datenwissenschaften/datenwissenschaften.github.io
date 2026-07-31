@@ -136,18 +136,6 @@
   overflow: hidden;
 }
 
-.speedlab-system::after {
-  position: absolute;
-  top: 60px;
-  bottom: 55px;
-  left: -18%;
-  width: 18%;
-  content: '';
-  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--accent) 9%, transparent), transparent);
-  animation: data-sweep 8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
-  pointer-events: none;
-}
-
 .system-head,
 .system-foot {
   position: relative;
@@ -174,6 +162,7 @@
   border-radius: 50%;
   background: #50d890;
   box-shadow: 0 0 0 4px rgba(80, 216, 144, 0.1);
+  animation: system-live 1.8s ease-out infinite;
 }
 
 .speedlab-system ol {
@@ -190,10 +179,21 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  min-height: 160px;
-  padding: 28px 22px;
+  min-height: 235px;
+  padding: 22px;
   border: 1px solid var(--line);
   background: color-mix(in srgb, var(--surface) 88%, transparent);
+}
+
+.speedlab-system li::before {
+  position: absolute;
+  inset: 0;
+  content: '';
+  background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 7%, transparent), transparent 42%);
+  opacity: 0;
+  animation: stage-processing 6s ease-in-out infinite;
+  animation-delay: calc(var(--stage) * 1s);
+  pointer-events: none;
 }
 
 .speedlab-system li:not(:last-child) {
@@ -218,25 +218,152 @@
   transform: translateY(-50%);
 }
 
-.speedlab-system li span {
-  margin-bottom: 32px;
+.stage-top {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  min-height: 45px;
+}
+
+.speedlab-system .stage-number {
   color: var(--accent);
   font-family: 'Manrope', sans-serif;
   font-size: 12px;
   font-weight: 700;
 }
 
+.stage-cogs {
+  position: relative;
+  width: 45px;
+  height: 38px;
+  color: color-mix(in srgb, var(--accent) 80%, var(--text));
+}
+
+.stage-cogs i {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-style: normal;
+  font-size: 25px;
+  line-height: 1;
+  transform-origin: 50% 48%;
+  animation: cog-process 6s linear infinite;
+  animation-delay: calc(var(--stage) * 1s);
+}
+
+.stage-cogs i + i {
+  top: 19px;
+  right: 23px;
+  font-size: 17px;
+  animation-name: cog-process-reverse;
+}
+
+.data-channel {
+  position: relative;
+  z-index: 4;
+  height: 20px;
+  margin: 5px -23px 24px;
+  overflow: hidden;
+}
+
+.data-channel::before {
+  position: absolute;
+  top: 9px;
+  right: 0;
+  left: 0;
+  height: 1px;
+  content: '';
+  background: linear-gradient(90deg, transparent, var(--line-strong) 12%, var(--line-strong) 88%, transparent);
+}
+
+.data-channel i {
+  position: absolute;
+  top: 6px;
+  left: -7px;
+  width: 7px;
+  height: 7px;
+  border: 1px solid var(--accent);
+  background: var(--bg);
+  box-shadow: 0 0 9px color-mix(in srgb, var(--accent) 55%, transparent);
+  animation: data-packet 6s linear infinite;
+  animation-delay: calc((var(--stage) * 1s) + var(--packet-delay, 0s));
+}
+
+.data-channel i:nth-child(2) {
+  --packet-delay: 0.25s;
+  width: 4px;
+  height: 4px;
+  top: 8px;
+  opacity: 0.6;
+}
+
+.data-channel i:nth-child(3) {
+  --packet-delay: 0.5s;
+  width: 3px;
+  height: 3px;
+  top: 8px;
+  opacity: 0.35;
+}
+
 .speedlab-system li strong {
+  position: relative;
+  z-index: 2;
   margin-bottom: 7px;
   font-family: 'Manrope', sans-serif;
   font-size: clamp(1.05rem, 1.6vw, 1.35rem);
 }
 
 .speedlab-system li small {
+  position: relative;
+  z-index: 2;
   color: var(--muted);
   font-size: 11px;
   line-height: 1.45;
 }
+
+.speedlab-system li > em {
+  position: relative;
+  z-index: 2;
+  margin-top: auto;
+  padding-top: 18px;
+  color: color-mix(in srgb, var(--muted) 82%, var(--accent));
+  font-size: 8px;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.speedlab-system li > em::before {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  margin-right: 7px;
+  border-radius: 50%;
+  content: '';
+  background: var(--accent);
+  box-shadow: 0 0 7px color-mix(in srgb, var(--accent) 70%, transparent);
+}
+
+.decision-gate {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 14px;
+  color: var(--muted);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.decision-gate span:first-of-type { color: #50d890; }
+.decision-gate span:last-of-type { color: #e6a85c; }
 
 .system-foot {
   padding-top: 22px;
@@ -319,4 +446,3 @@
   font-size: 13px;
   font-weight: 700;
 }
-
