@@ -33,8 +33,8 @@ import { experience } from '../data'
         </p>
         <p>
           Having lived for extended periods in four countries, I have also had the opportunity to learn from different
-          cultures and ways of working. That experience has taught me to listen carefully, adapt to the local context
-          and collaborate thoughtfully across borders.
+          cultures and ways of working—and to build a global network of colleagues and collaborators. That experience
+          has taught me to listen carefully, adapt to the local context and collaborate thoughtfully across borders.
         </p>
         <RouterLink to="/contact" class="text-link">Work with me <ArrowIcon /></RouterLink>
       </div>
