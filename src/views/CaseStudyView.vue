@@ -126,8 +126,8 @@ import runImage from '../assets/img/speedlab/run.png'
             <li><span>01</span><strong>Design</strong><small>Visual training builder</small></li>
             <li><span>02</span><strong>Train</strong><small>Python · CUDA · Podman</small></li>
             <li><span>03</span><strong>Validate</strong><small>stable-retro · FFmpeg</small></li>
-            <li><span>04</span><strong>Publish</strong><small>FastAPI · PocketBase · Vue</small></li>
-            <li><span>05</span><strong>Observe</strong><small>Umami · Bugsink · live metrics</small></li>
+            <li><span>04</span><strong>Publish</strong><small>FastAPI · PocketBase · Pocketflow</small></li>
+            <li><span>05</span><strong>Observe</strong><small>Umami · Bugsink · Live Metrics</small></li>
           </ol>
           <div class="system-foot">
             <span>Self-hosted source & CI/CD</span>
