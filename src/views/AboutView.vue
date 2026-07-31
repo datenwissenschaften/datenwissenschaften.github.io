@@ -4,6 +4,72 @@ import ArrowIcon from '../components/ArrowIcon.vue'
 import PageIntro from '../components/PageIntro.vue'
 import portrait from '../assets/img/portfolio/profile-picture.png'
 import { experience } from '../data'
+
+const toolkitGroups = [
+  {
+    title: 'AI & machine learning',
+    description: 'Tools for training, serving and evaluating predictive and generative AI models.',
+    items: [
+      { name: 'scikit-learn', description: 'A Python library for classical machine learning, preprocessing, model selection and evaluation.' },
+      { name: 'PyCaret', description: 'A low-code Python framework that automates common machine-learning experiments and comparisons.' },
+      { name: 'Ollama', description: 'A local runtime for downloading, running and serving large language models.' },
+      { name: 'llama-factory', description: 'A framework for fine-tuning and evaluating large language models with a wide range of training methods.' },
+      { name: 'FiftyOne', description: 'A visual toolkit for exploring datasets, evaluating computer-vision models and finding data-quality issues.' },
+    ],
+  },
+  {
+    title: 'Languages & services',
+    description: 'Languages, libraries and frameworks used to transform data and build production services.',
+    items: [
+      { name: 'Python', description: 'A general-purpose programming language widely used for data science, automation and backend services.' },
+      { name: 'PySpark', description: 'The Python API for Apache Spark, used to process large datasets across distributed systems.' },
+      { name: 'pandas', description: 'A Python library for tabular data manipulation, analysis and transformation.' },
+      { name: 'Scala', description: 'A JVM language commonly used to build type-safe, high-performance Spark applications.' },
+      { name: 'SQL', description: 'The standard language for querying, transforming and managing relational data.' },
+      { name: 'FastAPI', description: 'A modern Python framework for building fast, typed and automatically documented web APIs.' },
+      { name: 'Fugue', description: 'An abstraction layer for running data workflows consistently across pandas, Spark and other compute engines.' },
+    ],
+  },
+  {
+    title: 'Data & pipelines',
+    description: 'Platforms and services for storing, transforming, orchestrating and delivering reliable data.',
+    items: [
+      { name: 'Apache Spark', description: 'A distributed processing engine for large-scale data engineering, analytics and machine learning.' },
+      { name: 'Databricks', description: 'A lakehouse platform that combines data engineering, analytics, governance and machine learning.' },
+      { name: 'Airflow', description: 'A workflow orchestrator for scheduling, monitoring and managing data pipelines as code.' },
+      { name: 'Matillion', description: 'A cloud data integration platform for building and operating ELT pipelines.' },
+      { name: 'PostgreSQL', description: 'A robust open-source relational database with strong SQL and extensibility support.' },
+    ],
+  },
+  {
+    title: 'Cloud services',
+    description: 'Managed infrastructure and platform services used to deploy scalable data and AI systems.',
+    items: [
+      { name: 'Azure Cloud', description: 'Microsoft’s cloud platform for computing, storage, networking, data and AI services.' },
+      { name: 'AWS', description: 'Amazon Web Services, a broad cloud platform for infrastructure, data processing and machine learning.' },
+      { name: 'Google Cloud', description: 'Google’s cloud platform for infrastructure, analytics, data engineering and artificial intelligence.' },
+    ],
+  },
+  {
+    title: 'Governance & collaboration',
+    description: 'Practices, standards and tools that make delivery controlled, auditable and collaborative.',
+    wide: true,
+    items: [
+      { name: 'Model governance', description: 'Policies and controls for approving, documenting, monitoring and retiring models responsibly.' },
+      { name: 'Bias audits', description: 'Structured tests that identify unfair or systematically different model outcomes across groups.' },
+      { name: 'A/B testing', description: 'A controlled experiment comparing variants to determine which produces a better outcome.' },
+      { name: 'GDPR', description: 'The EU regulation governing lawful, transparent and secure processing of personal data.' },
+      { name: 'NIST SP 800-53', description: 'A catalogue of security and privacy controls for protecting information systems and organisations.' },
+      { name: 'CI/CD', description: 'Automated practices for continuously testing, integrating and safely delivering software changes.' },
+      { name: 'Scrum', description: 'An iterative delivery framework organised around short cycles, defined roles and regular feedback.' },
+      { name: 'Kanban', description: 'A visual workflow method that limits work in progress and improves flow.' },
+      { name: 'SAFe', description: 'The Scaled Agile Framework for coordinating agile planning and delivery across large organisations.' },
+      { name: 'GitHub', description: 'A platform for Git-based source control, code review, automation and team collaboration.' },
+      { name: 'Jira', description: 'A work-tracking platform for planning, prioritising and managing software delivery.' },
+      { name: 'Confluence', description: 'A collaborative workspace for documentation, decisions and shared project knowledge.' },
+    ],
+  },
+]
 </script>
 
 <template>
@@ -75,25 +141,18 @@ import { experience } from '../data'
         <p>Selected for the problem, with an emphasis on tested code, reproducible delivery and governance.</p>
       </div>
       <div class="toolkit-groups">
-        <article>
-          <h3>AI & machine learning</h3>
-          <div><span>scikit-learn</span><span>PyCaret</span><span>Ollama</span><span>llama-factory</span><span>FiftyOne</span></div>
-        </article>
-        <article>
-          <h3>Languages & services</h3>
-          <div><span>Python</span><span>PySpark</span><span>pandas</span><span>Scala</span><span>SQL</span><span>FastAPI</span><span>Fugue</span></div>
-        </article>
-        <article>
-          <h3>Data & pipelines</h3>
-          <div><span>Apache Spark</span><span>Databricks</span><span>Airflow</span><span>Matillion</span><span>PostgreSQL</span></div>
-        </article>
-        <article>
-          <h3>Cloud services</h3>
-          <div><span>Azure Cloud</span><span>AWS</span><span>Google Cloud</span></div>
-        </article>
-        <article class="toolkit-wide">
-          <h3>Governance & collaboration</h3>
-          <div><span>Model governance</span><span>Bias audits</span><span>A/B testing</span><span>GDPR</span><span>NIST SP 800-53</span><span>CI/CD</span><span>Scrum</span><span>Kanban</span><span>SAFe</span><span>GitHub</span><span>Jira</span><span>Confluence</span></div>
+        <article v-for="group in toolkitGroups" :key="group.title" :class="{ 'toolkit-wide': group.wide }">
+          <h3 :title="group.description">{{ group.title }}</h3>
+          <div>
+            <span
+              v-for="item in group.items"
+              :key="item.name"
+              class="toolkit-item"
+              tabindex="0"
+              :data-description="item.description"
+              :aria-label="`${item.name}: ${item.description}`"
+            >{{ item.name }}</span>
+          </div>
         </article>
       </div>
     </section>

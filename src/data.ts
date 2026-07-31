@@ -27,6 +27,7 @@ export const services = [
 
 export const projects = [
   {
+    id: 'automotive-ai',
     sector: 'Automotive',
     period: '2019–2026',
     role: 'Lead AI Strategist & Lead Data Scientist',
@@ -38,6 +39,7 @@ export const projects = [
     tags: ['Azure Databricks', 'PySpark', 'Feature store', 'MLOps'],
   },
   {
+    id: 'healthcare-coaching',
     sector: 'Healthcare',
     period: '2018–2019',
     role: 'Chief Technology Officer',
@@ -49,6 +51,7 @@ export const projects = [
     tags: ['Keras', 'scikit-learn', 'Airflow', 'PostgreSQL', 'Health data'],
   },
   {
+    id: 'digital-publishing',
     sector: 'Digital Publishing',
     period: '2017–2018',
     role: 'Data Scientist',
@@ -60,6 +63,7 @@ export const projects = [
     tags: ['Python', 'SparkSQL', 'Looker', 'Matillion', 'Churn prediction'],
   },
   {
+    id: 'enterprise-search-media',
     sector: 'Enterprise Search & Media',
     period: '2015–2017',
     role: 'Data Scientist',

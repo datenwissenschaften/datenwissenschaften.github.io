@@ -229,7 +229,13 @@ onBeforeUnmount(() => globalThis.cancelAnimationFrame(animationFrame))
       </div>
       <div class="project-grid project-grid-home">
         <article v-for="project in projects.slice(0, 2)" :key="project.sector" class="project-card">
-          <div class="project-image"><img :src="project.image" :alt="`${project.sector} project`" /></div>
+          <RouterLink
+            :to="{ path: '/work', hash: `#${project.id}` }"
+            class="project-image"
+            :aria-label="`View ${project.title} project`"
+          >
+            <img :src="project.image" :alt="`${project.sector} project`" />
+          </RouterLink>
           <div class="project-meta"><span>{{ project.sector }}</span><span>Case {{ String(projects.indexOf(project) + 1).padStart(2, '0') }}</span></div>
           <h3>{{ project.title }}</h3>
           <p>{{ project.text }}</p>

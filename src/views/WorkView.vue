@@ -11,7 +11,7 @@ import { projects } from '../data'
       <template #eyebrow>Selected work</template>
     </PageIntro>
     <section class="wrap work-list">
-      <article v-for="(project, index) in projects" :key="project.sector" class="work-case">
+      <article v-for="(project, index) in projects" :id="project.id" :key="project.sector" class="work-case">
         <div class="case-index">{{ String(index + 1).padStart(2, '0') }}</div>
         <div class="project-image"><img :src="project.image" :alt="`${project.sector} data science work`" /></div>
         <div class="case-copy">

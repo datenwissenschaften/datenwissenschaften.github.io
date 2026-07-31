@@ -133,6 +133,7 @@
   align-items: center;
   padding-block: 60px;
   border-bottom: 1px solid var(--line);
+  scroll-margin-top: 104px;
 }
 
 .case-index {
@@ -214,4 +215,3 @@
 .cta-band.compact h2 {
   font-size: clamp(3.5rem, 7.5vw, 7.5rem);
 }
-

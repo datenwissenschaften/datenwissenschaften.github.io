@@ -160,9 +160,49 @@
   gap: 12px;
 }
 
-.toolkit-groups span {
+.toolkit-groups article > div > .toolkit-item {
+  position: relative;
   padding: 10px 16px;
   border: 1px solid var(--line-strong);
   font-size: 13px;
+  cursor: help;
+  transition: color 0.2s ease, border-color 0.2s ease;
 }
 
+.toolkit-item::after {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  z-index: 20;
+  width: max-content;
+  max-width: min(320px, calc(100vw - 48px));
+  padding: 11px 13px;
+  color: var(--text);
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+  content: attr(data-description);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.45;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 5px);
+  transition: opacity 0.16s ease, transform 0.16s ease, visibility 0.16s;
+  visibility: hidden;
+  white-space: normal;
+}
+
+.toolkit-item:hover,
+.toolkit-item:focus-visible {
+  color: var(--accent);
+  border-color: var(--accent);
+  outline: none;
+}
+
+.toolkit-item:hover::after,
+.toolkit-item:focus-visible::after {
+  opacity: 1;
+  transform: translate(-50%, 0);
+  visibility: visible;
+}
