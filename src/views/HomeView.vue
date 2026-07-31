@@ -1,7 +1,69 @@
 <script setup lang="ts">
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { RouterLink } from 'vue-router'
 import ArrowIcon from '../components/ArrowIcon.vue'
+import SystemIcon from '../components/SystemIcon.vue'
 import { projects, services } from '../data'
+
+const HOURLY_RATE = 120
+const BASELINE_EMPLOYEE_HOURS = 100
+const BASELINE_SYSTEM_COST = 3000
+const EMPLOYEE_REDUCTION = 0.65
+const SYSTEM_REDUCTION = 0.6
+
+const efficiencyProgress = ref(0)
+let animationFrame = 0
+
+const employeeHours = computed(() => BASELINE_EMPLOYEE_HOURS * (1 - EMPLOYEE_REDUCTION * efficiencyProgress.value))
+const employeeCost = computed(() => Math.round(employeeHours.value * HOURLY_RATE))
+const systemCost = computed(() => Math.round(BASELINE_SYSTEM_COST * (1 - SYSTEM_REDUCTION * efficiencyProgress.value)))
+const baselineProjectCost = BASELINE_EMPLOYEE_HOURS * HOURLY_RATE + BASELINE_SYSTEM_COST
+const projectCost = computed(() => employeeCost.value + systemCost.value)
+const projectSaving = computed(() => baselineProjectCost - projectCost.value)
+const reduction = computed(() => Math.round((projectSaving.value / baselineProjectCost) * 100))
+const automation = computed(() => Math.round(20 + efficiencyProgress.value * 65))
+const leanProcess = computed(() => Math.round(25 + efficiencyProgress.value * 65))
+const chartX = computed(() => 24 + efficiencyProgress.value * 252)
+const chartY = computed(() => 25 + (1 - Math.pow(1 - efficiencyProgress.value, 2.25)) * 96)
+const chartPointLeft = computed(() => `${chartX.value / 3}%`)
+const chartPointTop = computed(() => `${chartY.value / 1.45}%`)
+const costMilestones = [
+  { label: 'Automate intake', progress: 0.28, left: '29%', top: '22%', alignEnd: false },
+  { label: 'Streamline handoffs', progress: 0.55, left: '54%', top: '55%', alignEnd: false },
+  { label: 'Right-size systems', progress: 0.78, left: '77%', top: '76%', alignEnd: true },
+]
+const connectedSystems = [
+  { label: 'AI', icon: 'ai' },
+  { label: 'Data', icon: 'database' },
+  { label: 'Cloud', icon: 'cloud' },
+  { label: 'CI/CD', icon: 'cicd' },
+] as const
+
+const euros = new Intl.NumberFormat('de-DE', {
+  style: 'currency',
+  currency: 'EUR',
+  maximumFractionDigits: 0,
+})
+
+onMounted(() => {
+  if (globalThis.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    efficiencyProgress.value = 1
+    return
+  }
+
+  const animationLength = 5000
+  const startedAt = globalThis.performance.now()
+
+  const animateEfficiency = (now: number) => {
+    const linearProgress = Math.min((now - startedAt) / animationLength, 1)
+    efficiencyProgress.value = 1 - Math.pow(1 - linearProgress, 3)
+    if (linearProgress < 1) animationFrame = globalThis.requestAnimationFrame(animateEfficiency)
+  }
+
+  animationFrame = globalThis.requestAnimationFrame(animateEfficiency)
+})
+
+onBeforeUnmount(() => globalThis.cancelAnimationFrame(animationFrame))
 </script>
 
 <template>
@@ -19,20 +81,79 @@ import { projects, services } from '../data'
           <RouterLink to="/work" class="text-link">Explore selected work <ArrowIcon /></RouterLink>
         </div>
       </div>
-      <div class="hero-visual" aria-label="Data visualization showing an efficient path to value">
+      <div
+        class="hero-visual cost-visual"
+        aria-label="Illustrative project resource visualization: employee and system costs fall from 15,000 euros to 5,400 euros as automation and lean processes improve."
+      >
         <div class="visual-head">
-          <span>System efficiency</span><span>LIVE <i /></span>
+          <span>Project cost efficiency</span><span>LIVE <i /></span>
         </div>
-        <div class="orbit">
-          <div class="orbit-ring ring-one" />
-          <div class="orbit-ring ring-two" />
-          <div class="orbit-ring ring-three" />
-          <div class="orbit-core"><strong>10×</strong><span>leverage</span></div>
-          <span class="data-node n1">INPUT<br /><b>Data</b></span>
-          <span class="data-node n2">OUTPUT<br /><b>Value</b></span>
-          <span class="data-node n3">PROCESS<br /><b>Lean</b></span>
+        <div class="cost-stage">
+          <div class="cost-kpi">
+            <span>Total project resource cost</span>
+            <strong>{{ euros.format(projectCost) }}</strong>
+            <small>
+              <b>−{{ reduction }}%</b>
+              employees + systems
+            </small>
+          </div>
+
+          <div class="cost-chart" aria-hidden="true">
+            <div class="chart-label chart-label-start"><span>Before</span><b>{{ euros.format(baselineProjectCost) }}</b></div>
+            <div class="chart-label chart-label-end"><span>Optimized</span><b>{{ euros.format(5400) }}</b></div>
+            <div class="system-stack">
+              <span>Connected systems</span>
+              <div>
+                <span v-for="system in connectedSystems" :key="system.label">
+                  <SystemIcon :name="system.icon" />
+                  <small>{{ system.label }}</small>
+                </span>
+              </div>
+            </div>
+            <div
+              v-for="milestone in costMilestones"
+              :key="milestone.label"
+              class="cost-milestone"
+              :class="{ reached: efficiencyProgress >= milestone.progress, 'cost-milestone-end': milestone.alignEnd }"
+              :style="{ left: milestone.left, top: milestone.top }"
+            >
+              <i />
+              <span>{{ milestone.label }}</span>
+            </div>
+            <svg viewBox="0 0 300 145" preserveAspectRatio="none" :style="{ '--cost-progress': efficiencyProgress }">
+              <defs>
+                <linearGradient id="cost-area" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="var(--accent)" stop-opacity=".3" />
+                  <stop offset="1" stop-color="var(--accent)" stop-opacity="0" />
+                </linearGradient>
+              </defs>
+              <path class="cost-area" d="M24 25 C86 28 105 67 151 80 S224 112 276 121 L276 142 L24 142 Z" />
+              <path class="cost-line-track" d="M24 25 C86 28 105 67 151 80 S224 112 276 121" />
+              <path class="cost-line" d="M24 25 C86 28 105 67 151 80 S224 112 276 121" />
+            </svg>
+            <i class="moving-cost-point" :style="{ left: chartPointLeft, top: chartPointTop }" />
+          </div>
+
+          <div class="efficiency-controls">
+            <div class="efficiency-row">
+              <div><span>Employees · {{ employeeHours.toFixed(0) }} h</span><b>{{ euros.format(employeeCost) }}</b></div>
+              <i><span :style="{ width: `${employeeHours}%` }" /></i>
+            </div>
+            <div class="efficiency-row">
+              <div><span>System resources</span><b>{{ euros.format(systemCost) }}</b></div>
+              <i><span :style="{ width: `${(systemCost / BASELINE_SYSTEM_COST) * 100}%` }" /></i>
+            </div>
+          </div>
+
+          <div class="saving-card">
+            <div class="saving-rates">
+              <span>Automation <b>{{ automation }}%</b></span>
+              <span>Lean <b>{{ leanProcess }}%</b></span>
+            </div>
+            <strong>{{ euros.format(projectSaving) }}<small>project saving</small></strong>
+          </div>
         </div>
-        <div class="visual-foot"><span>Resources ↓</span><span>Automation ↑</span><span>Clarity ↑</span></div>
+        <div class="visual-foot"><span>Employee resources</span><span>System resources</span><span>Example scenario</span></div>
       </div>
       <div class="hero-proof">
         <span>15 years’ experience</span>

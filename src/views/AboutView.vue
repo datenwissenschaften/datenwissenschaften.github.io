@@ -31,6 +31,11 @@ import { experience } from '../data'
           development, CI/CD and reproducible workflows. Dr. Franke Datenwissenschaften is deliberately lean, giving
           clients direct access to senior thinking and hands-on implementation.
         </p>
+        <p>
+          Having lived for extended periods in four countries, I have also had the opportunity to learn from different
+          cultures and ways of working. That experience has taught me to listen carefully, adapt to the local context
+          and collaborate thoughtfully across borders.
+        </p>
         <RouterLink to="/contact" class="text-link">Work with me <ArrowIcon /></RouterLink>
       </div>
     </section>

@@ -199,6 +199,30 @@
     font-size: 14px;
   }
 
+  .cost-stage {
+    inset-inline: 16px;
+    grid-template-columns: 1fr;
+  }
+
+  .cost-kpi > strong {
+    font-size: 1rem;
+  }
+
+  .cost-kpi small b {
+    font-size: clamp(2.5rem, 12vw, 3.5rem);
+  }
+
+  .saving-card {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 125px;
+  }
+
+  .efficiency-controls {
+    gap: 12px;
+  }
+
   .capability-strip ul {
     grid-template-columns: 1fr;
   }
