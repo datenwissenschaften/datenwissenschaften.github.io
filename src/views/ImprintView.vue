@@ -192,6 +192,11 @@ import PageIntro from '../components/PageIntro.vue'
                 scheduling link opens Calendly in a separate website; Calendly’s own privacy and cookie
                 terms apply once that service is opened.
               </p>
+              <p>
+                The Locations page embeds Google Maps to show our locations. Loading an embedded map may
+                transmit technical information, including the visitor’s IP address, to Google. Google’s
+                privacy and cookie terms apply to that service.
+              </p>
             </li>
             <li>
               <h3>Updates to this statement</h3>
@@ -208,7 +213,7 @@ import PageIntro from '../components/PageIntro.vue'
           </p>
           <p class="legal-date">
             Effective date: 11 December 2023<br />
-            Last reviewed: 30 July 2026<br />
+            Last reviewed: 16 September 2026<br />
             © 2024–{{ new Date().getFullYear() }} Dr. Franke Datenwissenschaften OÜ. All rights reserved.
           </p>
         </section>

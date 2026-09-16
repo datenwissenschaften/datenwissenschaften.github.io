@@ -45,6 +45,7 @@ function toggleTheme() {
         <RouterLink to="/about">About</RouterLink>
         <RouterLink to="/contact">Contact</RouterLink>
         <RouterLink to="/case-study">Case study</RouterLink>
+        <RouterLink to="/locations">Locations</RouterLink>
       </nav>
 
       <div class="header-actions">
@@ -77,6 +78,7 @@ function toggleTheme() {
         <RouterLink to="/services">Services</RouterLink>
         <RouterLink to="/work">Work</RouterLink>
         <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/locations">Locations</RouterLink>
         <RouterLink to="/case-study">Case study</RouterLink>
       </div>
       <div class="footer-nav">
@@ -87,7 +89,7 @@ function toggleTheme() {
       </div>
       <div class="footer-bottom">
         <span>© {{ new Date().getFullYear() }} Dr. Franke Datenwissenschaften OÜ</span>
-        <span>Estonia · Working globally</span>
+        <span>Tallinn · Saalfeld · Somerset West</span>
       </div>
     </footer>
   </div>

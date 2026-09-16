@@ -37,6 +37,7 @@ const router = createRouter({
     { path: '/services', name: 'services', component: () => import('./views/ServicesView.vue') },
     { path: '/work', name: 'work', component: () => import('./views/WorkView.vue') },
     { path: '/about', name: 'about', component: () => import('./views/AboutView.vue') },
+    { path: '/locations', name: 'locations', component: () => import('./views/LocationsView.vue') },
     { path: '/contact', name: 'contact', component: () => import('./views/ContactView.vue') },
     { path: '/case-study', name: 'case-study', component: () => import('./views/CaseStudyView.vue') },
     { path: '/imprint', name: 'imprint', component: () => import('./views/ImprintView.vue') },
@@ -51,6 +52,7 @@ router.afterEach((to) => {
     work: 'Selected Work',
     'case-study': 'Public Case Study',
     about: 'About',
+    locations: 'Locations',
     contact: 'Start a Project',
     imprint: 'Imprint & Privacy',
   }
