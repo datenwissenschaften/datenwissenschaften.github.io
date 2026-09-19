@@ -45,6 +45,7 @@ function toggleTheme() {
         <RouterLink to="/about">About</RouterLink>
         <RouterLink to="/contact">Contact</RouterLink>
         <RouterLink to="/case-study">Case study</RouterLink>
+        <RouterLink to="/products">Products</RouterLink>
         <RouterLink to="/locations">Locations</RouterLink>
       </nav>
 
@@ -78,6 +79,7 @@ function toggleTheme() {
         <RouterLink to="/services">Services</RouterLink>
         <RouterLink to="/work">Work</RouterLink>
         <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/products">Products</RouterLink>
         <RouterLink to="/locations">Locations</RouterLink>
         <RouterLink to="/case-study">Case study</RouterLink>
       </div>
