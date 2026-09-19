@@ -74,7 +74,7 @@ const toolkitGroups = [
 
 <template>
   <div>
-    <PageIntro index="03" title="Rigorous thinking." accent="Practical delivery." copy="Fifteen years of machine learning, AI transformation and technical leadership across automotive, healthcare, media and research.">
+    <PageIntro title="Rigorous thinking." accent="Practical delivery." copy="Fifteen years of machine learning, AI transformation and technical leadership across automotive, healthcare, media and research.">
       <template #eyebrow>About Dr. Franke</template>
     </PageIntro>
     <section class="wrap about-profile">

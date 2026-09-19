@@ -1,25 +1,15 @@
 /* Shared internal pages */
 .page-intro {
   display: grid;
-  grid-template-columns: 14% 86%;
+  grid-template-columns: 1fr;
   min-height: 530px;
   padding-block: 115px 90px;
   border-bottom: 1px solid var(--line);
 }
 
-.page-intro-unindexed {
-  grid-template-columns: 1fr;
-}
-
-.page-intro-unindexed > div {
+.page-intro > div {
   max-width: 1060px;
   margin-left: 14%;
-}
-
-.page-intro-index {
-  padding-top: 4px;
-  color: var(--accent);
-  font-size: clamp(1.35rem, 2vw, 1.8rem);
 }
 
 .page-intro h1 {

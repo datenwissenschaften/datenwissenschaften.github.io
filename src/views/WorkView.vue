@@ -28,7 +28,7 @@ const tagDescriptions: Record<string, string> = {
 
 <template>
   <div>
-    <PageIntro index="02" title="Proof lives in" accent="working systems." copy="Selected engagements across industries where data science moved from technical possibility to practical value.">
+    <PageIntro title="Proof lives in" accent="working systems." copy="Selected engagements across industries where data science moved from technical possibility to practical value.">
       <template #eyebrow>Selected work</template>
     </PageIntro>
     <section class="wrap work-list">

@@ -4,7 +4,7 @@ import PageIntro from '../components/PageIntro.vue'
 
 <template>
   <div>
-    <PageIntro index="04" title="Let’s find the" accent="highest-leverage move." copy="Tell me what you are trying to improve, automate or understand. An initial conversation is direct, useful and free of sales theatre.">
+    <PageIntro title="Let’s find the" accent="highest-leverage move." copy="Tell me what you are trying to improve, automate or understand. An initial conversation is direct, useful and free of sales theatre.">
       <template #eyebrow>Start a project</template>
     </PageIntro>
     <section class="wrap contact-grid">

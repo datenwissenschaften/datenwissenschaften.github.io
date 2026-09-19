@@ -7,7 +7,6 @@ import runImage from '../assets/img/speedlab/run.png'
 <template>
   <div>
     <PageIntro
-      index="05"
       title="A public project,"
       accent="shown in full."
       copy="Retro Speedlab is a working AI platform built in the open—a practical view of how I approach product design, machine learning, delivery and operations."

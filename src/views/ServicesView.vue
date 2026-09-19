@@ -7,7 +7,7 @@ import { services } from '../data'
 
 <template>
   <div>
-    <PageIntro index="01" title="Expertise that turns" accent="data into movement." copy="No hand-offs and no theatre. Senior guidance and practical implementation across the full data lifecycle.">
+    <PageIntro title="Expertise that turns" accent="data into movement." copy="No hand-offs and no theatre. Senior guidance and practical implementation across the full data lifecycle.">
       <template #eyebrow>Services</template>
     </PageIntro>
 
