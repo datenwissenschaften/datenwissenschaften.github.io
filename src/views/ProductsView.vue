@@ -16,7 +16,7 @@ const products = [
     highlights: ['Website knowledge base as the source of truth', 'Conversational lead capture', 'No technical setup required'],
     image: knotbaseImage,
     imageAlt: 'Knotbase.io homepage showing an AI chat assistant answering a customer question',
-    url: 'https://knotbase.io/',
+    url: 'https://knotbase.io/?utm_source=datenwissenschaften&utm_medium=referral&utm_campaign=products',
   },
   {
     number: '02',
@@ -29,7 +29,7 @@ const products = [
     highlights: ['WhatsApp community', 'Regular local meetups', 'Somerset West · Strand · Gordon’s Bay · Stellenbosch'],
     image: helderbergImage,
     imageAlt: 'Helderberg Remote homepage with the community logo and a call to join via WhatsApp',
-    url: 'https://www.helderbergremote.com/',
+    url: 'https://www.helderbergremote.com/?utm_source=datenwissenschaften&utm_medium=referral&utm_campaign=products',
   },
   {
     number: '03',
@@ -43,7 +43,7 @@ const products = [
     contain: true,
     image: bookImage,
     imageAlt: 'Cover of "From Data Scientist to AI Strategist" by Dr. Martin Franke',
-    url: 'https://www.amazon.com/Data-Scientist-AI-Strategist-Future-Proof-ebook/dp/B0H4WWDQ69',
+    url: 'https://www.amazon.com/Data-Scientist-AI-Strategist-Future-Proof-ebook/dp/B0H4WWDQ69?utm_source=datenwissenschaften&utm_medium=referral&utm_campaign=products',
   },
   {
     number: '04',
