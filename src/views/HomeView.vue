@@ -1,9 +1,32 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
-import { RouterLink } from 'vue-router'
+import { RouterLink, useRouter } from 'vue-router'
 import ArrowIcon from '../components/ArrowIcon.vue'
 import SystemIcon from '../components/SystemIcon.vue'
 import { projects, services } from '../data'
+
+const router = useRouter()
+
+function openChat() {
+  const bubble = document.getElementById('_cw_b') as HTMLButtonElement | null
+  if (bubble) {
+    bubble.click()
+    return
+  }
+
+  let attempts = 0
+  const poll = globalThis.setInterval(() => {
+    attempts += 1
+    const lateBubble = document.getElementById('_cw_b') as HTMLButtonElement | null
+    if (lateBubble) {
+      globalThis.clearInterval(poll)
+      lateBubble.click()
+    } else if (attempts >= 25) {
+      globalThis.clearInterval(poll)
+      router.push('/contact')
+    }
+  }, 200)
+}
 
 const HOURLY_RATE = 120
 const BASELINE_EMPLOYEE_HOURS = 100
@@ -77,7 +100,7 @@ onBeforeUnmount(() => globalThis.cancelAnimationFrame(animationFrame))
           systems that turn complex data into faster, safer decisions.
         </p>
         <div class="button-row">
-          <RouterLink to="/contact" class="button button-primary">Start a conversation <ArrowIcon /></RouterLink>
+          <button type="button" class="button button-primary" @click="openChat">Start a conversation <ArrowIcon /></button>
           <RouterLink to="/work" class="text-link">Explore selected work <ArrowIcon /></RouterLink>
         </div>
       </div>
@@ -251,7 +274,7 @@ onBeforeUnmount(() => globalThis.cancelAnimationFrame(animationFrame))
       <div class="wrap">
         <p class="eyebrow">Have a data problem?</p>
         <h2>Let’s make it<br /><em>simpler.</em></h2>
-        <RouterLink to="/contact" class="round-link" aria-label="Start a conversation"><ArrowIcon /></RouterLink>
+        <button type="button" class="round-link" aria-label="Start a conversation" @click="openChat"><ArrowIcon /></button>
       </div>
     </section>
   </div>
