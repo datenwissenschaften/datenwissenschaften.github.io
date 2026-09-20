@@ -16,7 +16,6 @@ import PageIntro from '../components/PageIntro.vue'
       </div>
       <aside class="contact-aside">
         <div><p class="eyebrow">A useful first message includes</p><ul><li>The decision or process you want to improve</li><li>What data and systems already exist</li><li>What a valuable outcome would look like</li><li>Your broad timing</li></ul></div>
-        <div><p class="eyebrow">Based in</p><p>Estonia<br />Available for focused work globally</p></div>
         <div><p class="eyebrow">Response</p><p>Usually within two business days.</p></div>
       </aside>
     </section>
