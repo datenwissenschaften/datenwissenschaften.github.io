@@ -75,6 +75,10 @@
   font-size: clamp(2.8rem, 5vw, 5rem);
 }
 
+.product-copy h2.product-title-compact {
+  font-size: clamp(2rem, 3.4vw, 3.4rem);
+}
+
 .product-tagline {
   margin-bottom: 14px;
   color: var(--accent);
@@ -212,6 +216,90 @@
   transform: scale(1.015);
 }
 
+.amazon-mock {
+  display: grid;
+  grid-template-columns: 34% 1fr;
+  gap: 28px;
+  align-items: center;
+  aspect-ratio: 16 / 9.4;
+  padding: 34px 38px;
+  background: var(--surface-soft);
+}
+
+.amazon-mock-cover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.amazon-mock-cover img {
+  display: block;
+  width: 100%;
+  height: auto;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.amazon-mock-details {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.amazon-mock-stars {
+  margin-bottom: 4px;
+  color: #e8a33d;
+  font-size: 13px;
+  letter-spacing: 2px;
+}
+
+.amazon-mock-line {
+  height: 8px;
+  border-radius: 2px;
+  background: var(--line);
+}
+
+.amazon-mock-line.title-line {
+  height: 13px;
+  width: 88%;
+  background: var(--line-strong);
+}
+
+.amazon-mock-line.title-line.short {
+  width: 58%;
+}
+
+.amazon-mock-line.short {
+  width: 62%;
+}
+
+.amazon-mock-cta {
+  display: inline-block;
+  width: fit-content;
+  padding: 8px 22px;
+  margin-top: 10px;
+  border: 1px solid transparent;
+  border-radius: 20px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background 0.2s ease;
+}
+
+.amazon-mock-cta:hover {
+  background: var(--accent-soft);
+}
+
+.amazon-mock-cta.secondary {
+  margin-top: 9px;
+  border-color: var(--line-strong);
+  background: transparent;
+  color: var(--text);
+}
+
 .placeholder-shot {
   border-style: dashed;
   box-shadow: none;
@@ -304,5 +392,17 @@
   .product-card {
     gap: 35px;
     padding-block: 55px;
+  }
+
+  .amazon-mock {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    aspect-ratio: auto;
+    padding: 24px;
+  }
+
+  .amazon-mock-cover img {
+    max-width: 140px;
+    margin: 0 auto;
   }
 }

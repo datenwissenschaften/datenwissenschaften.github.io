@@ -2,6 +2,7 @@
 import PageIntro from '../components/PageIntro.vue'
 import knotbaseImage from '../assets/img/products/knotbase.webp'
 import helderbergImage from '../assets/img/products/helderberg-remote.webp'
+import bookImage from '../assets/img/products/book.avif'
 
 const products = [
   {
@@ -32,6 +33,20 @@ const products = [
   },
   {
     number: '03',
+    label: 'Book',
+    name: 'From Data Scientist to AI Strategist',
+    domain: 'amazon.com',
+    tagline: 'From execution to strategic ownership.',
+    description:
+      'A practitioner’s guide to the shift AI agents are forcing on data science careers—from producing artifacts to owning the judgment, governance and strategic decisions around them. Written by Dr. Martin Franke, it lays out a concrete path toward production credibility, executive communication and team leadership, closing with a 90-day plan to start the transition now.',
+    highlights: ['Five-exposure diagnostic for production readiness', 'Governance toolkit: feature registries, audits, fairness', 'A 90-day plan to start the transition'],
+    contain: true,
+    image: bookImage,
+    imageAlt: 'Cover of "From Data Scientist to AI Strategist" by Dr. Martin Franke',
+    url: 'https://www.amazon.com/Data-Scientist-AI-Strategist-Future-Proof-ebook/dp/B0H4WWDQ69',
+  },
+  {
+    number: '04',
     label: 'Smart home AI',
     name: 'Sitari.life',
     domain: 'sitari.life',
@@ -71,7 +86,7 @@ const products = [
         <div class="product-copy">
           <span class="product-number">{{ product.number }}</span>
           <p class="eyebrow">{{ product.label }}</p>
-          <h2>{{ product.name }}</h2>
+          <h2 :class="{ 'product-title-compact': product.contain }">{{ product.name }}</h2>
           <p class="product-tagline">{{ product.tagline }}</p>
           <p class="product-status">
             <span class="status-dot" :class="{ 'status-dot-pending': product.placeholder }" />
@@ -93,7 +108,22 @@ const products = [
               <span /><span /><span />
               <div class="browser-url">{{ product.domain }}</div>
             </div>
-            <img v-if="!product.placeholder" :src="product.image" :alt="product.imageAlt" loading="lazy" />
+            <div v-if="product.contain" class="amazon-mock">
+              <div class="amazon-mock-cover">
+                <img :src="product.image" :alt="product.imageAlt" loading="lazy" />
+              </div>
+              <div class="amazon-mock-details">
+                <span class="amazon-mock-stars" aria-hidden="true">★★★★★</span>
+                <span class="amazon-mock-line title-line" />
+                <span class="amazon-mock-line title-line short" />
+                <span class="amazon-mock-line" />
+                <span class="amazon-mock-line" />
+                <span class="amazon-mock-line short" />
+                <a class="amazon-mock-cta" :href="product.url" target="_blank" rel="noopener noreferrer">Buy now</a>
+                <span class="amazon-mock-cta secondary" aria-hidden="true">Add to cart</span>
+              </div>
+            </div>
+            <img v-else-if="!product.placeholder" :src="product.image" :alt="product.imageAlt" loading="lazy" />
             <div v-else class="placeholder-visual">
               <svg class="placeholder-icon" viewBox="0 0 64 64" aria-hidden="true">
                 <path d="M10 32 32 14l22 18" />
