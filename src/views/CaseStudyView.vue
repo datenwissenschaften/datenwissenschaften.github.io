@@ -1,20 +1,120 @@
 <script setup lang="ts">
+import { RouterLink } from 'vue-router'
 import PageIntro from '../components/PageIntro.vue'
 import editorImage from '../assets/img/speedlab/editor.png'
 import runImage from '../assets/img/speedlab/run.png'
+
+const repositories = [
+  {
+    name: 'agentic-data-analyst',
+    group: 'Analytics agents',
+    description: 'Guarded agentic analytics: natural-language questions become dbt-grounded plans, a typed intermediate representation and validated PySpark execution — never exec().',
+    stack: ['Python', 'PySpark', 'dbt'],
+    license: 'MIT',
+  },
+  {
+    name: 'spark-data-quality',
+    group: 'Data quality',
+    description: 'Typed, Spark-native data-quality validation and profiling that combines compatible checks into a single aggregation pass.',
+    stack: ['Python', 'PySpark', 'Pydantic'],
+    license: 'MIT',
+  },
+  {
+    name: 'experimentation-toolkit',
+    group: 'Statistics',
+    description: 'A typed library for A/B experiments covering inference, sample-ratio-mismatch diagnostics, power analysis and multiple-testing correction.',
+    stack: ['Python', 'SciPy', 'Pydantic'],
+    license: 'MIT',
+  },
+  {
+    name: 'spark-asammdf',
+    group: 'Automotive data',
+    description: 'An Apache Spark DataSource V2 connector for distributed analysis of ASAM MDF4 vehicle measurement data, with filter pushdown into the file.',
+    stack: ['Scala', 'Apache Spark', 'Python'],
+    license: 'MIT',
+  },
+  {
+    name: 'retro-speedlab-core',
+    group: 'Retro Speedlab',
+    description: 'The reinforcement-learning engine behind the platform: recurrent PPO with random network distillation, vectorized environments, resumable checkpoints and live telemetry.',
+    stack: ['Python', 'PyTorch', 'Stable Retro'],
+    license: 'GPL-3.0',
+  },
+  {
+    name: 'retro-speedlab',
+    group: 'Retro Speedlab',
+    description: 'A Cookiecutter scaffold that generates reproducible Stable Retro training projects, complete with game wrapper, reward logic, tests and CI.',
+    stack: ['Python', 'Cookiecutter', 'Poetry'],
+    license: 'GPL-3.0',
+  },
+]
 </script>
 
 <template>
   <div>
     <PageIntro
-      title="A public project,"
+      title="Public projects,"
       accent="shown in full."
-      copy="Retro Speedlab is a working AI platform built in the open—a practical view of how I approach product design, machine learning, delivery and operations."
+      copy="Six open-source repositories and one live AI platform—inspectable evidence of how I approach data engineering, machine learning, delivery and operations."
     >
-      <template #eyebrow>Public case study</template>
+      <template #eyebrow>Public case studies</template>
     </PageIntro>
 
-    <section class="wrap case-overview">
+    <section class="case-repo-section">
+      <div class="wrap">
+        <div class="section-heading split-heading">
+          <div>
+            <p class="eyebrow">Open-source repositories</p>
+            <h2>Client work stays private.<br />This code does not.</h2>
+          </div>
+          <p>
+            Focused libraries drawn from recurring client problems—guarded analytics agents, data quality,
+            experimentation and automotive measurement data—alongside the engine and scaffold behind Retro Speedlab.
+          </p>
+        </div>
+
+        <div class="case-repo-grid">
+          <article
+            v-for="repository in repositories"
+            :key="repository.name"
+            class="case-repo"
+            :class="{ 'is-speedlab': repository.group === 'Retro Speedlab' }"
+          >
+            <RouterLink
+              v-if="repository.group === 'Retro Speedlab'"
+              class="case-repo-group"
+              :to="{ hash: '#retro-speedlab' }"
+            >
+              Retro Speedlab · see below ↓
+            </RouterLink>
+            <span v-else class="case-repo-group">{{ repository.group }}</span>
+            <h3>
+              <a
+                :href="`https://github.com/datenwissenschaften/${repository.name}`"
+                target="_blank"
+                rel="noopener noreferrer"
+              >{{ repository.name }} <span aria-hidden="true">↗</span></a>
+            </h3>
+            <p>{{ repository.description }}</p>
+            <div class="case-repo-meta">
+              <span>{{ repository.stack.join(' · ') }}</span>
+              <span>{{ repository.license }}</span>
+            </div>
+          </article>
+        </div>
+
+        <div class="case-link-row">
+          <a
+            class="text-link"
+            href="https://github.com/datenwissenschaften"
+            target="_blank"
+            rel="noopener noreferrer"
+          >View all repositories on GitHub ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="retro-speedlab" class="wrap case-overview">
       <aside class="case-facts">
         <p class="eyebrow">At a glance</p>
         <dl>

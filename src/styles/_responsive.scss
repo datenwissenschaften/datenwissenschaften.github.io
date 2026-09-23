@@ -137,7 +137,8 @@
     margin-bottom: 15px;
   }
 
-  .case-evidence-grid {
+  .case-evidence-grid,
+  .case-repo-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -286,7 +287,8 @@
   .case-overview,
   .case-gallery,
   .case-system-section,
-  .case-evidence {
+  .case-evidence,
+  .case-repo-section {
     padding-block: 90px;
   }
 
@@ -305,11 +307,13 @@
     gap: 8px;
   }
 
-  .case-evidence-grid {
+  .case-evidence-grid,
+  .case-repo-grid {
     grid-template-columns: 1fr;
   }
 
-  .case-evidence-grid article {
+  .case-evidence-grid article,
+  .case-repo {
     min-height: 240px;
   }
 

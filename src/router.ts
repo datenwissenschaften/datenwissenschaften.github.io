@@ -51,7 +51,7 @@ router.afterEach((to) => {
     home: 'Data Science Consultant',
     services: 'Services',
     work: 'Selected Work',
-    'case-study': 'Public Case Study',
+    'case-study': 'Public Case Studies',
     about: 'About',
     products: 'Products',
     locations: 'Locations',

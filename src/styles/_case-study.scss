@@ -407,6 +407,91 @@
   font-size: 14px;
 }
 
+.case-repo-section {
+  padding-block: 140px;
+  background: var(--bg-elevated);
+}
+
+.case-repo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.case-repo {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 300px;
+  padding: 34px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  transition: background 0.25s ease;
+}
+
+.case-repo:hover,
+.case-repo:focus-within {
+  background: var(--surface);
+}
+
+.case-repo-group {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.case-repo.is-speedlab .case-repo-group {
+  position: relative;
+  z-index: 2;
+  align-self: flex-start;
+  color: var(--accent);
+}
+
+.case-repo.is-speedlab .case-repo-group:hover {
+  text-decoration: underline;
+}
+
+.case-repo h3 {
+  margin: 45px 0 15px;
+  font-size: 1.35rem;
+  overflow-wrap: anywhere;
+}
+
+/* Stretch the repository link across the whole card. */
+.case-repo h3 a::after {
+  position: absolute;
+  inset: 0;
+  content: '';
+}
+
+.case-repo h3 span {
+  color: var(--accent);
+  font-size: 0.8em;
+}
+
+.case-repo p {
+  margin-bottom: 30px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.case-repo-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 16px;
+  margin-top: auto;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
 .case-closing {
   color: var(--on-accent);
   background: var(--accent);

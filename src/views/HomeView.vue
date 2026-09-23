@@ -266,7 +266,7 @@ onBeforeUnmount(() => globalThis.cancelAnimationFrame(animationFrame))
       </div>
       <div class="project-actions">
         <RouterLink to="/work" class="button button-outline">View all work <ArrowIcon /></RouterLink>
-        <RouterLink to="/case-study" class="text-link">Explore the public case study <ArrowIcon /></RouterLink>
+        <RouterLink to="/case-study" class="text-link">Explore the public case studies <ArrowIcon /></RouterLink>
       </div>
     </section>
 
