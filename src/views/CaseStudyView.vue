@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
 import PageIntro from '../components/PageIntro.vue'
-import editorImage from '../assets/img/speedlab/editor.png'
-import runImage from '../assets/img/speedlab/run.png'
+import labImage from '../assets/img/speedlab/lab.png'
+import methodImage from '../assets/img/speedlab/method.png'
 
 const repositories = [
   {
@@ -36,15 +36,15 @@ const repositories = [
   {
     name: 'retro-speedlab-core',
     group: 'Retro Speedlab',
-    description: 'The reinforcement-learning engine behind the platform: recurrent PPO with random network distillation, vectorized environments, resumable checkpoints and live telemetry.',
-    stack: ['Python', 'PyTorch', 'Stable Retro'],
+    description: 'The engine behind the lab: the Laya decision model reads the game as text, picks named moves and learns from rewards with group-relative policy gradients on a consumer GPU.',
+    stack: ['Python', 'PyTorch', 'Laya'],
     license: 'GPL-3.0',
   },
   {
     name: 'retro-speedlab',
     group: 'Retro Speedlab',
-    description: 'A Cookiecutter scaffold that generates reproducible Stable Retro training projects, complete with game wrapper, reward logic, tests and CI.',
-    stack: ['Python', 'Cookiecutter', 'Poetry'],
+    description: 'A Cookiecutter template for game packages: a skeleton that knows nothing about its game until scheduled Claude Code lab runs grow it.',
+    stack: ['Python', 'Cookiecutter', 'Claude Code'],
     license: 'GPL-3.0',
   },
 ]
@@ -55,7 +55,7 @@ const repositories = [
     <PageIntro
       title="Public projects,"
       accent="shown in full."
-      copy="Six open-source repositories and one live AI platform—inspectable evidence of how I approach data engineering, machine learning, delivery and operations."
+      copy="Six open-source repositories and one live AI research lab—inspectable evidence of how I approach data engineering, machine learning, delivery and operations."
     >
       <template #eyebrow>Public case studies</template>
     </PageIntro>
@@ -69,7 +69,7 @@ const repositories = [
           </div>
           <p>
             Focused libraries drawn from recurring client problems—guarded analytics agents, data quality,
-            experimentation and automotive measurement data—alongside the engine and scaffold behind Retro Speedlab.
+            experimentation and automotive measurement data—alongside the engine and template behind Retro Speedlab.
           </p>
         </div>
 
@@ -119,10 +119,10 @@ const repositories = [
         <p class="eyebrow">At a glance</p>
         <dl>
           <div><dt>Project</dt><dd>Retro Speedlab</dd></div>
-          <div><dt>Type</dt><dd>Independent R&D platform</dd></div>
-          <div><dt>Focus</dt><dd>AI training and benchmarking</dd></div>
-          <div><dt>Scope</dt><dd>Product, ML and operations</dd></div>
-          <div><dt>Status</dt><dd><span class="status-dot" /> Live and evolving</dd></div>
+          <div><dt>Type</dt><dd>Independent research lab</dd></div>
+          <div><dt>Focus</dt><dd>Self-learning game agents</dd></div>
+          <div><dt>Scope</dt><dd>ML, agents and operations</dd></div>
+          <div><dt>Status</dt><dd><span class="status-dot" /> Live and learning</dd></div>
         </dl>
       </aside>
 
@@ -135,10 +135,15 @@ const repositories = [
           challenged in public.
         </p>
         <p>
-          The project explores AI models that learn to complete retro games quickly. The playful subject keeps the
-          experiment approachable; the engineering behind it is serious. Training jobs are created through a visual
-          workflow, executed in isolated GPU-ready environments, validated before publication and presented through
-          a live leaderboard and continuous stream.
+          The lab asks a focused question: how far can one small decision model get through a retro game on its own?
+          Laya reads the game as text, chooses between named moves and learns from rewards, around the clock on an
+          everyday desktop with a GPU from 2018. Several times a day a scheduled Claude Code lab run measures the
+          progress, verifies new facts in the emulator, extends the game package, tests and deploys it, and writes a
+          lab report. The playful subject keeps the experiment approachable; the engineering behind it is serious.
+        </p>
+        <p>
+          Everything happens in public: the training streams live on Twitch, and every lab report and every beaten
+          level is published on the lab's website.
         </p>
         <p>
           It is not intended to stand in for the scale or constraints of an enterprise engagement. It simply makes
@@ -148,13 +153,13 @@ const repositories = [
         <div class="case-link-row">
           <a
             class="button button-primary"
-            href="https://speedlab.datenwissenschaften.com/"
+            href="https://www.retrospeedlab.com/"
             target="_blank"
             rel="noopener noreferrer"
-          >Visit Retro Speedlab ↗</a>
+          >Visit the lab ↗</a>
           <a
             class="text-link"
-            href="https://speedlab.datenwissenschaften.com/tech-stack"
+            href="https://www.retrospeedlab.com/tech-stack"
             target="_blank"
             rel="noopener noreferrer"
           >Inspect the live tech stack ↗</a>
@@ -169,35 +174,35 @@ const repositories = [
           <h2>Designed to be used,<br />not merely demonstrated.</h2>
         </div>
         <p>
-          The public interface connects model design with observable results. These are live product views rather
-          than presentation mock-ups.
+          The website is fed by the training itself: the live stream, the lab reports and the method behind them.
+          These are live views of the lab rather than presentation mock-ups.
         </p>
       </div>
       <div class="case-gallery-grid">
         <figure>
           <div class="case-gallery-image">
             <img
-              :src="editorImage"
-              alt="Retro Speedlab visual editor for arranging and configuring machine-learning states"
+              :src="labImage"
+              alt="Retro Speedlab home page with the live training stream, the game on the bench and the latest lab report"
               loading="lazy"
             />
           </div>
           <figcaption>
-            <span>01 / Visual builder</span>
-            <p>State-based learning logic can be arranged, configured and reviewed before a training project is generated.</p>
+            <span>01 / Live lab</span>
+            <p>The live stream shows every decision Laya makes, next to the game on the bench and the latest lab report.</p>
           </figcaption>
         </figure>
         <figure>
           <div class="case-gallery-image">
             <img
-              :src="runImage"
-              alt="Retro Speedlab verified run page with run metadata and video replay"
+              :src="methodImage"
+              alt="Retro Speedlab method page explaining in six steps how Laya plays and learns"
               loading="lazy"
             />
           </div>
           <figcaption>
-            <span>02 / Verifiable result</span>
-            <p>Completed runs retain their timing, metadata and video evidence so results can be inspected rather than taken on trust.</p>
+            <span>02 / Open method</span>
+            <p>Six steps explain how Laya plays and learns, and what an everyday desktop can and cannot do.</p>
           </figcaption>
         </figure>
       </div>
@@ -208,17 +213,17 @@ const repositories = [
         <div class="section-heading split-heading">
           <div>
             <p class="eyebrow">End-to-end system</p>
-            <h2>From an idea<br />to an observed result.</h2>
+            <h2>From game memory<br />to a learned move.</h2>
           </div>
           <p>
-            Each stage is connected, automated and independently inspectable. The architecture favours portable,
-            open components over unnecessary platform dependency.
+            Each stage is connected, automated and independently inspectable. The lab loop runs unattended and favours
+            portable, open components over unnecessary platform dependency.
           </p>
         </div>
 
-        <div class="speedlab-system" aria-label="Retro Speedlab workflow from design to observation">
+        <div class="speedlab-system" aria-label="Retro Speedlab lab loop from game memory to a published result">
           <div class="system-head">
-            <span>Retro Speedlab / production workflow</span>
+            <span>Retro Speedlab / lab loop</span>
             <span><i /> Operational</span>
           </div>
           <ol class="system-stages">
@@ -228,9 +233,9 @@ const repositories = [
                 <div class="stage-cogs" aria-hidden="true"><i>⚙</i><i>⚙</i></div>
               </div>
               <div class="data-channel" aria-hidden="true"><i /><i /><i /></div>
-              <strong>Design</strong>
-              <small>Visual training builder</small>
-              <em>Schema ready</em>
+              <strong>Describe</strong>
+              <small>Game package · RAM as text</small>
+              <em>State described</em>
             </li>
             <li style="--stage: 1">
               <div class="stage-top">
@@ -238,31 +243,31 @@ const repositories = [
                 <div class="stage-cogs" aria-hidden="true"><i>⚙</i><i>⚙</i></div>
               </div>
               <div class="data-channel" aria-hidden="true"><i /><i /><i /></div>
-              <strong>Train</strong>
-              <small>Python · CUDA · Podman</small>
-              <em>Model learning</em>
+              <strong>Decide</strong>
+              <small>Laya · named actions</small>
+              <em>Move chosen</em>
             </li>
-            <li class="decision-stage" style="--stage: 2">
+            <li style="--stage: 2">
               <div class="stage-top">
                 <span class="stage-number">03</span>
                 <div class="stage-cogs" aria-hidden="true"><i>⚙</i><i>⚙</i></div>
               </div>
               <div class="data-channel" aria-hidden="true"><i /><i /><i /></div>
-              <strong>Validate</strong>
-              <small>stable-retro · FFmpeg</small>
-              <div class="decision-gate" aria-label="Quality gate: pass to publish, otherwise retry training">
-                <span>pass → publish</span><span>fail ↺ retry</span>
-              </div>
+              <strong>Learn</strong>
+              <small>PyTorch · 8-bit AdamW · RTX 2070</small>
+              <em>Weights updated</em>
             </li>
-            <li style="--stage: 3">
+            <li class="decision-stage" style="--stage: 3">
               <div class="stage-top">
                 <span class="stage-number">04</span>
                 <div class="stage-cogs" aria-hidden="true"><i>⚙</i><i>⚙</i></div>
               </div>
               <div class="data-channel" aria-hidden="true"><i /><i /><i /></div>
-              <strong>Publish</strong>
-              <small>FastAPI · PocketBase · Pocketflow</small>
-              <em>Release live</em>
+              <strong>Improve</strong>
+              <small>Claude Code · pytest · Dokku</small>
+              <div class="decision-gate" aria-label="Quality gate: verified changes deploy, otherwise they are reverted">
+                <span>pass → deploy</span><span>fail ↺ revert</span>
+              </div>
             </li>
             <li style="--stage: 4">
               <div class="stage-top">
@@ -270,15 +275,15 @@ const repositories = [
                 <div class="stage-cogs" aria-hidden="true"><i>⚙</i><i>⚙</i></div>
               </div>
               <div class="data-channel" aria-hidden="true"><i /><i /><i /></div>
-              <strong>Observe</strong>
-              <small>Umami · Bugsink · Live Metrics</small>
-              <em>Feedback loop</em>
+              <strong>Publish</strong>
+              <small>FastAPI · PostgreSQL · Twitch</small>
+              <em>Live in public</em>
             </li>
           </ol>
           <div class="system-foot">
-            <span>Self-hosted source & CI/CD</span>
-            <span>Automated delivery</span>
-            <span>Human-readable outcomes</span>
+            <span>Self-hosted on Dokku</span>
+            <span>Unattended around the clock</span>
+            <span>Every step reported</span>
           </div>
         </div>
       </div>
@@ -291,41 +296,41 @@ const repositories = [
           <h2>Small enough to inspect.<br />Complete enough to be useful.</h2>
         </div>
         <p>
-          The value of this case study is not a polished concept deck. It is the connection between product decisions,
-          model execution and day-to-day operation.
+          The value of this case study is not a polished concept deck. It is the connection between a research
+          question, model execution and day-to-day operation.
         </p>
       </div>
 
       <div class="case-evidence-grid">
         <article>
           <span>01</span>
-          <h3>Product thinking</h3>
-          <p>A public experience for discovering games, creating training projects and comparing verified runs.</p>
+          <h3>Research framing</h3>
+          <p>One narrow question, answered in public: how far a small decision model gets through a game on consumer hardware.</p>
         </article>
         <article>
           <span>02</span>
-          <h3>Machine learning workflow</h3>
-          <p>Generated Python projects, scheduled training and CUDA-ready workloads running in isolated containers.</p>
+          <h3>Reinforcement learning</h3>
+          <p>Group-relative policy gradients with a measured-KL trust region fine-tune every weight of Laya on an 8 GB GPU.</p>
         </article>
         <article>
           <span>03</span>
-          <h3>Independent validation</h3>
-          <p>Run verification with stable-retro and FFmpeg before results become eligible for the leaderboard.</p>
+          <h3>Agentic engineering</h3>
+          <p>Scheduled Claude Code lab runs verify facts in the emulator before they change the game, guarded by tests and narrow permissions.</p>
         </article>
         <article>
           <span>04</span>
           <h3>Full-stack delivery</h3>
-          <p>A Vue interface connected to FastAPI, PocketBase and several focused Python services.</p>
+          <p>A Vue website and a FastAPI service on PostgreSQL, fed directly by the training: beaten levels, videos and lab reports.</p>
         </article>
         <article>
           <span>05</span>
           <h3>Operational discipline</h3>
-          <p>Automated checks and rollout through Gitea Actions, with self-hosted analytics and error monitoring.</p>
+          <p>Dokku deployments, an engine published on PyPI, self-hosted analytics and error monitoring, and live metrics per component.</p>
         </article>
         <article>
           <span>06</span>
           <h3>Pragmatic AI</h3>
-          <p>Local Ollama-powered assistants support the site and stream where they add value, without becoming the product.</p>
+          <p>Free language models write the short lab reports for viewers; every move in the game stays with Laya.</p>
         </article>
       </div>
     </section>
@@ -335,22 +340,22 @@ const repositories = [
         <p class="eyebrow">Explore the evidence</p>
         <h2>See the system,<br /><em>not just the summary.</em></h2>
         <p>
-          The live tech-stack page lists each service, its responsibilities, current release information,
-          delivery pipeline and operational metrics.
+          The live tech-stack page lists each component, its tools and live metrics: visitors, issues, commits,
+          lab runs and the stream's audience.
         </p>
         <div class="case-link-row">
           <a
             class="button case-button-light"
-            href="https://speedlab.datenwissenschaften.com/tech-stack"
+            href="https://www.retrospeedlab.com/tech-stack"
             target="_blank"
             rel="noopener noreferrer"
           >Open the technical overview ↗</a>
           <a
             class="case-plain-link"
-            href="https://github.com/datenwissenschaften/retro-speedlab"
+            href="https://github.com/datenwissenschaften/retro-speedlab-core"
             target="_blank"
             rel="noopener noreferrer"
-          >View the public repository ↗</a>
+          >View the engine on GitHub ↗</a>
         </div>
       </div>
     </section>
