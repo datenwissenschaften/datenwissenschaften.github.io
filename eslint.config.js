@@ -9,13 +9,8 @@ export default tseslint.config(
   ...pluginVue.configs['flat/recommended'],
   {
     files: ['src/**/*.{ts,vue}'],
-    languageOptions: {
-      globals: {
-        document: 'readonly',
-        localStorage: 'readonly',
-        matchMedia: 'readonly',
-        URL: 'readonly',
-      },
+    rules: {
+      'no-undef': 'off',
     },
   },
   {

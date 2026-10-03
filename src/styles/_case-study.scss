@@ -531,3 +531,8 @@
   font-size: 13px;
   font-weight: 700;
 }
+
+:is(.case-repo-section, .case-overview, .case-gallery, .case-system-section, .case-evidence, .case-closing) p {
+  text-align: justify;
+  hyphens: auto;
+}
