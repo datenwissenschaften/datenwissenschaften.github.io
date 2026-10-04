@@ -4,6 +4,35 @@ import PageIntro from '../components/PageIntro.vue'
 import labImage from '../assets/img/speedlab/lab.png'
 import methodImage from '../assets/img/speedlab/method.png'
 
+const disciplines = [
+  {
+    label: 'Laya',
+    title: 'Model fine-tuning',
+    lead: 'Adapting a small pretrained model to a narrow task with reinforcement learning, on hardware an organisation already owns.',
+    concepts: [
+      { name: 'Reinforcement fine-tuning.', text: 'Group-relative policy optimisation updates every weight from rewarded outcomes instead of labelled examples.' },
+      { name: 'Reward design.', text: 'Rewards are built only from verified signals and shaped so the intended behaviour is learnable and cannot be gamed.' },
+      { name: 'Stable optimisation.', text: 'A measured-KL trust region and importance-weighted exploration keep every update controlled and prevent policy collapse.' },
+      { name: 'Curriculum learning.', text: 'Training resumes from mastered checkpoints, so the model practises the hardest phase instead of replaying the easy ones.' },
+      { name: 'Resource efficiency.', text: '8-bit optimiser states and mixed precision fit full fine-tuning into 8 GB of GPU memory.' },
+    ],
+    value: 'Domain-specific small models that run on premises, keep data and weights under your control and cost a fraction of hosted inference.',
+  },
+  {
+    label: 'Claude Code',
+    title: 'Prompt and agentic engineering',
+    lead: 'Turning a general-purpose AI agent into a dependable, unattended engineering process.',
+    concepts: [
+      { name: 'Prompt engineering.', text: 'A versioned operating prompt defines goals, priorities, success criteria and stop conditions, and is reviewed like code.' },
+      { name: 'Context engineering.', text: 'Reusable skills, verified project notes and earlier lab reports carry knowledge from one run to the next without retraining.' },
+      { name: 'Tool orchestration.', text: 'The agent drives an emulator, web research, test suites and deployments through explicitly permitted tools.' },
+      { name: 'Guardrails.', text: 'Least-privilege permissions, mandatory tests and linting, and a rollback whenever a deployment fails.' },
+      { name: 'Agent observability.', text: 'Run transcripts are analysed for failure modes, such as stopping early or misreading a failed job, and the prompt and runtime are improved accordingly.' },
+    ],
+    value: 'Agents that act on real systems within defined boundaries, with an audit trail for every change they make.',
+  },
+]
+
 const repositories = [
   {
     name: 'agentic-data-analyst',
@@ -121,7 +150,7 @@ const repositories = [
           <div><dt>Project</dt><dd>Retro Speedlab</dd></div>
           <div><dt>Type</dt><dd>Independent research lab</dd></div>
           <div><dt>Focus</dt><dd>Self-learning game agents</dd></div>
-          <div><dt>Scope</dt><dd>ML, agents and operations</dd></div>
+          <div><dt>Disciplines</dt><dd>Model fine-tuning · Prompt and agentic engineering</dd></div>
           <div><dt>Status</dt><dd><span class="status-dot" /> Live and learning</dd></div>
         </dl>
       </aside>
@@ -136,10 +165,16 @@ const repositories = [
         </p>
         <p>
           The lab asks a focused question: how far can one small decision model get through a retro game on its own?
-          Laya reads the game as text, chooses between named moves and learns from rewards, around the clock on an
-          everyday desktop with a GPU from 2018. Several times a day a scheduled Claude Code lab run measures the
-          progress, verifies new facts in the emulator, extends the game package, tests and deploys it, and writes a
-          lab report. The playful subject keeps the experiment approachable; the engineering behind it is serious.
+          Answering it combines two disciplines that organisations increasingly need together. Laya, a compact
+          pretrained language model, is fine-tuned with reinforcement learning: it reads the game state as text,
+          chooses between named moves and updates its weights from rewards, around the clock on an everyday desktop
+          with a GPU from 2018. Around it, Claude Code works as an autonomous engineering agent. Several times a day,
+          guided by a versioned operating prompt, it researches how a level is beaten, verifies each fact in the
+          emulator, extends the game package, tests and deploys it, and documents the result in a lab report.
+        </p>
+        <p>
+          The playful subject keeps the experiment approachable; the engineering behind it is the same I apply to
+          client systems.
         </p>
         <p>
           Everything happens in public: the training streams live on Twitch, and every lab report and every beaten
@@ -164,6 +199,34 @@ const repositories = [
             rel="noopener noreferrer"
           >Inspect the live tech stack ↗</a>
         </div>
+      </div>
+    </section>
+
+    <section class="wrap case-disciplines">
+      <div class="section-heading split-heading">
+        <div>
+          <p class="eyebrow">Two disciplines, one system</p>
+          <h2>A model that learns.<br />An agent that engineers.</h2>
+        </div>
+        <p>
+          Fine-tuning shapes what a model does; prompt and agentic engineering shape how AI acts on real systems.
+          The lab practises both in production, under the constraints clients face: limited hardware, unattended
+          operation and the need to explain every result.
+        </p>
+      </div>
+
+      <div class="case-discipline-grid">
+        <article v-for="discipline in disciplines" :key="discipline.title">
+          <span>{{ discipline.label }}</span>
+          <h3>{{ discipline.title }}</h3>
+          <p class="case-discipline-lead">{{ discipline.lead }}</p>
+          <ul>
+            <li v-for="concept in discipline.concepts" :key="concept.name">
+              <strong>{{ concept.name }}</strong> {{ concept.text }}
+            </li>
+          </ul>
+          <p class="case-discipline-value"><strong>For clients:</strong> {{ discipline.value }}</p>
+        </article>
       </div>
     </section>
 
@@ -309,13 +372,13 @@ const repositories = [
         </article>
         <article>
           <span>02</span>
-          <h3>Reinforcement learning</h3>
-          <p>Group-relative policy gradients with a measured-KL trust region fine-tune every weight of Laya on an 8 GB GPU.</p>
+          <h3>Measurable outcomes</h3>
+          <p>Every change is judged against live metrics—rewards, action probabilities and completed attempts—before and after it ships.</p>
         </article>
         <article>
           <span>03</span>
-          <h3>Agentic engineering</h3>
-          <p>Scheduled Claude Code lab runs verify facts in the emulator before they change the game, guarded by tests and narrow permissions.</p>
+          <h3>Governed autonomy</h3>
+          <p>The agent works unattended within explicit rules: no secrets, no deleted data, no unreviewed releases, and a report for every run.</p>
         </article>
         <article>
           <span>04</span>

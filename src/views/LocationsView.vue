@@ -12,7 +12,7 @@ const locations = [
     country: 'Estonia',
     address: ['Sepapaja tn 6', '15551 Tallinn', 'Estonia'],
     description:
-      'Our registered headquarters in Estonia connects the practice to one of Europe’s most digitally ambitious business environments.',
+      'My registered headquarters in Estonia connects the practice to one of Europe’s most digitally ambitious business environments.',
     image: tallinnImage,
     imageAlt: 'Panoramic view across Tallinn, Estonia',
     photoAuthor: 'ZeevoX',
@@ -45,7 +45,7 @@ const locations = [
     country: 'South Africa',
     address: ['34 Anura Road', 'Sitari Country Estate', '7130 Somerset West', 'South Africa'],
     description:
-      'Our South African base brings the same close, senior collaboration to clients working across the Southern Hemisphere.',
+      'My South African base brings the same close, senior collaboration to clients working across the Southern Hemisphere.',
     image: somersetWestImage,
     imageAlt: 'Aerial view of Somerset West beneath the Helderberg mountain range',
     photoAuthor: 'Aerial Picture and Video',
@@ -64,9 +64,9 @@ const locations = [
     <PageIntro
       title="Three places. One"
       accent="connected practice."
-      copy="From Northern Europe to the Cape, our locations keep us close to the people and organisations we work with—across borders, time zones and ambitious ideas."
+      copy="From Northern Europe to the Cape, my locations keep me close to the people and organisations I work with—across borders, time zones and ambitious ideas."
     >
-      <template #eyebrow>Where to find us</template>
+      <template #eyebrow>Where to find me</template>
     </PageIntro>
 
     <section class="locations-opening wrap" aria-labelledby="locations-opening-title">
@@ -74,14 +74,14 @@ const locations = [
       <div>
         <h2 id="locations-opening-title">Close to the work, wherever it happens.</h2>
         <p>
-          Our footprint spans the Baltic, Central Europe and Southern Africa. Each location is a
-          practical base for direct collaboration, while our work continues wherever a valuable data
+          My footprint spans the Baltic, Central Europe and Southern Africa. Each location is a
+          practical base for direct collaboration, while my work continues wherever a valuable data
           problem needs solving.
         </p>
       </div>
     </section>
 
-    <section class="locations-list wrap" aria-label="Our locations">
+    <section class="locations-list wrap" aria-label="My locations">
       <article v-for="location in locations" :key="location.city" class="location-card">
         <div class="location-copy">
           <span class="location-number">{{ location.number }}</span>
@@ -119,7 +119,7 @@ const locations = [
             </div>
             <iframe
               :src="location.mapUrl"
-              :title="`Map showing our ${location.city} location`"
+              :title="`Map showing my ${location.city} location`"
               loading="lazy"
               allowfullscreen
               referrerpolicy="no-referrer-when-downgrade"

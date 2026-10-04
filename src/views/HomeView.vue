@@ -96,7 +96,7 @@ onBeforeUnmount(() => globalThis.cancelAnimationFrame(animationFrame))
         <p class="eyebrow"><span class="status-dot" /> Data Science & AI Transformation</p>
         <h1>Less complexity.<br /><em>More intelligence.</em></h1>
         <p class="hero-lead">
-          With 15 years in machine learning and AI transformation, we design production-grade
+          With 15 years in machine learning and AI transformation, I design production-grade
           systems that turn complex data into faster, safer decisions.
         </p>
         <div class="button-row">
@@ -206,10 +206,10 @@ onBeforeUnmount(() => globalThis.cancelAnimationFrame(animationFrame))
     <section class="section wrap">
       <div class="section-heading split-heading">
         <div>
-          <p class="eyebrow">What we do</p>
+          <p class="eyebrow">What I do</p>
           <h2>From difficult data<br />to simple decisions.</h2>
         </div>
-        <p>We work across strategy, engineering, machine learning and governance—one accountable partner from first question to reliable production system.</p>
+        <p>I work across strategy, engineering, machine learning and governance—one accountable partner from first question to reliable production system.</p>
       </div>
       <div class="service-list">
         <RouterLink v-for="service in services" :key="service.number" to="/services" class="service-row">
@@ -232,7 +232,7 @@ onBeforeUnmount(() => globalThis.cancelAnimationFrame(animationFrame))
           <p class="eyebrow">The lean principle</p>
           <h2>The best system is the smallest one that solves the problem.</h2>
           <p>
-            More infrastructure does not automatically mean more capability. We begin with the decision you need to improve,
+            More infrastructure does not automatically mean more capability. I begin with the decision you need to improve,
             then work backwards—automating the repeatable, measuring the useful and removing everything else.
           </p>
           <ul class="check-list">
@@ -240,7 +240,7 @@ onBeforeUnmount(() => globalThis.cancelAnimationFrame(animationFrame))
             <li><span>02</span> Automate operations, not accountability</li>
             <li><span>03</span> Build for your team to own</li>
           </ul>
-          <RouterLink to="/about" class="text-link">How we work <ArrowIcon /></RouterLink>
+          <RouterLink to="/about" class="text-link">How I work <ArrowIcon /></RouterLink>
         </div>
       </div>
     </section>

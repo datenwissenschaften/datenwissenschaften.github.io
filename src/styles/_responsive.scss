@@ -292,6 +292,18 @@
     padding-block: 90px;
   }
 
+  .case-disciplines {
+    padding-bottom: 90px;
+  }
+
+  .case-discipline-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .case-discipline-grid article {
+    padding: 28px 22px;
+  }
+
   .case-gallery-grid {
     grid-template-columns: 1fr;
     gap: 55px;

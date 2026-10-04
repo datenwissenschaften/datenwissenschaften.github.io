@@ -12,7 +12,7 @@ const products = [
     domain: 'knotbase.io',
     tagline: 'Answer more questions. Win more customers.',
     description:
-      'Knotbase turns the knowledge already on a company’s website into an AI assistant that answers visitors and helps generate leads around the clock. It’s a self-directed build, run outside client engagements, applying the same practical approach to retrieval and deployment we bring to production AI work.',
+      'Knotbase turns the knowledge already on a company’s website into an AI assistant that answers visitors and helps generate leads around the clock. It’s a self-directed build, run outside client engagements, applying the same practical approach to retrieval and deployment I bring to production AI work.',
     highlights: ['Website knowledge base as the source of truth', 'Conversational lead capture', 'No technical setup required'],
     image: knotbaseImage,
     imageAlt: 'Knotbase.io homepage showing an AI chat assistant answering a customer question',
@@ -25,7 +25,7 @@ const products = [
     domain: 'helderbergremote.com',
     tagline: 'Work remotely. Connect locally.',
     description:
-      'A community for remote workers, digital nomads, freelancers and founders around Somerset West, Strand, Gordon’s Bay and Stellenbosch—grown from the same Helderberg base as our South African location. Meetups and a WhatsApp community turn remote work into something less solitary.',
+      'A community for remote workers, digital nomads, freelancers and founders around Somerset West, Strand, Gordon’s Bay and Stellenbosch—grown from the same Helderberg base as my South African location. Meetups and a WhatsApp community turn remote work into something less solitary.',
     highlights: ['WhatsApp community', 'Regular local meetups', 'Somerset West · Strand · Gordon’s Bay · Stellenbosch'],
     image: helderbergImage,
     imageAlt: 'Helderberg Remote homepage with the community logo and a call to join via WhatsApp',
@@ -52,7 +52,7 @@ const products = [
     domain: 'sitari.life',
     tagline: 'Smart homes. Shared savings.',
     description:
-      'An early-stage concept for AI-driven home automation that helps local communities—starting near the Sitari estate by our South African base—monitor and optimise shared resources. The goal is straightforward: less gas, water and electricity wasted, without residents having to think about it.',
+      'An early-stage concept for AI-driven home automation that helps local communities—starting near the Sitari estate by my South African base—monitor and optimise shared resources. The goal is straightforward: less gas, water and electricity wasted, without residents having to think about it.',
     highlights: ['Water, gas & electricity monitoring', 'AI-driven usage optimisation', 'Built for local community estates'],
     placeholder: true,
   },
@@ -63,8 +63,8 @@ const products = [
   <div>
     <PageIntro
       title="Beyond client work,"
-      accent="a few things we build ourselves."
-      copy="Alongside consulting engagements, we run a small set of independent ventures—products shaped by the same data and AI practice, built and operated on our own time."
+      accent="a few things I build myself."
+      copy="Alongside consulting engagements, I run a small set of independent ventures—products shaped by the same data and AI practice, built and operated on my own time."
     >
       <template #eyebrow>Side projects</template>
     </PageIntro>
@@ -72,16 +72,16 @@ const products = [
     <section class="products-opening wrap" aria-labelledby="products-opening-title">
       <p class="eyebrow">Independent ventures · Live and in development</p>
       <div>
-        <h2 id="products-opening-title">Practice applied to our own ideas.</h2>
+        <h2 id="products-opening-title">Practice applied to my own ideas.</h2>
         <p>
-          These aren’t client deliverables—they’re products we build and run ourselves, some already
-          live, some still taking shape, all proof that the same thinking behind our consulting work
+          These aren’t client deliverables—they’re products I build and run myself, some already
+          live, some still taking shape, all proof that the same thinking behind my consulting work
           holds up outside it too.
         </p>
       </div>
     </section>
 
-    <section class="products-list wrap" aria-label="Our products">
+    <section class="products-list wrap" aria-label="My products">
       <article v-for="product in products" :key="product.name" class="product-card">
         <div class="product-copy">
           <span class="product-number">{{ product.number }}</span>
