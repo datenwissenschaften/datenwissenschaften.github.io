@@ -10,11 +10,11 @@ const disciplines = [
     title: 'Model fine-tuning',
     lead: 'Adapting a small pretrained model to a narrow task with reinforcement learning, on hardware an organisation already owns.',
     concepts: [
-      { name: 'Reinforcement fine-tuning.', text: 'Group-relative policy optimisation updates every weight from rewarded outcomes instead of labelled examples.' },
+      { name: 'Reinforcement fine-tuning.', text: 'The pretrained model stays frozen as the reader; small decision layers per phase learn with PPO from rewarded outcomes instead of labelled examples.' },
+      { name: 'Teacher and student.', text: 'A fast advisor network per phase practises on every CPU core; the model reads its advice and imitates it and recorded demonstrations, yet makes every final decision itself.' },
       { name: 'Reward design.', text: 'Rewards are built only from verified signals and shaped so the intended behaviour is learnable and cannot be gamed.' },
-      { name: 'Stable optimisation.', text: 'A measured-KL trust region and importance-weighted exploration keep every update controlled and prevent policy collapse.' },
-      { name: 'Curriculum learning.', text: 'Training resumes from mastered checkpoints, so the model practises the hardest phase instead of replaying the easy ones.' },
-      { name: 'Resource efficiency.', text: '8-bit optimiser states and mixed precision fit full fine-tuning into 8 GB of GPU memory.' },
+      { name: 'Stable optimisation.', text: 'Clipped policy updates measured against the policy that actually acted, with importance-weighted exploration, keep every update controlled and prevent collapse.' },
+      { name: 'Curriculum learning.', text: 'Training resumes from mastered checkpoints, and hard stretches are practised backwards from their exit, so the model trains the hardest part instead of replaying the easy ones.' },
     ],
     value: 'Domain-specific small models that run on premises, keep data and weights under your control and cost a fraction of hosted inference.',
   },
@@ -65,7 +65,7 @@ const repositories = [
   {
     name: 'retro-speedlab-core',
     group: 'Retro Speedlab',
-    description: 'The engine behind the lab: the Laya decision model reads the game as text, picks named moves and learns from rewards with group-relative policy gradients on a consumer GPU.',
+    description: 'The engine behind the lab: the Laya decision model reads the game as text and picks named moves, while small PPO layers on top of it learn from rewards, coached by a fast advisor per phase, on a consumer GPU.',
     stack: ['Python', 'PyTorch', 'Laya'],
     license: 'GPL-3.0',
   },
@@ -167,9 +167,10 @@ const repositories = [
           The lab asks a focused question: how far can one small decision model get through a retro game on its own?
           Answering it combines two disciplines that organisations increasingly need together. Laya, a compact
           pretrained language model, is fine-tuned with reinforcement learning: it reads the game state as text,
-          chooses between named moves and updates its weights from rewards, around the clock on an everyday desktop
-          with a GPU from 2018. Around it, Claude Code works as an autonomous engineering agent. Several times a day,
-          guided by a versioned operating prompt, it researches how a level is beaten, verifies each fact in the
+          chooses between named moves and learns from rewards, coached by a fast advisor network, around the clock on
+          an everyday desktop with a GPU from 2018. Around it, Claude Code works as an autonomous engineering agent.
+          Whenever training goes two hours without progress, at most four times a day, guided by a versioned operating
+          prompt, it researches how a level is beaten, verifies each fact in the
           emulator, extends the game package, tests and deploys it, and documents the result in a lab report.
         </p>
         <p>
@@ -246,26 +247,26 @@ const repositories = [
           <div class="case-gallery-image">
             <img
               :src="labImage"
-              alt="Retro Speedlab home page with the live training stream, the game on the bench and the latest lab report"
+              alt="Retro Speedlab home page with the live Twitch stream of the training"
               loading="lazy"
             />
           </div>
           <figcaption>
             <span>01 / Live lab</span>
-            <p>The live stream shows every decision Laya makes, next to the game on the bench and the latest lab report.</p>
+            <p>The home page carries the live stream: every decision Laya makes, the curriculum it works through and the latest lab report.</p>
           </figcaption>
         </figure>
         <figure>
           <div class="case-gallery-image">
             <img
               :src="methodImage"
-              alt="Retro Speedlab method page explaining in six steps how Laya plays and learns"
+              alt="Retro Speedlab method page explaining in seven steps how Laya plays and learns"
               loading="lazy"
             />
           </div>
           <figcaption>
             <span>02 / Open method</span>
-            <p>Six steps explain how Laya plays and learns, and what an everyday desktop can and cannot do.</p>
+            <p>Seven steps explain how Laya plays, how its practice coach helps and how it learns, and what an everyday desktop can and cannot do.</p>
           </figcaption>
         </figure>
       </div>
@@ -317,7 +318,7 @@ const repositories = [
               </div>
               <div class="data-channel" aria-hidden="true"><i /><i /><i /></div>
               <strong>Learn</strong>
-              <small>PyTorch · 8-bit AdamW · RTX 2070</small>
+              <small>PyTorch · PPO · RTX 2070</small>
               <em>Weights updated</em>
             </li>
             <li class="decision-stage" style="--stage: 3">
@@ -383,7 +384,7 @@ const repositories = [
         <article>
           <span>04</span>
           <h3>Full-stack delivery</h3>
-          <p>A Vue website and a FastAPI service on PostgreSQL, fed directly by the training: beaten levels, videos and lab reports.</p>
+          <p>A Vue website and a FastAPI service on PostgreSQL, fed directly by the training: the live stream relay, beaten levels, videos and lab reports.</p>
         </article>
         <article>
           <span>05</span>
