@@ -37,8 +37,8 @@ const repositories = [
   {
     name: 'agentic-data-analyst',
     group: 'Analytics agents',
-    description: 'Guarded agentic analytics: natural-language questions become dbt-grounded plans, a typed intermediate representation and validated PySpark execution — never exec().',
-    stack: ['Python', 'PySpark', 'dbt'],
+    description: 'Chat with your data: Claude writes read-only DuckDB SQL, a second agent reviews it, and deterministic guardrails and cost budgets bound every query — answers, tables and charts in Chainlit.',
+    stack: ['Python', 'Claude', 'DuckDB'],
     license: 'MIT',
   },
   {
