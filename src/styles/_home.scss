@@ -991,6 +991,19 @@
   color: #120b08;
 }
 
+:root[data-theme='light'] .cta-band,
+:root[data-theme='light'] .cta-band em {
+  color: #fff;
+}
+
+:root[data-theme='light'] .cta-band .eyebrow {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+:root[data-theme='light'] .cta-band .round-link {
+  border-color: rgba(255, 255, 255, 0.55);
+}
+
 .round-link {
   position: absolute;
   right: 4%;
