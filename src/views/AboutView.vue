@@ -2,7 +2,7 @@
 import { RouterLink } from 'vue-router'
 import ArrowIcon from '../components/ArrowIcon.vue'
 import PageIntro from '../components/PageIntro.vue'
-import portrait from '../assets/img/portfolio/profile-picture.png'
+import portrait from '../assets/img/portfolio/profile-picture.jpg'
 import { experience } from '../data'
 
 const toolkitGroups = [
