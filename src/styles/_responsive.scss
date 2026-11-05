@@ -37,9 +37,9 @@
     flex-direction: column;
     gap: 6px;
     justify-content: center;
-    width: 40px;
-    height: 40px;
-    padding: 8px;
+    width: 44px;
+    height: 44px;
+    padding: 10px;
     border: 0;
     background: transparent;
   }
@@ -144,6 +144,53 @@
 
   .site-footer {
     grid-template-columns: 1.5fr 1fr 1fr;
+  }
+
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+
+  .theme-toggle {
+    min-height: 44px;
+  }
+
+  .text-link {
+    min-height: 44px;
+  }
+
+  .footer-nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    margin-bottom: 0;
+  }
+
+  .tag-row,
+  .toolkit-groups article > div {
+    position: relative;
+  }
+
+  .tag-row .explained-tag,
+  .toolkit-groups article > div > .toolkit-item {
+    position: static;
+  }
+
+  .explained-tag::after,
+  .toolkit-item::after {
+    right: 0;
+    left: 0;
+    width: auto;
+    max-width: none;
+    transform: translateY(5px);
+  }
+
+  .explained-tag:hover::after,
+  .explained-tag:focus-visible::after,
+  .toolkit-item:hover::after,
+  .toolkit-item:focus-visible::after {
+    transform: translateY(0);
   }
 }
 
@@ -457,7 +504,7 @@
   }
 
   .legal-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     padding-block: 70px;
   }
 

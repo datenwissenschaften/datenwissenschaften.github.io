@@ -1,7 +1,7 @@
 /* Legal */
 .legal-grid {
   display: grid;
-  grid-template-columns: 25% 75%;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
   gap: 50px;
   padding-block: 100px 140px;
 }
@@ -22,6 +22,10 @@
 
 .legal-grid aside a:hover {
   color: var(--accent);
+}
+
+.legal-copy {
+  overflow-wrap: anywhere;
 }
 
 .legal-copy section {
