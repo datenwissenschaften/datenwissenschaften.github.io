@@ -517,3 +517,10 @@
     gap: 3px;
   }
 }
+
+@media (max-width: 620px) {
+  // Justified text leaves uneven gaps on narrow screens.
+  p {
+    text-align: left;
+  }
+}

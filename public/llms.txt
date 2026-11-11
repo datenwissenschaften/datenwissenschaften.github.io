@@ -1,0 +1,27 @@
+# Dr. Franke Datenwissenschaften
+
+> Dr. Martin Franke is an independent data science and AI consultant (doctorate in computer science, TU Dresden) with 15 years of experience in machine learning, AI strategy, data platforms and MLOps. His company, Dr. Franke Datenwissenschaften OÜ, is registered in Tallinn, Estonia, with bases in Saalfeld (Thuringia, Germany) and Somerset West (South Africa). Working languages: German and English.
+
+The site is available in English and German (German pages under /de).
+
+## Pages
+
+- [Services](https://www.datenwissenschaften.com/services): Data & AI strategy, applied machine learning, data platforms, MLOps & delivery
+- [Selected work](https://www.datenwissenschaften.com/work): Production ML and AI projects in automotive (CARIAD; Audi, Porsche, Volkswagen), healthcare, digital publishing and media (ProSiebenSat.1)
+- [About](https://www.datenwissenschaften.com/about): Background, doctorate, experience and toolkit
+- [Case studies](https://www.datenwissenschaften.com/case-study): Open-source repositories and Retro Speedlab, a live AI research lab combining search, reinforcement learning and agentic engineering
+- [Products](https://www.datenwissenschaften.com/products): Knotbase (AI website assistant), the book "From Data Scientist to AI Strategist", Helderberg Remote
+- [Locations](https://www.datenwissenschaften.com/locations): Tallinn, Saalfeld, Somerset West
+- [Contact](https://www.datenwissenschaften.com/contact): Email martin.franke@datenwissenschaften.com or book a call
+
+## Deutsch
+
+- [KI-Beratung & Data Science](https://www.datenwissenschaften.com/de)
+- [Leistungen](https://www.datenwissenschaften.com/de/leistungen)
+- [Kontakt](https://www.datenwissenschaften.com/de/kontakt)
+
+## Elsewhere
+
+- [LinkedIn](https://www.linkedin.com/in/datenwissenschaften/)
+- [GitHub](https://github.com/datenwissenschaften)
+- [Doctoral thesis (TU Dresden, 2016)](https://nbn-resolving.org/urn:nbn:de:bsz:14-qucosa-212279)

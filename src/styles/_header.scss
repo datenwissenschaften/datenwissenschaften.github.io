@@ -35,12 +35,13 @@
 
 .site-header nav {
   display: flex;
-  gap: 38px;
+  gap: clamp(18px, 2vw, 38px);
   align-items: center;
 }
 
 .site-header nav a {
   position: relative;
+  padding-block: 8px; // larger tap target; the underline offset below compensates
   color: var(--muted);
   font-size: 13px;
   font-weight: 600;
@@ -49,7 +50,7 @@
 .site-header nav a::after {
   position: absolute;
   right: 0;
-  bottom: -10px;
+  bottom: -2px;
   left: 0;
   height: 2px;
   content: '';
@@ -69,6 +70,7 @@
 
 .header-actions {
   display: flex;
+  gap: 16px;
   align-items: center;
   justify-self: end;
 }
@@ -116,3 +118,19 @@
   display: none;
 }
 
+
+.language-switch {
+  padding: 7px 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.language-switch:hover {
+  border-color: var(--text);
+  color: var(--text);
+}

@@ -2,25 +2,41 @@
 import { RouterLink } from 'vue-router'
 import ArrowIcon from '../components/ArrowIcon.vue'
 import PageIntro from '../components/PageIntro.vue'
-import { services } from '../data'
+import dataContent from '../content/data'
+import servicesContent from '../content/services'
+import { useContent, useLocale } from '../i18n'
+
+const { path } = useLocale()
+const c = useContent(servicesContent)
+const data = useContent(dataContent)
 </script>
 
 <template>
   <div>
-    <PageIntro title="Expertise that turns" accent="data into movement." copy="No hand-offs and no theatre. Senior guidance and practical implementation across the full data lifecycle.">
-      <template #eyebrow>Services</template>
+    <PageIntro :title="c.intro.title" :accent="c.intro.accent" :copy="c.intro.copy">
+      <template #eyebrow>{{ c.intro.eyebrow }}</template>
     </PageIntro>
 
     <section class="wrap service-detail-list">
-      <article v-for="service in services" :key="service.number" class="service-detail">
+      <article v-for="service in data.services" :key="service.number" class="service-detail">
         <span class="service-number">{{ service.number }}</span>
         <div>
           <h2>{{ service.title }}</h2>
           <p>{{ service.text }}</p>
+          <template v-if="c.details[service.number]">
+            <p class="service-audience"><strong>{{ c.audienceLabel }}:</strong> {{ c.details[service.number]?.audience }}</p>
+            <p class="service-audience">{{ c.details[service.number]?.detail }}</p>
+          </template>
         </div>
         <div class="service-deliverables">
-          <p class="eyebrow">Typical focus</p>
-          <span v-for="item in service.outcome.split(' · ')" :key="item">{{ item }}</span>
+          <p class="eyebrow">{{ c.deliverablesLabel }}</p>
+          <span v-for="item in c.details[service.number]?.deliverables ?? service.outcome.split(' · ')" :key="item">{{ item }}</span>
+          <template v-if="c.details[service.number]">
+            <p class="eyebrow service-proof-label">{{ c.proofLabel }}</p>
+            <RouterLink :to="path('work', c.details[service.number]?.proof.project)" class="text-link">
+              {{ c.details[service.number]?.proof.label }} <ArrowIcon />
+            </RouterLink>
+          </template>
         </div>
       </article>
     </section>
@@ -28,20 +44,55 @@ import { services } from '../data'
     <section class="process-section">
       <div class="wrap">
         <div class="section-heading split-heading">
-          <div><p class="eyebrow">A small, sharp process</p><h2>Three steps.<br />Zero theatre.</h2></div>
-          <p>Every engagement is shaped around fast learning, visible progress and a clean handover.</p>
+          <div><p class="eyebrow">{{ c.process.eyebrow }}</p><h2>{{ c.process.title[0] }}<br />{{ c.process.title[1] }}</h2></div>
+          <p>{{ c.process.copy }}</p>
         </div>
         <div class="process-grid">
-          <article><span>01</span><h3>Find the lever</h3><p>Clarify the decision, bottleneck or repeated task where data can create the most useful change.</p></article>
-          <article><span>02</span><h3>Prove the path</h3><p>Build the smallest credible solution, test it against reality and measure whether it deserves to scale.</p></article>
-          <article><span>03</span><h3>Automate & transfer</h3><p>Make the winning path reliable, observable and understandable—then put it in your team’s hands.</p></article>
+          <article v-for="(step, index) in c.process.steps" :key="step.title">
+            <span>{{ String(index + 1).padStart(2, '0') }}</span>
+            <h3>{{ step.title }}</h3>
+            <p>{{ step.text }}</p>
+          </article>
         </div>
       </div>
     </section>
 
+    <section class="section wrap" aria-labelledby="engagement-title">
+      <div class="section-heading split-heading">
+        <div><p class="eyebrow">{{ c.engagement.eyebrow }}</p><h2 id="engagement-title">{{ c.engagement.title }}</h2></div>
+        <p>{{ c.engagement.copy }}</p>
+      </div>
+      <div class="principles-grid">
+        <article v-for="(item, index) in c.engagement.items" :key="item.title">
+          <span>{{ String(index + 1).padStart(2, '0') }}</span>
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.text }}</p>
+        </article>
+      </div>
+    </section>
+
     <section class="inline-cta wrap">
-      <div><p class="eyebrow">Not sure where to begin?</p><h2>Bring the messy problem.</h2></div>
-      <RouterLink to="/contact" class="button button-primary">Book an initial call <ArrowIcon /></RouterLink>
+      <div><p class="eyebrow">{{ c.cta.eyebrow }}</p><h2>{{ c.cta.title }}</h2></div>
+      <RouterLink :to="path('contact')" class="button button-primary">{{ c.cta.button }} <ArrowIcon /></RouterLink>
     </section>
   </div>
 </template>
+
+<style scoped>
+.service-detail .service-audience {
+  margin-top: 18px;
+}
+
+.service-audience strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.service-proof-label {
+  margin-top: 28px;
+}
+
+.service-deliverables .text-link {
+  font-size: 14px;
+}
+</style>

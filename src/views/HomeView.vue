@@ -1,32 +1,16 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
-import { RouterLink, useRouter } from 'vue-router'
+import { RouterLink } from 'vue-router'
 import ArrowIcon from '../components/ArrowIcon.vue'
 import SystemIcon from '../components/SystemIcon.vue'
-import { projects, services } from '../data'
+import homeContent from '../content/home'
+import dataContent from '../content/data'
+import { CALENDLY_URL } from '../content/site'
+import { useContent, useLocale } from '../i18n'
 
-const router = useRouter()
-
-function openChat() {
-  const bubble = document.getElementById('_cw_b') as HTMLButtonElement | null
-  if (bubble) {
-    bubble.click()
-    return
-  }
-
-  let attempts = 0
-  const poll = globalThis.setInterval(() => {
-    attempts += 1
-    const lateBubble = document.getElementById('_cw_b') as HTMLButtonElement | null
-    if (lateBubble) {
-      globalThis.clearInterval(poll)
-      lateBubble.click()
-    } else if (attempts >= 25) {
-      globalThis.clearInterval(poll)
-      router.push('/contact')
-    }
-  }, 200)
-}
+const { path } = useLocale()
+const c = useContent(homeContent)
+const data = useContent(dataContent)
 
 const HOURLY_RATE = 120
 const BASELINE_EMPLOYEE_HOURS = 100
@@ -50,17 +34,23 @@ const chartX = computed(() => 24 + efficiencyProgress.value * 252)
 const chartY = computed(() => 25 + (1 - Math.pow(1 - efficiencyProgress.value, 2.25)) * 96)
 const chartPointLeft = computed(() => `${chartX.value / 3}%`)
 const chartPointTop = computed(() => `${chartY.value / 1.45}%`)
-const costMilestones = [
-  { label: 'Automate intake', progress: 0.28, left: '29%', top: '22%', alignEnd: false },
-  { label: 'Streamline handoffs', progress: 0.55, left: '54%', top: '55%', alignEnd: false },
-  { label: 'Right-size systems', progress: 0.78, left: '77%', top: '76%', alignEnd: true },
+const milestonePositions = [
+  { progress: 0.28, left: '29%', top: '22%', alignEnd: false },
+  { progress: 0.55, left: '54%', top: '55%', alignEnd: false },
+  { progress: 0.78, left: '77%', top: '76%', alignEnd: true },
 ]
-const connectedSystems = [
-  { label: 'AI', icon: 'ai' },
-  { label: 'Data', icon: 'database' },
-  { label: 'Cloud', icon: 'cloud' },
-  { label: 'CI/CD', icon: 'cicd' },
-] as const
+const costMilestones = computed(() =>
+  milestonePositions.map((position, index) => ({ ...position, label: c.value.visual.milestones[index] })),
+)
+const connectedSystems = computed(() => {
+  const labels = c.value.visual.systems
+  return [
+    { label: labels.ai, icon: 'ai' },
+    { label: labels.data, icon: 'database' },
+    { label: labels.cloud, icon: 'cloud' },
+    { label: labels.cicd, icon: 'cicd' },
+  ] as const
+})
 
 const euros = new Intl.NumberFormat('de-DE', {
   style: 'currency',
@@ -93,41 +83,35 @@ onBeforeUnmount(() => globalThis.cancelAnimationFrame(animationFrame))
   <div>
     <section class="hero wrap">
       <div class="hero-copy">
-        <p class="eyebrow"><span class="status-dot" /> Data Science & AI Transformation</p>
-        <h1>Less complexity.<br /><em>More intelligence.</em></h1>
-        <p class="hero-lead">
-          With 15 years in machine learning and AI transformation, I design production-grade
-          systems that turn complex data into faster, safer decisions.
-        </p>
+        <p class="eyebrow"><span class="status-dot" /> {{ c.hero.eyebrow }}</p>
+        <h1>{{ c.hero.title[0] }}<br /><em>{{ c.hero.title[1] }}</em></h1>
+        <p class="hero-lead">{{ c.hero.lead }}</p>
         <div class="button-row">
-          <button type="button" class="button button-primary" @click="openChat">Start a conversation <ArrowIcon /></button>
-          <RouterLink to="/work" class="text-link">Explore selected work <ArrowIcon /></RouterLink>
+          <a :href="CALENDLY_URL" target="_blank" rel="noopener" class="button button-primary">{{ c.hero.primaryCta }} <ArrowIcon /></a>
+          <RouterLink :to="path('work')" class="text-link">{{ c.hero.secondaryCta }} <ArrowIcon /></RouterLink>
         </div>
       </div>
-      <div
-        class="hero-visual cost-visual"
-        aria-label="Illustrative project resource visualization: employee and system costs fall from 15,000 euros to 5,400 euros as automation and lean processes improve."
-      >
+      <div class="hero-visual cost-visual" :aria-label="c.visual.aria">
         <div class="visual-head">
-          <span>Project cost efficiency</span><span>LIVE <i /></span>
+          <span>{{ c.visual.head }}</span><span>{{ c.visual.badge }} <i /></span>
         </div>
         <div class="cost-stage">
           <div class="cost-kpi">
-            <span>Total project resource cost</span>
+            <span>{{ c.visual.kpiLabel }}</span>
             <strong>{{ euros.format(projectCost) }}</strong>
             <small>
               <b>−{{ reduction }}%</b>
-              employees + systems
+              {{ c.visual.kpiNote }}
             </small>
           </div>
 
           <div class="cost-chart" aria-hidden="true">
-            <div class="chart-label chart-label-start"><span>Before</span><b>{{ euros.format(baselineProjectCost) }}</b></div>
-            <div class="chart-label chart-label-end"><span>Optimized</span><b>{{ euros.format(5400) }}</b></div>
+            <div class="chart-label chart-label-start"><span>{{ c.visual.before }}</span><b>{{ euros.format(baselineProjectCost) }}</b></div>
+            <div class="chart-label chart-label-end"><span>{{ c.visual.optimized }}</span><b>{{ euros.format(5400) }}</b></div>
             <div class="system-stack">
-              <span>Connected systems</span>
+              <span>{{ c.visual.connectedSystems }}</span>
               <div>
-                <span v-for="system in connectedSystems" :key="system.label">
+                <span v-for="system in connectedSystems" :key="system.icon">
                   <SystemIcon :name="system.icon" />
                   <small>{{ system.label }}</small>
                 </span>
@@ -135,7 +119,7 @@ onBeforeUnmount(() => globalThis.cancelAnimationFrame(animationFrame))
             </div>
             <div
               v-for="milestone in costMilestones"
-              :key="milestone.label"
+              :key="milestone.progress"
               class="cost-milestone"
               :class="{ reached: efficiencyProgress >= milestone.progress, 'cost-milestone-end': milestone.alignEnd }"
               :style="{ left: milestone.left, top: milestone.top }"
@@ -159,46 +143,38 @@ onBeforeUnmount(() => globalThis.cancelAnimationFrame(animationFrame))
 
           <div class="efficiency-controls">
             <div class="efficiency-row">
-              <div><span>Employees · {{ employeeHours.toFixed(0) }} h</span><b>{{ euros.format(employeeCost) }}</b></div>
+              <div><span>{{ c.visual.employees }} · {{ employeeHours.toFixed(0) }} {{ c.visual.hours }}</span><b>{{ euros.format(employeeCost) }}</b></div>
               <i><span :style="{ width: `${employeeHours}%` }" /></i>
             </div>
             <div class="efficiency-row">
-              <div><span>System resources</span><b>{{ euros.format(systemCost) }}</b></div>
+              <div><span>{{ c.visual.systemResources }}</span><b>{{ euros.format(systemCost) }}</b></div>
               <i><span :style="{ width: `${(systemCost / BASELINE_SYSTEM_COST) * 100}%` }" /></i>
             </div>
           </div>
 
           <div class="saving-card">
             <div class="saving-rates">
-              <span>Automation <b>{{ automation }}%</b></span>
-              <span>Lean <b>{{ leanProcess }}%</b></span>
+              <span>{{ c.visual.automation }} <b>{{ automation }}%</b></span>
+              <span>{{ c.visual.lean }} <b>{{ leanProcess }}%</b></span>
             </div>
-            <strong>{{ euros.format(projectSaving) }}<small>project saving</small></strong>
+            <strong>{{ euros.format(projectSaving) }}<small>{{ c.visual.saving }}</small></strong>
           </div>
         </div>
-        <div class="visual-foot"><span>Employee resources</span><span>System resources</span><span>Example scenario</span></div>
+        <div class="visual-foot"><span v-for="label in c.visual.foot" :key="label">{{ label }}</span></div>
       </div>
       <div class="hero-proof">
-        <span>15 years’ experience</span>
-        <span>PhD-trained thinking</span>
-        <span>Production-grade delivery</span>
-        <span>Team leadership</span>
+        <span v-for="item in c.hero.proof" :key="item">{{ item }}</span>
       </div>
     </section>
 
     <section class="capability-strip" aria-labelledby="capability-strip-title">
       <div class="wrap capability-strip-inner">
         <div>
-          <p class="eyebrow">Core capabilities</p>
-          <h2 id="capability-strip-title">Senior expertise across the AI lifecycle.</h2>
+          <p class="eyebrow">{{ c.capabilities.eyebrow }}</p>
+          <h2 id="capability-strip-title">{{ c.capabilities.title }}</h2>
         </div>
         <ul>
-          <li><span>01</span>AI strategy</li>
-          <li><span>02</span>Machine learning</li>
-          <li><span>03</span>Data engineering</li>
-          <li><span>04</span>LLM systems</li>
-          <li><span>05</span>MLOps</li>
-          <li><span>06</span>Model governance</li>
+          <li v-for="(item, index) in c.capabilities.items" :key="item"><span>{{ String(index + 1).padStart(2, '0') }}</span>{{ item }}</li>
         </ul>
       </div>
     </section>
@@ -206,13 +182,13 @@ onBeforeUnmount(() => globalThis.cancelAnimationFrame(animationFrame))
     <section class="section wrap">
       <div class="section-heading split-heading">
         <div>
-          <p class="eyebrow">What I do</p>
-          <h2>From difficult data<br />to simple decisions.</h2>
+          <p class="eyebrow">{{ c.services.eyebrow }}</p>
+          <h2>{{ c.services.title[0] }}<br />{{ c.services.title[1] }}</h2>
         </div>
-        <p>I work across strategy, engineering, machine learning and governance—one accountable partner from first question to reliable production system.</p>
+        <p>{{ c.services.copy }}</p>
       </div>
       <div class="service-list">
-        <RouterLink v-for="service in services" :key="service.number" to="/services" class="service-row">
+        <RouterLink v-for="service in data.services" :key="service.number" :to="path('services')" class="service-row">
           <span>{{ service.number }}</span>
           <h3>{{ service.title }}</h3>
           <p>{{ service.outcome }}</p>
@@ -224,57 +200,57 @@ onBeforeUnmount(() => globalThis.cancelAnimationFrame(animationFrame))
     <section class="approach-section">
       <div class="wrap approach-grid">
         <div class="approach-graphic">
-          <div class="metric-card metric-main"><span>Operational load</span><strong>−64%</strong><small>after automation</small></div>
-          <div class="metric-card metric-side"><span>Useful output</span><strong>↑</strong></div>
+          <div class="metric-card metric-main">
+            <span>{{ c.approach.metricLabel }}</span><strong>−64%</strong><small>{{ c.approach.metricNote }}</small>
+            <small>({{ c.approach.metricExample }})</small>
+          </div>
+          <div class="metric-card metric-side"><span>{{ c.approach.sideLabel }}</span><strong>↑</strong></div>
           <div class="chart-lines"><i /><i /><i /><i /><i /><b /></div>
         </div>
         <div class="approach-copy">
-          <p class="eyebrow">The lean principle</p>
-          <h2>The best system is the smallest one that solves the problem.</h2>
-          <p>
-            More infrastructure does not automatically mean more capability. I begin with the decision you need to improve,
-            then work backwards—automating the repeatable, measuring the useful and removing everything else.
-          </p>
+          <p class="eyebrow">{{ c.approach.eyebrow }}</p>
+          <h2>{{ c.approach.title }}</h2>
+          <p>{{ c.approach.copy }}</p>
           <ul class="check-list">
-            <li><span>01</span> Prove value before adding scale</li>
-            <li><span>02</span> Automate operations, not accountability</li>
-            <li><span>03</span> Build for your team to own</li>
+            <li v-for="(point, index) in c.approach.points" :key="point"><span>{{ String(index + 1).padStart(2, '0') }}</span> {{ point }}</li>
           </ul>
-          <RouterLink to="/about" class="text-link">How I work <ArrowIcon /></RouterLink>
+          <RouterLink :to="path('about')" class="text-link">{{ c.approach.link }} <ArrowIcon /></RouterLink>
         </div>
       </div>
     </section>
 
     <section class="section wrap">
       <div class="section-heading">
-        <p class="eyebrow">Selected work</p>
-        <h2>Experience, applied.</h2>
+        <p class="eyebrow">{{ c.work.eyebrow }}</p>
+        <h2>{{ c.work.title }}</h2>
       </div>
       <div class="project-grid project-grid-home">
-        <article v-for="project in projects.slice(0, 2)" :key="project.sector" class="project-card">
-          <RouterLink
-            :to="{ path: '/work', hash: `#${project.id}` }"
-            class="project-image"
-            :aria-label="`View ${project.title} project`"
-          >
-            <img :src="project.image" :alt="`${project.sector} project`" />
+        <article v-for="(project, index) in data.projects.slice(0, 2)" :key="project.id" class="project-card">
+          <RouterLink :to="path('work', project.id)" class="project-image" :aria-label="c.work.viewProject(project.title)">
+            <img
+              :src="project.image"
+              :alt="c.work.imageAlt(project.sector)"
+              :width="project.imageSize.width"
+              :height="project.imageSize.height"
+              loading="lazy"
+            />
           </RouterLink>
-          <div class="project-meta"><span>{{ project.sector }}</span><span>Case {{ String(projects.indexOf(project) + 1).padStart(2, '0') }}</span></div>
+          <div class="project-meta"><span>{{ project.sector }}</span><span>{{ c.work.case }} {{ String(index + 1).padStart(2, '0') }}</span></div>
           <h3>{{ project.title }}</h3>
           <p>{{ project.text }}</p>
         </article>
       </div>
       <div class="project-actions">
-        <RouterLink to="/work" class="button button-outline">View all work <ArrowIcon /></RouterLink>
-        <RouterLink to="/case-study" class="text-link">Explore the public case studies <ArrowIcon /></RouterLink>
+        <RouterLink :to="path('work')" class="button button-outline">{{ c.work.viewAll }} <ArrowIcon /></RouterLink>
+        <RouterLink :to="path('case-study')" class="text-link">{{ c.work.caseStudies }} <ArrowIcon /></RouterLink>
       </div>
     </section>
 
     <section class="cta-band">
       <div class="wrap">
-        <p class="eyebrow">Have a data problem?</p>
-        <h2>Let’s make it<br /><em>simpler.</em></h2>
-        <button type="button" class="round-link" aria-label="Start a conversation" @click="openChat"><ArrowIcon /></button>
+        <p class="eyebrow">{{ c.cta.eyebrow }}</p>
+        <h2>{{ c.cta.title }}<br /><em>{{ c.cta.accent }}</em></h2>
+        <a :href="CALENDLY_URL" target="_blank" rel="noopener" class="round-link" :aria-label="c.cta.aria"><ArrowIcon /></a>
       </div>
     </section>
   </div>

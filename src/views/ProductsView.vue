@@ -1,88 +1,27 @@
 <script setup lang="ts">
 import PageIntro from '../components/PageIntro.vue'
-import knotbaseImage from '../assets/img/products/knotbase.webp'
-import helderbergImage from '../assets/img/products/helderberg-remote.webp'
-import bookImage from '../assets/img/products/book.avif'
+import productsContent from '../content/products'
+import { useContent } from '../i18n'
 
-const products = [
-  {
-    number: '01',
-    label: 'AI product',
-    name: 'Knotbase',
-    domain: 'knotbase.io',
-    tagline: 'Answer more questions. Win more customers.',
-    description:
-      'Knotbase turns the knowledge already on a company’s website into an AI assistant that answers visitors and helps generate leads around the clock. It’s a self-directed build, run outside client engagements, applying the same practical approach to retrieval and deployment I bring to production AI work.',
-    highlights: ['Website knowledge base as the source of truth', 'Conversational lead capture', 'No technical setup required'],
-    image: knotbaseImage,
-    imageAlt: 'Knotbase.io homepage showing an AI chat assistant answering a customer question',
-    url: 'https://knotbase.io/?utm_source=datenwissenschaften&utm_medium=referral&utm_campaign=products',
-  },
-  {
-    number: '02',
-    label: 'Local community',
-    name: 'Helderberg Remote',
-    domain: 'helderbergremote.com',
-    tagline: 'Work remotely. Connect locally.',
-    description:
-      'A community for remote workers, digital nomads, freelancers and founders around Somerset West, Strand, Gordon’s Bay and Stellenbosch—grown from the same Helderberg base as my South African location. Meetups and a WhatsApp community turn remote work into something less solitary.',
-    highlights: ['WhatsApp community', 'Regular local meetups', 'Somerset West · Strand · Gordon’s Bay · Stellenbosch'],
-    image: helderbergImage,
-    imageAlt: 'Helderberg Remote homepage with the community logo and a call to join via WhatsApp',
-    url: 'https://www.helderbergremote.com/?utm_source=datenwissenschaften&utm_medium=referral&utm_campaign=products',
-  },
-  {
-    number: '03',
-    label: 'Book',
-    name: 'From Data Scientist to AI Strategist',
-    domain: 'amazon.com',
-    tagline: 'From execution to strategic ownership.',
-    description:
-      'A practitioner’s guide to the shift AI agents are forcing on data science careers—from producing artifacts to owning the judgment, governance and strategic decisions around them. Written by Dr. Martin Franke, it lays out a concrete path toward production credibility, executive communication and team leadership, closing with a 90-day plan to start the transition now.',
-    highlights: ['Five-exposure diagnostic for production readiness', 'Governance toolkit: feature registries, audits, fairness', 'A 90-day plan to start the transition'],
-    contain: true,
-    image: bookImage,
-    imageAlt: 'Cover of "From Data Scientist to AI Strategist" by Dr. Martin Franke',
-    url: 'https://www.amazon.com/Data-Scientist-AI-Strategist-Future-Proof-ebook/dp/B0H4WWDQ69?utm_source=datenwissenschaften&utm_medium=referral&utm_campaign=products',
-  },
-  {
-    number: '04',
-    label: 'Smart home AI',
-    name: 'Sitari.life',
-    domain: 'sitari.life',
-    tagline: 'Smart homes. Shared savings.',
-    description:
-      'An early-stage concept for AI-driven home automation that helps local communities—starting near the Sitari estate by my South African base—monitor and optimise shared resources. The goal is straightforward: less gas, water and electricity wasted, without residents having to think about it.',
-    highlights: ['Water, gas & electricity monitoring', 'AI-driven usage optimisation', 'Built for local community estates'],
-    placeholder: true,
-  },
-]
+const c = useContent(productsContent)
 </script>
 
 <template>
   <div>
-    <PageIntro
-      title="Beyond client work,"
-      accent="a few things I build myself."
-      copy="Alongside consulting engagements, I run a small set of independent ventures—products shaped by the same data and AI practice, built and operated on my own time."
-    >
-      <template #eyebrow>Side projects</template>
+    <PageIntro :title="c.title" :accent="c.accent" :copy="c.copy">
+      <template #eyebrow>{{ c.eyebrow }}</template>
     </PageIntro>
 
     <section class="products-opening wrap" aria-labelledby="products-opening-title">
-      <p class="eyebrow">Independent ventures · Live and in development</p>
+      <p class="eyebrow">{{ c.opening.eyebrow }}</p>
       <div>
-        <h2 id="products-opening-title">Practice applied to my own ideas.</h2>
-        <p>
-          These aren’t client deliverables—they’re products I build and run myself, some already
-          live, some still taking shape, all proof that the same thinking behind my consulting work
-          holds up outside it too.
-        </p>
+        <h2 id="products-opening-title">{{ c.opening.title }}</h2>
+        <p>{{ c.opening.copy }}</p>
       </div>
     </section>
 
-    <section class="products-list wrap" aria-label="My products">
-      <article v-for="product in products" :key="product.name" class="product-card">
+    <section class="products-list wrap" :aria-label="c.listLabel">
+      <article v-for="product in c.products" :key="product.name" class="product-card">
         <div class="product-copy">
           <span class="product-number">{{ product.number }}</span>
           <p class="eyebrow">{{ product.label }}</p>
@@ -90,16 +29,16 @@ const products = [
           <p class="product-tagline">{{ product.tagline }}</p>
           <p class="product-status">
             <span class="status-dot" :class="{ 'status-dot-pending': product.placeholder }" />
-            {{ product.placeholder ? 'In development' : 'Live' }}
+            {{ product.placeholder ? c.statusPending : c.statusLive }}
           </p>
           <ul class="product-highlights">
             <li v-for="highlight in product.highlights" :key="highlight">{{ highlight }}</li>
           </ul>
           <p class="product-description">{{ product.description }}</p>
           <a v-if="!product.placeholder" :href="product.url" target="_blank" rel="noopener noreferrer">
-            Visit {{ product.domain }} <span aria-hidden="true">↗</span>
+            {{ c.visit(product.domain) }} <span aria-hidden="true">↗</span>
           </a>
-          <span v-else class="product-pending-note">Launching soon</span>
+          <span v-else class="product-pending-note">{{ c.launchingSoon }}</span>
         </div>
 
         <div class="product-media">
@@ -110,7 +49,13 @@ const products = [
             </div>
             <div v-if="product.contain" class="amazon-mock">
               <div class="amazon-mock-cover">
-                <img :src="product.image" :alt="product.imageAlt" loading="lazy" />
+                <img
+                  :src="product.image"
+                  :alt="product.imageAlt"
+                  :width="product.imageSize?.width"
+                  :height="product.imageSize?.height"
+                  loading="lazy"
+                />
               </div>
               <div class="amazon-mock-details">
                 <span class="amazon-mock-stars" aria-hidden="true">★★★★★</span>
@@ -119,11 +64,18 @@ const products = [
                 <span class="amazon-mock-line" />
                 <span class="amazon-mock-line" />
                 <span class="amazon-mock-line short" />
-                <a class="amazon-mock-cta" :href="product.url" target="_blank" rel="noopener noreferrer">Buy now</a>
-                <span class="amazon-mock-cta secondary" aria-hidden="true">Add to cart</span>
+                <a class="amazon-mock-cta" :href="product.url" target="_blank" rel="noopener noreferrer">{{ c.buyNow }}</a>
+                <span class="amazon-mock-cta secondary" aria-hidden="true">{{ c.addToCart }}</span>
               </div>
             </div>
-            <img v-else-if="!product.placeholder" :src="product.image" :alt="product.imageAlt" loading="lazy" />
+            <img
+              v-else-if="!product.placeholder"
+              :src="product.image"
+              :alt="product.imageAlt"
+              :width="product.imageSize?.width"
+              :height="product.imageSize?.height"
+              loading="lazy"
+            />
             <div v-else class="placeholder-visual">
               <svg class="placeholder-icon" viewBox="0 0 64 64" aria-hidden="true">
                 <path d="M10 32 32 14l22 18" />
@@ -131,23 +83,23 @@ const products = [
                 <path d="M27 50V37h10v13" />
               </svg>
               <div class="placeholder-badges">
-                <span title="Water">
+                <span :title="c.resources.water">
                   <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M12 3.5c3.4 4.4 5.5 7.7 5.5 10.7a5.5 5.5 0 1 1-11 0c0-3 2.1-6.3 5.5-10.7Z" />
                   </svg>
                 </span>
-                <span title="Gas">
+                <span :title="c.resources.gas">
                   <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M12 2.5c.5 2.3-.8 3.4-1.6 4.8 1.5-.3 2.4-1.4 2.8-2.8 1.7 2 2.7 4.6 2.7 7a5.9 5.9 0 1 1-11.8 0C4.1 8 6.7 4.9 12 2.5Z" />
                   </svg>
                 </span>
-                <span title="Electricity">
+                <span :title="c.resources.electricity">
                   <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M13 2 4.5 13.5H10L9 21.5 18 10H12l1-8Z" />
                   </svg>
                 </span>
               </div>
-              <p class="placeholder-caption">Water · Gas · Electricity</p>
+              <p class="placeholder-caption">{{ c.resources.water }} · {{ c.resources.gas }} · {{ c.resources.electricity }}</p>
             </div>
           </figure>
         </div>

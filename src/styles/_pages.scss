@@ -258,3 +258,18 @@
 .cta-band.compact h2 {
   font-size: clamp(3.5rem, 7.5vw, 7.5rem);
 }
+
+.not-found-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 28px;
+}
+
+.not-found-links a {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.not-found-links a:hover {
+  color: var(--text);
+}

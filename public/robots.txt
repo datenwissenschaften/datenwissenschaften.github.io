@@ -1,0 +1,5 @@
+# All crawlers, including AI search and training crawlers, are welcome.
+User-agent: *
+Allow: /
+
+Sitemap: https://www.datenwissenschaften.com/sitemap.xml

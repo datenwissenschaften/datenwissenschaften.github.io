@@ -1,0 +1,71 @@
+import type { Localized } from '../i18n'
+
+const en = {
+  eyebrow: 'Selected work',
+  title: 'Proof lives in',
+  accent: 'working systems.',
+  copy: 'Selected engagements across industries where data science moved from technical possibility to practical value.',
+  imageAlt: (sector: string) => `${sector} data science work`,
+  outcome: 'Outcome',
+  cta: {
+    eyebrow: 'Your challenge could be next',
+    title: ['Turn uncertainty', 'into a system.'],
+    linkLabel: 'Get in touch',
+  },
+  tagDescriptions: {
+    'Azure Databricks': 'A Microsoft Azure lakehouse platform for collaborative data engineering, analytics and machine learning.',
+    PySpark: 'The Python API for Apache Spark, used here to process large automotive datasets across distributed systems.',
+    'Feature store': 'A managed layer for defining, sharing and serving consistent machine-learning features for training and inference.',
+    MLOps: 'Practices and automation for reproducibly deploying, monitoring and governing machine-learning systems.',
+    Keras: 'A high-level deep-learning API used to build and train neural networks.',
+    'scikit-learn': 'A Python library for classical machine learning, preprocessing, model selection and evaluation.',
+    Airflow: 'A workflow orchestrator for scheduling, monitoring and managing data pipelines as code.',
+    PostgreSQL: 'A robust open-source relational database used for secure, structured application and analytical data.',
+    'Health data': 'Sensitive biometric, behavioral and wellbeing information requiring strong privacy and security controls.',
+    Python: 'A general-purpose programming language widely used for data science, automation and production services.',
+    SparkSQL: 'Apache Spark’s module for querying and transforming structured data with SQL and DataFrame operations.',
+    Looker: 'A business-intelligence platform for governed data modelling, dashboards and self-service analytics.',
+    Matillion: 'A cloud data integration platform for building and operating extract, load and transform pipelines.',
+    'Churn prediction': 'Machine-learning models that estimate which users are likely to disengage or leave.',
+    'Learning to rank': 'Supervised machine learning that orders search results by their predicted relevance.',
+    'Apache Spark': 'A distributed processing engine for large-scale data engineering, analytics and machine learning.',
+    'Data migration': 'The controlled transfer and validation of data, schemas and workloads between systems.',
+    'KPI reporting': 'Consistent measurement and presentation of key performance indicators for operational decisions.',
+  } as Record<string, string>,
+}
+
+const de: typeof en = {
+  eyebrow: 'Ausgewählte Projekte',
+  title: 'Der Beweis steckt in',
+  accent: 'laufenden Systemen.',
+  copy: 'Ausgewählte Projekte aus verschiedenen Branchen, in denen Data Science den Schritt von der technischen Möglichkeit zum praktischen Nutzen geschafft hat.',
+  imageAlt: (sector: string) => `Data-Science-Projekt: ${sector}`,
+  outcome: 'Ergebnis',
+  cta: {
+    eyebrow: 'Ihre Herausforderung könnte die nächste sein',
+    title: ['Aus Unsicherheit', 'wird ein System.'],
+    linkLabel: 'Kontakt aufnehmen',
+  },
+  tagDescriptions: {
+    'Azure Databricks': 'Eine Lakehouse-Plattform auf Microsoft Azure für gemeinsames Data Engineering, Analytics und Machine Learning.',
+    PySpark: 'Die Python-Schnittstelle zu Apache Spark, hier eingesetzt, um große Fahrzeugdatensätze verteilt zu verarbeiten.',
+    'Feature Store': 'Eine zentrale Schicht, um Machine-Learning-Features einheitlich zu definieren, zu teilen und für Training und Inferenz bereitzustellen.',
+    MLOps: 'Praktiken und Automatisierung, um Machine-Learning-Systeme reproduzierbar auszurollen, zu überwachen und zu steuern.',
+    Keras: 'Eine High-Level-API für Deep Learning, mit der neuronale Netze aufgebaut und trainiert werden.',
+    'scikit-learn': 'Eine Python-Bibliothek für klassisches Machine Learning, Vorverarbeitung, Modellauswahl und Evaluation.',
+    Airflow: 'Ein Workflow-Orchestrator, mit dem Datenpipelines als Code geplant, überwacht und verwaltet werden.',
+    PostgreSQL: 'Eine robuste relationale Open-Source-Datenbank für sichere, strukturierte Anwendungs- und Analysedaten.',
+    Gesundheitsdaten: 'Sensible biometrische, verhaltens- und gesundheitsbezogene Daten, die strenge Datenschutz- und Sicherheitsmaßnahmen erfordern.',
+    Python: 'Eine universelle Programmiersprache, die in Data Science, Automatisierung und produktiven Services weit verbreitet ist.',
+    SparkSQL: 'Das Modul von Apache Spark, um strukturierte Daten mit SQL und DataFrame-Operationen abzufragen und zu transformieren.',
+    Looker: 'Eine Business-Intelligence-Plattform für kontrollierte Datenmodellierung, Dashboards und Self-Service-Analysen.',
+    Matillion: 'Eine Cloud-Plattform für Datenintegration, mit der sich Extract-, Load- und Transform-Pipelines aufbauen und betreiben lassen.',
+    'Churn-Prognose': 'Machine-Learning-Modelle, die abschätzen, welche Nutzer voraussichtlich abspringen oder kündigen.',
+    'Learning to Rank': 'Überwachtes Machine Learning, das Suchergebnisse nach ihrer vorhergesagten Relevanz sortiert.',
+    'Apache Spark': 'Eine verteilte Verarbeitungs-Engine für Data Engineering, Analytics und Machine Learning im großen Maßstab.',
+    Datenmigration: 'Die kontrollierte Übertragung und Validierung von Daten, Schemata und Workloads zwischen Systemen.',
+    'KPI-Reporting': 'Einheitliche Messung und Darstellung von Kennzahlen als Grundlage für operative Entscheidungen.',
+  },
+}
+
+export default { en, de } satisfies Localized<typeof en>

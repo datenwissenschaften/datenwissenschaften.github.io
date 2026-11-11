@@ -1,6 +1,9 @@
-import { createApp } from 'vue'
+import { ViteSSG } from 'vite-ssg'
+import '@fontsource-variable/dm-sans'
+import '@fontsource-variable/manrope'
 import App from './App.vue'
-import router from './router'
+import { routes, scrollBehavior } from './router'
 import './styles/index.scss'
 
-createApp(App).use(router).mount('#app')
+// Prerendered at build time (one HTML file per route), hydrated in the browser.
+export const createApp = ViteSSG(App, { routes, scrollBehavior })

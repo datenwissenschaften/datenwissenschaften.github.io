@@ -1,26 +1,36 @@
 <script setup lang="ts">
 import PageIntro from '../components/PageIntro.vue'
+import contactContent from '../content/contact'
+import { CALENDLY_URL, EMAIL } from '../content/site'
+import { useContent } from '../i18n'
+
+const c = useContent(contactContent)
+const [emailUser, emailDomain] = EMAIL.split('@')
 </script>
 
 <template>
   <div>
-    <PageIntro title="Let’s find the" accent="highest-leverage move." copy="Tell me what you are trying to improve, automate or understand. An initial conversation is direct, useful and free of sales theatre.">
-      <template #eyebrow>Start a project</template>
+    <PageIntro :title="c.intro.title" :accent="c.intro.accent" :copy="c.intro.copy">
+      <template #eyebrow>{{ c.intro.eyebrow }}</template>
     </PageIntro>
     <section class="wrap contact-grid">
       <div class="contact-primary">
-        <p class="eyebrow">Direct contact</p>
-        <a class="email-link" href="mailto:martin.franke@datenwissenschaften.com">martin.franke@<br />datenwissenschaften.com</a>
-        <p>Prefer a call? Choose a time that works for you.</p>
-        <a class="button button-primary" href="https://calendly.com/datenwissenschaften" target="_blank" rel="noopener">Open my calendar ↗</a>
+        <p class="eyebrow">{{ c.direct }}</p>
+        <a class="email-link" :href="`mailto:${EMAIL}`">{{ emailUser }}@<br />{{ emailDomain }}</a>
+        <p>{{ c.callPrompt }}</p>
+        <a class="button button-primary" :href="CALENDLY_URL" target="_blank" rel="noopener" :aria-label="c.calendarAria">{{ c.calendar }}</a>
       </div>
       <aside class="contact-aside">
-        <div><p class="eyebrow">A useful first message includes</p><ul><li>The decision or process you want to improve</li><li>What data and systems already exist</li><li>What a valuable outcome would look like</li><li>Your broad timing</li></ul></div>
-        <div><p class="eyebrow">Response</p><p>Usually within two business days.</p></div>
+        <div>
+          <p class="eyebrow">{{ c.firstMessage.title }}</p>
+          <ul><li v-for="item in c.firstMessage.items" :key="item">{{ item }}</li></ul>
+        </div>
+        <div><p class="eyebrow">{{ c.collaboration.title }}</p><p>{{ c.collaboration.text }}</p></div>
+        <div><p class="eyebrow">{{ c.response.title }}</p><p>{{ c.response.text }}</p></div>
       </aside>
     </section>
     <section class="contact-note wrap">
-      <span>Clear scope.</span><span>Senior attention.</span><span>Lean delivery.</span>
+      <span v-for="item in c.note" :key="item">{{ item }}</span>
     </section>
   </div>
 </template>

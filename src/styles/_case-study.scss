@@ -53,7 +53,7 @@
 
 .case-narrative .case-lead {
   color: var(--text);
-  font-family: 'Manrope', sans-serif;
+  font-family: 'Manrope Variable', 'Manrope', sans-serif;
   font-size: clamp(1.35rem, 2vw, 1.75rem);
   font-weight: 500;
   letter-spacing: -0.025em;
@@ -229,7 +229,7 @@
 
 .speedlab-system .stage-number {
   color: var(--accent);
-  font-family: 'Manrope', sans-serif;
+  font-family: 'Manrope Variable', 'Manrope', sans-serif;
   font-size: 12px;
   font-weight: 700;
 }
@@ -311,7 +311,7 @@
   position: relative;
   z-index: 2;
   margin-bottom: 7px;
-  font-family: 'Manrope', sans-serif;
+  font-family: 'Manrope Variable', 'Manrope', sans-serif;
   font-size: clamp(1.05rem, 1.6vw, 1.35rem);
 }
 
@@ -390,7 +390,7 @@
 
 .case-evidence-grid article > span {
   color: var(--accent);
-  font-family: 'Manrope', sans-serif;
+  font-family: 'Manrope Variable', 'Manrope', sans-serif;
   font-size: 1.5rem;
   font-weight: 600;
   letter-spacing: -0.045em;

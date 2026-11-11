@@ -1,64 +1,62 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import type { RouteRecordRaw, RouterScrollBehavior } from 'vue-router'
+import { locales, pages, type PageKey } from './i18n'
 import HomeView from './views/HomeView.vue'
 
-const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
-  scrollBehavior(to, _from, savedPosition) {
-    if (savedPosition) return savedPosition
-    if (to.hash) {
-      return new Promise((resolve) => {
-        let attempts = 0
+const views = {
+  home: HomeView,
+  services: () => import('./views/ServicesView.vue'),
+  work: () => import('./views/WorkView.vue'),
+  about: () => import('./views/AboutView.vue'),
+  contact: () => import('./views/ContactView.vue'),
+  'case-study': () => import('./views/CaseStudyView.vue'),
+  products: () => import('./views/ProductsView.vue'),
+  locations: () => import('./views/LocationsView.vue'),
+  imprint: () => import('./views/ImprintView.vue'),
+} satisfies Record<PageKey, unknown>
 
-        const resolveWhenReady = () => {
-          if (document.querySelector(to.hash)) {
-            // The target mounts when the out-in page transition begins. Wait for
-            // that entrance animation to finish so its transform cannot disrupt
-            // the final scroll position.
-            window.setTimeout(() => resolve({ el: to.hash, behavior: 'smooth' }), 230)
-            return
-          }
+const NotFoundView = () => import('./views/NotFoundView.vue')
 
-          attempts += 1
-          if (attempts < 120) {
-            window.requestAnimationFrame(resolveWhenReady)
-            return
-          }
+export const routes: RouteRecordRaw[] = [
+  ...(Object.keys(pages) as PageKey[]).flatMap((page) =>
+    locales.map((locale) => ({
+      path: pages[page][locale],
+      name: `${page}-${locale}`,
+      component: views[page],
+      meta: { page, locale },
+    })),
+  ),
+  // Prerendered to 404.html and served by nginx with a real 404 status.
+  { path: '/404', name: 'not-found', component: NotFoundView, meta: { locale: 'en' } },
+  { path: '/de/:pathMatch(.*)*', name: 'not-found-de', component: NotFoundView, meta: { locale: 'de' } },
+  { path: '/:pathMatch(.*)*', name: 'not-found-catch-all', component: NotFoundView, meta: { locale: 'en' } },
+]
 
-          resolve({ top: 0 })
+export const scrollBehavior: RouterScrollBehavior = (to, _from, savedPosition) => {
+  if (savedPosition) return savedPosition
+  if (to.hash) {
+    return new Promise((resolve) => {
+      let attempts = 0
+
+      const resolveWhenReady = () => {
+        if (document.querySelector(to.hash)) {
+          // The target mounts when the out-in page transition begins. Wait for
+          // that entrance animation to finish so its transform cannot disrupt
+          // the final scroll position.
+          window.setTimeout(() => resolve({ el: to.hash, behavior: 'smooth' }), 230)
+          return
         }
 
-        window.requestAnimationFrame(resolveWhenReady)
-      })
-    }
-    return { top: 0, behavior: 'smooth' }
-  },
-  routes: [
-    { path: '/', name: 'home', component: HomeView },
-    { path: '/services', name: 'services', component: () => import('./views/ServicesView.vue') },
-    { path: '/work', name: 'work', component: () => import('./views/WorkView.vue') },
-    { path: '/about', name: 'about', component: () => import('./views/AboutView.vue') },
-    { path: '/products', name: 'products', component: () => import('./views/ProductsView.vue') },
-    { path: '/locations', name: 'locations', component: () => import('./views/LocationsView.vue') },
-    { path: '/contact', name: 'contact', component: () => import('./views/ContactView.vue') },
-    { path: '/case-study', name: 'case-study', component: () => import('./views/CaseStudyView.vue') },
-    { path: '/imprint', name: 'imprint', component: () => import('./views/ImprintView.vue') },
-    { path: '/:pathMatch(.*)*', redirect: '/' },
-  ],
-})
+        attempts += 1
+        if (attempts < 120) {
+          window.requestAnimationFrame(resolveWhenReady)
+          return
+        }
 
-router.afterEach((to) => {
-  const labels: Record<string, string> = {
-    home: 'Data Science Consultant',
-    services: 'Services',
-    work: 'Selected Work',
-    'case-study': 'Public Case Studies',
-    about: 'About',
-    products: 'Products',
-    locations: 'Locations',
-    contact: 'Start a Project',
-    imprint: 'Imprint & Privacy',
+        resolve({ top: 0 })
+      }
+
+      window.requestAnimationFrame(resolveWhenReady)
+    })
   }
-  document.title = `${labels[String(to.name)] ?? 'Data Science Consultant'} — Dr. Franke Datenwissenschaften`
-})
-
-export default router
+  return { top: 0, behavior: 'smooth' }
+}

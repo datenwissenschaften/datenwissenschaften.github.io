@@ -1,19 +1,21 @@
-name: Deploy Vue app to GitHub Pages
+name: Deploy to Dokku
 
 on:
   push:
     branches:
       - main
+  pull_request:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
-  build-and-deploy:
+  check:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -21,26 +23,32 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
+          cache: npm
 
       - name: Install Dependencies
         run: npm ci
 
-      - name: Build Vue App
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
         run: npm run build
 
-      - name: Upload Artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist
-
   deploy:
-    needs: build-and-deploy
+    needs: check
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # Dokku builds the Dockerfile (prerendered site served by nginx) on the server.
+      - name: Push to Dokku
+        uses: dokku/github-action@v1.7.0
+        with:
+          git_remote_url: ssh://dokku@178.104.84.157:22/datenwissenschaften
+          ssh_private_key: ${{ secrets.DOKKU_SSH_PRIVATE_KEY }}
+          branch: main
