@@ -1,6 +1,6 @@
 # Dr. Franke Datenwissenschaften
 
-> Dr. Martin Franke is an independent Data Science & AI Consultant (doctorate in computer science, TU Dresden, 2016) with 15 years of experience in machine learning, AI strategy, data platforms and MLOps. His company, Dr. Franke Datenwissenschaften OÜ, is registered in Tallinn, Estonia; he works remotely from Saalfeld, Germany, for clients across Germany, the DACH region and Europe, in German and English.
+> Dr. Martin Franke is an independent Data Science & AI Consultant (Dr.-Ing. in computer science, TU Dresden, 2016) with 15 years of experience in machine learning, AI strategy, data platforms and MLOps. His company, Dr. Franke Datenwissenschaften OÜ, is registered in Tallinn, Estonia; he works remotely from Saalfeld, Germany, for clients across Germany, the DACH region and Europe, in German and English.
 
 The site is available in English (/en) and German (/de). The initial call is free and takes about 30 minutes.
 
@@ -28,6 +28,7 @@ The site is available in English (/en) and German (/de). The initial call is fre
 
 ## Elsewhere
 
+- [ORCID](https://orcid.org/0009-0008-3147-5822)
 - [LinkedIn](https://www.linkedin.com/in/datenwissenschaften/)
 - [GitHub](https://github.com/datenwissenschaften)
 - [Doctoral thesis (TU Dresden, 2016)](https://nbn-resolving.org/urn:nbn:de:bsz:14-qucosa-212279)

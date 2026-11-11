@@ -36,7 +36,7 @@ const projects = [
     id: 'automotive-ai',
     sector: 'Automotive',
     period: '2019–2026',
-    role: 'Lead AI Strategist & Lead Data Scientist',
+    role: 'Lead AI Strategist & Lead Data Scientist (freelance)',
     organisation: 'CARIAD SE · Cognizant Mobility GmbH',
     title: 'Automotive AI, from BUS data to decisions',
     text: 'Led the strategy and delivery of production ML systems for driver behavior, safety analytics, AD/ADAS, homologation and issue resolution. Unified CAN, LIN and FlexRay data on Azure Databricks and introduced an LLM-powered analytics layer for natural-language dataset discovery and PySpark generation.',
@@ -48,7 +48,7 @@ const projects = [
   {
     id: 'healthcare-coaching',
     sector: 'Healthcare',
-    period: '2018–2019',
+    period: '2018',
     role: 'Chief Technology Officer',
     organisation: 'BODYVISER GmbH',
     title: 'Personalised coaching for better wellbeing',
@@ -88,19 +88,25 @@ const projects = [
 
 const experience = [
   {
+    period: 'Since 2009',
+    role: 'Self-employed Data Science & AI Consultant',
+    organisation: 'Dr. Franke Datenwissenschaften · Freelance',
+    summary: 'Freelance data science and AI engineering, taking AI and data products from first idea to production for automotive, e-commerce and tech clients.',
+  },
+  {
     period: '2025–2026',
-    role: 'Lead AI Strategist',
+    role: 'Lead AI Strategist (freelance)',
     organisation: 'CARIAD SE · Automotive',
     summary: 'AI strategy, automotive BUS data, LLM-driven analytics and governed production agents on Azure Databricks.',
   },
   {
     period: '2019–2025',
-    role: 'Lead Data Scientist',
+    role: 'Lead Data Scientist (freelance)',
     organisation: 'Cognizant Mobility GmbH · Automotive',
     summary: 'Multi-terabyte ML and ETL platforms for Volkswagen Group brands, plus model governance and team mentoring.',
   },
   {
-    period: '2018–2019',
+    period: '2018',
     role: 'Chief Technology Officer',
     organisation: 'BODYVISER GmbH · Healthcare',
     summary: 'Personalised health coaching, risk modelling and secure data pipelines through company acquisition.',
@@ -118,7 +124,13 @@ const experience = [
     summary: 'Supervised search ranking and migration of a media data warehouse to Apache Spark.',
   },
   {
-    period: '2012–2016',
+    period: '2015',
+    role: 'Research Associate',
+    organisation: 'Universität Augsburg · at Fraunhofer',
+    summary: 'Continued research on machine learning for behaviour data, later the basis for BODYVISER’s health-risk models.',
+  },
+  {
+    period: '2012–2014',
     role: 'Research Associate & Lecturer',
     organisation: 'TU Dresden · Health & Behavior Analytics',
     summary: 'Sensor-fusion research using IoT, smartphone and social data to identify lifestyle anomalies and depression risk.',
@@ -158,7 +170,7 @@ const de: typeof en = {
     {
       ...projects[0],
       sector: 'Automobilindustrie',
-      role: 'Lead AI Strategist & Lead Data Scientist',
+      role: 'Lead AI Strategist & Lead Data Scientist (freiberuflich)',
       title: 'Automotive-KI: von Busdaten zu Entscheidungen',
       text: 'Verantwortung für Strategie und Umsetzung produktiver ML-Systeme für Fahrverhalten, Sicherheitsanalysen, AD/ADAS, Homologation und Fehleranalyse. CAN-, LIN- und FlexRay-Daten wurden auf Azure Databricks vereinheitlicht und um eine LLM-gestützte Analyseschicht ergänzt, mit der sich Datensätze in natürlicher Sprache finden und PySpark-Code generieren lässt.',
       result: 'In dieser Automotive-Analytics-Arbeit bei CARIAD und Cognizant Mobility (2019–2026) dauerten komplexe Engineering-Analysen Minuten statt Stunden. Die Plattform für Audi, Porsche und Volkswagen setzte sich wegen Codequalität, Zuverlässigkeit und Umsetzungsgeschwindigkeit gegen drei interne Alternativen durch – mit einer Governance nach DSGVO und NIST SP 800-53.',
@@ -194,19 +206,25 @@ const de: typeof en = {
   ],
   experience: [
     {
+      period: 'Seit 2009',
+      role: 'Selbstständiger Berater für Data Science & KI',
+      organisation: 'Dr. Franke Datenwissenschaften · Freiberuflich',
+      summary: 'Freiberufliche Data-Science- und KI-Entwicklung: KI- und Datenprodukte von der ersten Idee bis in den Produktivbetrieb für Kunden aus Automotive, E-Commerce und Tech.',
+    },
+    {
       period: '2025–2026',
-      role: 'Lead AI Strategist',
+      role: 'Lead AI Strategist (freiberuflich)',
       organisation: 'CARIAD SE · Automobilindustrie',
       summary: 'KI-Strategie, Fahrzeug-Busdaten, LLM-gestützte Analytik und kontrollierte KI-Agenten im Produktivbetrieb auf Azure Databricks.',
     },
     {
       period: '2019–2025',
-      role: 'Lead Data Scientist',
+      role: 'Lead Data Scientist (freiberuflich)',
       organisation: 'Cognizant Mobility GmbH · Automobilindustrie',
       summary: 'ML- und ETL-Plattformen im Multi-Terabyte-Bereich für Marken des Volkswagen Konzerns, dazu Model Governance und Mentoring im Team.',
     },
     {
-      period: '2018–2019',
+      period: '2018',
       role: 'Chief Technology Officer',
       organisation: 'BODYVISER GmbH · Gesundheitswesen',
       summary: 'Personalisiertes Gesundheitscoaching, Risikomodellierung und sichere Datenpipelines bis zur Übernahme des Unternehmens.',
@@ -224,7 +242,13 @@ const de: typeof en = {
       summary: 'Überwachtes Such-Ranking und Migration eines Medien-Data-Warehouse auf Apache Spark.',
     },
     {
-      period: '2012–2016',
+      period: '2015',
+      role: 'Wissenschaftlicher Mitarbeiter',
+      organisation: 'Universität Augsburg · am Fraunhofer',
+      summary: 'Fortsetzung der Forschung zu Machine Learning für Verhaltensdaten – später die Grundlage der Gesundheitsrisikomodelle von BODYVISER.',
+    },
+    {
+      period: '2012–2014',
       role: 'Wissenschaftlicher Mitarbeiter & Dozent',
       organisation: 'TU Dresden · Gesundheits- & Verhaltensanalytik',
       summary: 'Forschung zur Sensordatenfusion aus IoT-, Smartphone- und Social-Media-Daten, um Auffälligkeiten im Lebensstil und Depressionsrisiken zu erkennen.',

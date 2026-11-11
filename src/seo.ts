@@ -1,5 +1,5 @@
 import dataContent from './content/data'
-import { EMAIL, GITHUB_URL, LINKEDIN_URL, THESIS_URL } from './content/site'
+import { EMAIL, GITHUB_URL, LINKEDIN_URL, ORCID_URL, THESIS_URL } from './content/site'
 import { locales, pages, SITE_URL, type Locale, type Localized, type PageKey } from './i18n'
 
 interface PageMeta {
@@ -215,13 +215,14 @@ function structuredData(page: PageKey, locale: Locale) {
       '@id': `${SITE_URL}/#thesis`,
       author: { '@id': PERSON_ID },
       name: 'Wissensbasierte Tagesrhythmenerfassung und -auswertung in ubiquitären Umgebungen',
-      inSupportOf: 'Doctoral degree (Dr.)',
+      inSupportOf: 'Dr.-Ing. (Doctor of Engineering)',
       datePublished: '2016-11-02',
       inLanguage: 'de',
       url: THESIS_URL,
       sourceOrganization: { '@type': 'CollegeOrUniversity', name: 'Technische Universität Dresden' },
     },
-    sameAs: [LINKEDIN_URL, GITHUB_URL],
+    identifier: { '@type': 'PropertyValue', propertyID: 'ORCID', value: '0009-0008-3147-5822' },
+    sameAs: [ORCID_URL, LINKEDIN_URL, GITHUB_URL],
   }
 
   const website = {

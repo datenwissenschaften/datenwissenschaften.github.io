@@ -4,6 +4,7 @@ export const CALENDLY_URL = 'https://calendly.com/datenwissenschaften'
 export const EMAIL = 'martin.franke@datenwissenschaften.com'
 export const LINKEDIN_URL = 'https://www.linkedin.com/in/datenwissenschaften/'
 export const GITHUB_URL = 'https://github.com/datenwissenschaften'
+export const ORCID_URL = 'https://orcid.org/0009-0008-3147-5822'
 export const THESIS_URL = 'https://nbn-resolving.org/urn:nbn:de:bsz:14-qucosa-212279'
 
 const en = {

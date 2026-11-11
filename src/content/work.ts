@@ -4,7 +4,7 @@ const en = {
   eyebrow: 'Selected work',
   title: 'Proof lives in',
   accent: 'working systems.',
-  copy: 'Roles I have held—as an employee, CTO and technical lead—where data science moved from technical possibility to practical value. These were positions inside the organisations named, not consulting engagements for them as clients.',
+  copy: 'Freelance engagements through my own practice and earlier full-time roles as CTO and data scientist, where data science moved from technical possibility to practical value.',
   imageAlt: (sector: string) => `${sector} data science work`,
   outcome: 'Outcome',
   cta: {
@@ -38,7 +38,7 @@ const de: typeof en = {
   eyebrow: 'Ausgewählte Projekte',
   title: 'Der Beweis steckt in',
   accent: 'laufenden Systemen.',
-  copy: 'Positionen, die ich selbst innehatte – als Angestellter, CTO und in technischen Leitungsrollen –, in denen Data Science den Schritt von der technischen Möglichkeit zum praktischen Nutzen geschafft hat. Es handelt sich um Rollen in den genannten Unternehmen, nicht um Beratungsmandate für sie als Kunden.',
+  copy: 'Freiberufliche Projekte über meine eigene Praxis und frühere Festanstellungen als CTO und Data Scientist, in denen Data Science den Schritt von der technischen Möglichkeit zum praktischen Nutzen geschafft hat.',
   imageAlt: (sector: string) => `Data-Science-Projekt: ${sector}`,
   outcome: 'Ergebnis',
   cta: {
