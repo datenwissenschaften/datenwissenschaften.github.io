@@ -111,8 +111,7 @@ const en = {
     title: 'The paperwork, settled up front',
     copy: 'Clear contractual terms before any data is touched, so your legal and procurement teams can sign off quickly.',
     items: [
-      { title: 'Data processing agreement', text: 'I sign a DPA under GDPR Art. 28 whenever I process your personal data.' },
-      { title: 'Confidentiality', text: 'I sign NDAs before sensitive details are shared.' },
+      { title: 'Confidentiality & data protection', text: 'I sign an NDA before sensitive details are shared, and a DPA under GDPR Art. 28 whenever I process your personal data.' },
       { title: 'Your environment', text: 'I prefer to work inside your own systems and cloud accounts, so your data stays there.' },
       { title: 'EU AI Act', text: 'As part of model governance, I help assess and document AI systems for EU AI Act readiness.' },
       { title: 'Invoicing', text: 'Invoices in EUR from Dr. Franke Datenwissenschaften OÜ (Estonia), with VAT reverse charge for EU business clients.' },
@@ -265,8 +264,7 @@ const de: typeof en = {
     title: 'Formalitäten, vorab geklärt',
     copy: 'Klare Vertragsgrundlagen, bevor Daten ins Spiel kommen – damit Rechtsabteilung und Einkauf zügig zustimmen können.',
     items: [
-      { title: 'Auftragsverarbeitung', text: 'Verarbeite ich personenbezogene Daten für Sie, schließen wir einen AVV nach Art. 28 DSGVO.' },
-      { title: 'Vertraulichkeit', text: 'Eine Geheimhaltungsvereinbarung (NDA) unterzeichne ich, bevor sensible Details geteilt werden.' },
+      { title: 'Vertraulichkeit & Datenschutz', text: 'Vor dem Austausch sensibler Details unterzeichne ich eine Geheimhaltungsvereinbarung (NDA); verarbeite ich personenbezogene Daten für Sie, schließen wir einen AVV nach Art. 28 DSGVO.' },
       { title: 'Ihre Umgebung', text: 'Ich arbeite bevorzugt direkt in Ihren Systemen und Cloud-Konten – Ihre Daten bleiben dort.' },
       { title: 'EU AI Act', text: 'Im Rahmen der Model Governance unterstütze ich Sie dabei, KI-Systeme für den EU AI Act zu bewerten und zu dokumentieren.' },
       { title: 'Rechnungsstellung', text: 'Rechnungen in EUR über die Dr. Franke Datenwissenschaften OÜ (Estland), für Geschäftskunden in der EU im Reverse-Charge-Verfahren.' },
