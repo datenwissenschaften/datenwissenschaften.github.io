@@ -36,7 +36,7 @@ const projects = [
     id: 'automotive-ai',
     sector: 'Automotive',
     period: '2019–2026',
-    role: 'Lead AI Strategist & Lead Data Scientist (freelance)',
+    role: 'Lead AI Strategist & Lead Data Scientist',
     organisation: 'CARIAD SE · Cognizant Mobility GmbH',
     title: 'Automotive AI, from BUS data to decisions',
     text: 'Led the strategy and delivery of production ML systems for driver behavior, safety analytics, AD/ADAS, homologation and issue resolution. Unified CAN, LIN and FlexRay data on Azure Databricks and introduced an LLM-powered analytics layer for natural-language dataset discovery and PySpark generation.',
@@ -89,19 +89,19 @@ const projects = [
 const experience = [
   {
     period: 'Since 2009',
-    role: 'Self-employed Data Science & AI Consultant',
-    organisation: 'Dr. Franke Datenwissenschaften · Freelance',
-    summary: 'Freelance data science and AI engineering, taking AI and data products from first idea to production for automotive, e-commerce and tech clients.',
+    role: 'Data Science & AI Consultant',
+    organisation: 'Dr. Franke Datenwissenschaften',
+    summary: 'Data science and AI engineering, taking AI and data products from first idea to production for automotive, e-commerce and tech clients.',
   },
   {
     period: '2025–2026',
-    role: 'Lead AI Strategist (freelance)',
+    role: 'Lead AI Strategist',
     organisation: 'CARIAD SE · Automotive',
     summary: 'AI strategy, automotive BUS data, LLM-driven analytics and governed production agents on Azure Databricks.',
   },
   {
     period: '2019–2025',
-    role: 'Lead Data Scientist (freelance)',
+    role: 'Lead Data Scientist',
     organisation: 'Cognizant Mobility GmbH · Automotive',
     summary: 'Multi-terabyte ML and ETL platforms for Volkswagen Group brands, plus model governance and team mentoring.',
   },
@@ -170,7 +170,7 @@ const de: typeof en = {
     {
       ...projects[0],
       sector: 'Automobilindustrie',
-      role: 'Lead AI Strategist & Lead Data Scientist (freiberuflich)',
+      role: 'Lead AI Strategist & Lead Data Scientist',
       title: 'Automotive-KI: von Busdaten zu Entscheidungen',
       text: 'Verantwortung für Strategie und Umsetzung produktiver ML-Systeme für Fahrverhalten, Sicherheitsanalysen, AD/ADAS, Homologation und Fehleranalyse. CAN-, LIN- und FlexRay-Daten wurden auf Azure Databricks vereinheitlicht und um eine LLM-gestützte Analyseschicht ergänzt, mit der sich Datensätze in natürlicher Sprache finden und PySpark-Code generieren lässt.',
       result: 'In dieser Automotive-Analytics-Arbeit bei CARIAD und Cognizant Mobility (2019–2026) dauerten komplexe Engineering-Analysen Minuten statt Stunden. Die Plattform für Audi, Porsche und Volkswagen setzte sich wegen Codequalität, Zuverlässigkeit und Umsetzungsgeschwindigkeit gegen drei interne Alternativen durch – mit einer Governance nach DSGVO und NIST SP 800-53.',
@@ -207,19 +207,19 @@ const de: typeof en = {
   experience: [
     {
       period: 'Seit 2009',
-      role: 'Selbstständiger Berater für Data Science & KI',
-      organisation: 'Dr. Franke Datenwissenschaften · Freiberuflich',
-      summary: 'Freiberufliche Data-Science- und KI-Entwicklung: KI- und Datenprodukte von der ersten Idee bis in den Produktivbetrieb für Kunden aus Automotive, E-Commerce und Tech.',
+      role: 'Berater für Data Science & KI',
+      organisation: 'Dr. Franke Datenwissenschaften',
+      summary: 'Data-Science- und KI-Entwicklung: KI- und Datenprodukte von der ersten Idee bis in den Produktivbetrieb für Kunden aus Automotive, E-Commerce und Tech.',
     },
     {
       period: '2025–2026',
-      role: 'Lead AI Strategist (freiberuflich)',
+      role: 'Lead AI Strategist',
       organisation: 'CARIAD SE · Automobilindustrie',
       summary: 'KI-Strategie, Fahrzeug-Busdaten, LLM-gestützte Analytik und kontrollierte KI-Agenten im Produktivbetrieb auf Azure Databricks.',
     },
     {
       period: '2019–2025',
-      role: 'Lead Data Scientist (freiberuflich)',
+      role: 'Lead Data Scientist',
       organisation: 'Cognizant Mobility GmbH · Automobilindustrie',
       summary: 'ML- und ETL-Plattformen im Multi-Terabyte-Bereich für Marken des Volkswagen Konzerns, dazu Model Governance und Mentoring im Team.',
     },
