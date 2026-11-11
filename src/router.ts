@@ -10,7 +10,6 @@ const views = {
   contact: () => import('./views/ContactView.vue'),
   'case-study': () => import('./views/CaseStudyView.vue'),
   products: () => import('./views/ProductsView.vue'),
-  locations: () => import('./views/LocationsView.vue'),
   imprint: () => import('./views/ImprintView.vue'),
 } satisfies Record<PageKey, unknown>
 
@@ -25,8 +24,9 @@ export const routes: RouteRecordRaw[] = [
       meta: { page, locale },
     })),
   ),
-  // Prerendered to 404.html and served by nginx with a real 404 status.
+  // Prerendered to 404.html and de/404.html; nginx serves them with a real 404 status.
   { path: '/404', name: 'not-found', component: NotFoundView, meta: { locale: 'en' } },
+  { path: '/de/404', name: 'not-found-de-page', component: NotFoundView, meta: { locale: 'de' } },
   { path: '/de/:pathMatch(.*)*', name: 'not-found-de', component: NotFoundView, meta: { locale: 'de' } },
   { path: '/:pathMatch(.*)*', name: 'not-found-catch-all', component: NotFoundView, meta: { locale: 'en' } },
 ]

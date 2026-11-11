@@ -1,24 +1,30 @@
 # Dr. Franke Datenwissenschaften
 
-> Dr. Martin Franke is an independent data science and AI consultant (doctorate in computer science, TU Dresden) with 15 years of experience in machine learning, AI strategy, data platforms and MLOps. His company, Dr. Franke Datenwissenschaften OÜ, is registered in Tallinn, Estonia, with bases in Saalfeld (Thuringia, Germany) and Somerset West (South Africa). Working languages: German and English.
+> Dr. Martin Franke is an independent Data Science & AI Consultant (doctorate in computer science, TU Dresden, 2016) with 15 years of experience in machine learning, AI strategy, data platforms and MLOps. His company, Dr. Franke Datenwissenschaften OÜ, is registered in Tallinn, Estonia; he works remotely from Saalfeld, Germany, for clients across Germany, the DACH region and Europe, in German and English.
 
-The site is available in English and German (German pages under /de).
+The site is available in English (/en) and German (/de). The initial call is free and takes about 30 minutes.
 
-## Pages
+## English
 
-- [Services](https://www.datenwissenschaften.com/services): Data & AI strategy, applied machine learning, data platforms, MLOps & delivery
-- [Selected work](https://www.datenwissenschaften.com/work): Production ML and AI projects in automotive (CARIAD; Audi, Porsche, Volkswagen), healthcare, digital publishing and media (ProSiebenSat.1)
-- [About](https://www.datenwissenschaften.com/about): Background, doctorate, experience and toolkit
-- [Case studies](https://www.datenwissenschaften.com/case-study): Open-source repositories and Retro Speedlab, a live AI research lab combining search, reinforcement learning and agentic engineering
-- [Products](https://www.datenwissenschaften.com/products): Knotbase (AI website assistant), the book "From Data Scientist to AI Strategist", Helderberg Remote
-- [Locations](https://www.datenwissenschaften.com/locations): Tallinn, Saalfeld, Somerset West
-- [Contact](https://www.datenwissenschaften.com/contact): Email martin.franke@datenwissenschaften.com or book a call
+- [Home](https://www.datenwissenschaften.com/en): Overview, services and selected work
+- [Services](https://www.datenwissenschaften.com/en/services): Data & AI strategy, applied machine learning, data platforms, MLOps & delivery; how engagements work; contracts & compliance (DPA, NDA, EU invoicing)
+- [Selected work](https://www.datenwissenschaften.com/en/work): Roles in automotive (CARIAD, Cognizant Mobility), healthcare, digital publishing and media
+- [About](https://www.datenwissenschaften.com/en/about): Background, doctorate, experience and toolkit
+- [Case studies](https://www.datenwissenschaften.com/en/case-study): Open-source repositories and Retro Speedlab, a live AI research lab
+- [Products](https://www.datenwissenschaften.com/en/products): Knotbase (AI website assistant), the book "From Data Scientist to AI Strategist", the Helderberg Remote community and the Sitari.life concept
+- [Contact](https://www.datenwissenschaften.com/en/contact): Email martin.franke@datenwissenschaften.com or book a call
+- [Imprint & privacy](https://www.datenwissenschaften.com/en/imprint)
 
 ## Deutsch
 
-- [KI-Beratung & Data Science](https://www.datenwissenschaften.com/de)
+- [Startseite: KI-Beratung & Data Science](https://www.datenwissenschaften.com/de)
 - [Leistungen](https://www.datenwissenschaften.com/de/leistungen)
+- [Projekte](https://www.datenwissenschaften.com/de/projekte)
+- [Über mich](https://www.datenwissenschaften.com/de/ueber-mich)
+- [Fallstudien](https://www.datenwissenschaften.com/de/fallstudien)
+- [Produkte](https://www.datenwissenschaften.com/de/produkte)
 - [Kontakt](https://www.datenwissenschaften.com/de/kontakt)
+- [Impressum & Datenschutz](https://www.datenwissenschaften.com/de/impressum)
 
 ## Elsewhere
 

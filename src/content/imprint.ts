@@ -109,7 +109,7 @@ const en = {
       },
       {
         title: 'Cookies and local storage',
-        paragraphs: ['This website does not use analytics or advertising cookies. It uses local browser storage to remember the visitor’s light or dark theme preference. This preference remains on the visitor’s device and can be removed through the browser settings.'],
+        paragraphs: ['This website does not use analytics or advertising cookies. It uses local browser storage to remember the visitor’s light or dark theme preference. When a visitor uses the language switch, a single cookie (“lang”) stores the chosen language for one year so the homepage opens in that language. Both preferences remain on the visitor’s device and can be removed through the browser settings.'],
       },
       {
         title: 'Web analytics',
@@ -123,7 +123,6 @@ const en = {
         title: 'External services',
         paragraphs: [
           'The external scheduling link opens Calendly in a separate website; Calendly’s own privacy and cookie terms apply once that service is opened.',
-          'The Locations page embeds Google Maps to show our locations. Loading an embedded map may transmit technical information, including the visitor’s IP address, to Google. Google’s privacy and cookie terms apply to that service.',
         ],
       },
       {
@@ -245,7 +244,7 @@ const de: typeof en = {
       },
       {
         title: 'Cookies und lokaler Speicher',
-        paragraphs: ['Diese Website verwendet keine Analyse- oder Werbe-Cookies. Sie nutzt den lokalen Speicher des Browsers, um die Wahl zwischen hellem und dunklem Design zu speichern. Diese Einstellung verbleibt auf Ihrem Gerät und kann über die Browsereinstellungen gelöscht werden.'],
+        paragraphs: ['Diese Website verwendet keine Analyse- oder Werbe-Cookies. Sie nutzt den lokalen Speicher des Browsers, um die Wahl zwischen hellem und dunklem Design zu speichern. Wenn Sie die Sprachumschaltung verwenden, speichert ein einzelnes Cookie („lang“) die gewählte Sprache für ein Jahr, damit die Startseite in dieser Sprache öffnet. Beide Einstellungen verbleiben auf Ihrem Gerät und können über die Browsereinstellungen gelöscht werden.'],
       },
       {
         title: 'Webanalyse',
@@ -259,7 +258,6 @@ const de: typeof en = {
         title: 'Externe Dienste',
         paragraphs: [
           'Der externe Link zur Terminvereinbarung öffnet Calendly als separate Website; sobald Sie diesen Dienst aufrufen, gelten die Datenschutz- und Cookie-Bestimmungen von Calendly.',
-          'Die Seite „Standorte“ bindet Google Maps ein, um unsere Standorte zu zeigen. Beim Laden einer eingebetteten Karte können technische Informationen, einschließlich Ihrer IP-Adresse, an Google übermittelt werden. Für diesen Dienst gelten die Datenschutz- und Cookie-Bestimmungen von Google.',
         ],
       },
       {

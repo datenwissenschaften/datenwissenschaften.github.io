@@ -7,20 +7,23 @@ export const locales: Locale[] = ['en', 'de']
 
 export const SITE_URL = 'https://www.datenwissenschaften.com'
 
-// One entry per page; each locale gets its own, indexable URL.
+// One entry per page; each locale gets its own, indexable URL. The bare root `/`
+// is not a page: nginx redirects it to /en or /de (see nginx.conf).
 export const pages = {
-  home: { en: '/', de: '/de' },
-  services: { en: '/services', de: '/de/leistungen' },
-  work: { en: '/work', de: '/de/projekte' },
-  about: { en: '/about', de: '/de/ueber-mich' },
-  contact: { en: '/contact', de: '/de/kontakt' },
-  'case-study': { en: '/case-study', de: '/de/fallstudien' },
-  products: { en: '/products', de: '/de/produkte' },
-  locations: { en: '/locations', de: '/de/standorte' },
-  imprint: { en: '/imprint', de: '/de/impressum' },
+  home: { en: '/en', de: '/de' },
+  services: { en: '/en/services', de: '/de/leistungen' },
+  work: { en: '/en/work', de: '/de/projekte' },
+  about: { en: '/en/about', de: '/de/ueber-mich' },
+  contact: { en: '/en/contact', de: '/de/kontakt' },
+  'case-study': { en: '/en/case-study', de: '/de/fallstudien' },
+  products: { en: '/en/products', de: '/de/produkte' },
+  imprint: { en: '/en/imprint', de: '/de/impressum' },
 } as const
 
 export type PageKey = keyof typeof pages
+
+/** Remembers an explicit language choice so the root redirect respects it. */
+export const LANGUAGE_COOKIE = 'lang'
 
 export type Localized<T> = Record<Locale, T>
 

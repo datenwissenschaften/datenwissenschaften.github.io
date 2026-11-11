@@ -17,7 +17,6 @@ const en = {
     contact: 'Contact',
     caseStudy: 'Case studies',
     products: 'Products',
-    locations: 'Locations',
   },
   switchTheme: (target: string) => `Switch to ${target} mode`,
   themeNames: { dark: 'dark', light: 'light' },
@@ -30,7 +29,6 @@ const en = {
     email: 'Email',
     bookCall: 'Book a call',
     imprint: 'Imprint & privacy',
-    locations: 'Tallinn · Saalfeld · Somerset West',
   },
   notFound: {
     eyebrow: 'Error 404',
@@ -52,7 +50,6 @@ const de: typeof en = {
     contact: 'Kontakt',
     caseStudy: 'Fallstudien',
     products: 'Produkte',
-    locations: 'Standorte',
   },
   switchTheme: (target: string) => `Zum ${target} Modus wechseln`,
   themeNames: { dark: 'dunklen', light: 'hellen' },
@@ -65,7 +62,6 @@ const de: typeof en = {
     email: 'E-Mail',
     bookCall: 'Termin vereinbaren',
     imprint: 'Impressum & Datenschutz',
-    locations: 'Tallinn · Saalfeld · Somerset West',
   },
   notFound: {
     eyebrow: 'Fehler 404',

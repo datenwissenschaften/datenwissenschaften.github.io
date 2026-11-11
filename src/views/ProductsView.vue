@@ -58,7 +58,6 @@ const c = useContent(productsContent)
                 />
               </div>
               <div class="amazon-mock-details">
-                <span class="amazon-mock-stars" aria-hidden="true">★★★★★</span>
                 <span class="amazon-mock-line title-line" />
                 <span class="amazon-mock-line title-line short" />
                 <span class="amazon-mock-line" />

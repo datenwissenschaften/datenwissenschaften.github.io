@@ -71,6 +71,33 @@ const data = useContent(dataContent)
       </div>
     </section>
 
+    <section class="principles-section" aria-labelledby="compliance-title">
+      <div class="wrap">
+        <div class="section-heading split-heading">
+          <div><p class="eyebrow">{{ c.compliance.eyebrow }}</p><h2 id="compliance-title">{{ c.compliance.title }}</h2></div>
+          <p>{{ c.compliance.copy }}</p>
+        </div>
+        <ul class="compliance-list">
+          <li v-for="item in c.compliance.items" :key="item.title">
+            <strong>{{ item.title }}</strong>
+            <span>{{ item.text }}</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section wrap" aria-labelledby="faq-title">
+      <div class="section-heading">
+        <p class="eyebrow">{{ c.faq.eyebrow }}</p><h2 id="faq-title">{{ c.faq.title }}</h2>
+      </div>
+      <ol class="legal-principles">
+        <li v-for="item in c.faq.items" :key="item.question">
+          <h3>{{ item.question }}</h3>
+          <p>{{ item.answer }}</p>
+        </li>
+      </ol>
+    </section>
+
     <section class="inline-cta wrap">
       <div><p class="eyebrow">{{ c.cta.eyebrow }}</p><h2>{{ c.cta.title }}</h2></div>
       <RouterLink :to="path('contact')" class="button button-primary">{{ c.cta.button }} <ArrowIcon /></RouterLink>
@@ -94,5 +121,38 @@ const data = useContent(dataContent)
 
 .service-deliverables .text-link {
   font-size: 14px;
+}
+
+.compliance-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 40px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+
+.compliance-list li {
+  display: grid;
+  gap: 6px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.compliance-list strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.compliance-list span {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+@media (max-width: 760px) {
+  .compliance-list {
+    grid-template-columns: 1fr;
+  }
 }
 </style>

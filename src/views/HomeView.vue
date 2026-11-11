@@ -8,7 +8,7 @@ import dataContent from '../content/data'
 import { CALENDLY_URL } from '../content/site'
 import { useContent, useLocale } from '../i18n'
 
-const { path } = useLocale()
+const { locale, path } = useLocale()
 const c = useContent(homeContent)
 const data = useContent(dataContent)
 
@@ -18,7 +18,9 @@ const BASELINE_SYSTEM_COST = 3000
 const EMPLOYEE_REDUCTION = 0.65
 const SYSTEM_REDUCTION = 0.6
 
-const efficiencyProgress = ref(0)
+// Prerendered at the end state, so crawlers and visitors without JavaScript see the
+// final figures; the animation replays from the start once the page is interactive.
+const efficiencyProgress = ref(1)
 let animationFrame = 0
 
 const employeeHours = computed(() => BASELINE_EMPLOYEE_HOURS * (1 - EMPLOYEE_REDUCTION * efficiencyProgress.value))
@@ -52,17 +54,19 @@ const connectedSystems = computed(() => {
   ] as const
 })
 
-const euros = new Intl.NumberFormat('de-DE', {
-  style: 'currency',
-  currency: 'EUR',
-  maximumFractionDigits: 0,
-})
+const euros = computed(
+  () =>
+    new Intl.NumberFormat(locale.value === 'de' ? 'de-DE' : 'en-IE', {
+      style: 'currency',
+      currency: 'EUR',
+      maximumFractionDigits: 0,
+    }),
+)
 
 onMounted(() => {
-  if (globalThis.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    efficiencyProgress.value = 1
-    return
-  }
+  if (globalThis.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+  efficiencyProgress.value = 0
 
   const animationLength = 5000
   const startedAt = globalThis.performance.now()

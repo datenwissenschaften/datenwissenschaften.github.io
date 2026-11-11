@@ -25,6 +25,22 @@ npm run build
 - `vite.config.ts`: prerenders every route to `dist/<path>/index.html`, writes `dist/404.html`
   and `dist/sitemap.xml`.
 
+## SEO audits
+
+SEO is checked with the [claude-seo](https://github.com/AgriciDaniel/claude-seo) plugin for
+Claude Code, run against the live site:
+
+```text
+/plugin marketplace add AgriciDaniel/claude-seo
+/plugin install claude-seo@agricidaniel-claude-seo
+/seo setup                                          # once: isolated Python runtime + Chromium
+/seo audit https://www.datenwissenschaften.com      # full audit with a 0–100 health score
+```
+
+Narrower commands such as `/seo technical`, `/seo content`, `/seo schema`, `/seo geo` and
+`/seo page <url>` cover single areas. After a deploy, `/seo drift baseline <url>` records the
+current state and `/seo drift compare <url>` reports regressions against it.
+
 ## Deployment
 
 Pushes to `main` build in GitHub Actions and deploy to the Dokku app `datenwissenschaften`.

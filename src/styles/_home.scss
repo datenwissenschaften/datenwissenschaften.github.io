@@ -979,7 +979,7 @@
 }
 
 .cta-band .eyebrow {
-  color: rgba(18, 11, 8, 0.62);
+  color: rgba(18, 11, 8, 0.86);
 }
 
 .cta-band h2 {
@@ -1022,4 +1022,11 @@
 
 .round-link svg {
   width: 30px;
+}
+
+// The hero card and metric cards sit on tinted surfaces; the default muted grey
+// falls below 4.5:1 there in the light theme.
+:root[data-theme='light'] .cost-visual,
+:root[data-theme='light'] .approach-graphic {
+  --muted: #4f5457;
 }

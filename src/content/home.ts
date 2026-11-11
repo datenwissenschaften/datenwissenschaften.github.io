@@ -36,7 +36,7 @@ const en = {
   services: {
     eyebrow: 'What I do',
     title: ['From difficult data', 'to simple decisions.'],
-    copy: 'I work across strategy, engineering, machine learning and governance—one accountable partner from first question to reliable production system.',
+    copy: 'I work across strategy, engineering, machine learning and governance—one accountable partner from first question to reliable production system. I help mid-sized companies, scale-ups and in-house data teams that have valuable data but no clear path to using it: turning scattered sources into a dependable data platform, bringing a first machine-learning or LLM use case into production, or putting an existing system under proper governance. All work runs remotely across Germany, the DACH region and Europe, in German or English. It starts with a free initial call of about 30 minutes, followed by a short assessment and a clearly scoped first step your team can own.',
   },
   approach: {
     metricLabel: 'Operational load',
@@ -68,7 +68,7 @@ const en = {
 
 const de: typeof en = {
   hero: {
-    eyebrow: 'Data-Science- & KI-Berater',
+    eyebrow: 'Berater für Data Science & KI',
     title: ['Weniger Komplexität.', 'Mehr Intelligenz.'],
     lead: 'Ich bin Dr. Martin Franke, unabhängiger Berater für Data Science und KI. Mit 15 Jahren Erfahrung in Machine Learning und KI-Transformation entwickle ich produktionsreife Systeme, die aus komplexen Daten schnellere und sicherere Entscheidungen machen.',
     primaryCta: 'Erstgespräch vereinbaren',
@@ -100,9 +100,9 @@ const de: typeof en = {
     items: ['KI-Strategie', 'Machine Learning', 'Data Engineering', 'LLM-Systeme', 'MLOps', 'Model Governance'],
   },
   services: {
-    eyebrow: 'Was ich mache',
+    eyebrow: 'Was ich für Sie tue',
     title: ['Von schwierigen Daten', 'zu einfachen Entscheidungen.'],
-    copy: 'Ich arbeite an Strategie, Engineering, Machine Learning und Governance – als ein verantwortlicher Partner von der ersten Frage bis zum zuverlässigen System im Produktivbetrieb.',
+    copy: 'Ich arbeite an Strategie, Engineering, Machine Learning und Governance – als ein verantwortlicher Partner von der ersten Frage bis zum zuverlässigen System im Produktivbetrieb. Mein Schwerpunkt ist KI-Beratung und Data-Science-Beratung für den Mittelstand: Ich unterstütze Unternehmen, Scale-ups und interne Datenteams, die wertvolle Daten haben, aber noch keinen klaren Weg, sie zu nutzen. Gemeinsam führen wir verstreute Quellen zu einer verlässlichen Datenplattform zusammen, bringen einen ersten Machine-Learning- oder LLM-Anwendungsfall in den Produktivbetrieb oder stellen ein bestehendes System sauber unter Governance. Die Zusammenarbeit läuft vollständig remote in ganz Deutschland, im DACH-Raum und in Europa, auf Deutsch oder Englisch. Am Anfang steht ein kostenloses Erstgespräch von etwa 30 Minuten, danach eine kurze Bestandsaufnahme und ein klar abgegrenzter erster Schritt, den Ihr Team selbst weiterführen kann.',
   },
   approach: {
     metricLabel: 'Operativer Aufwand',

@@ -14,7 +14,7 @@ const en = {
     eyebrow: 'Services',
     title: 'Expertise that turns',
     accent: 'data into movement.',
-    copy: 'No hand-offs and no theatre. Senior guidance and practical implementation across the full data lifecycle.',
+    copy: 'One senior point of contact from the first question to production, with no hand-offs between consultants. Strategic guidance and practical implementation across the full data lifecycle.',
   },
   audienceLabel: 'Who it is for',
   deliverablesLabel: 'Typical deliverables',
@@ -101,8 +101,58 @@ const en = {
         text: 'The proven path becomes a reliable, observable and documented system. Your team is enabled to operate and extend it, so the result does not depend on me.',
       },
       {
-        title: 'Remote-first, in two languages',
-        text: 'I work remote-first with clients across Germany, the DACH region and Europe, and on site by arrangement. Working languages are German and English.',
+        title: 'Remote, in two languages',
+        text: 'I work exclusively remotely with clients across Germany, the DACH region and Europe. Working languages are German and English.',
+      },
+    ],
+  },
+  compliance: {
+    eyebrow: 'Contracts & compliance',
+    title: 'The paperwork, settled up front',
+    copy: 'Clear contractual terms before any data is touched, so your legal and procurement teams can sign off quickly.',
+    items: [
+      { title: 'Data processing agreement', text: 'I sign a DPA under GDPR Art. 28 whenever I process your personal data.' },
+      { title: 'Confidentiality', text: 'I sign NDAs before sensitive details are shared.' },
+      { title: 'Your environment', text: 'I prefer to work inside your own systems and cloud accounts, so your data stays there.' },
+      { title: 'EU AI Act', text: 'As part of model governance, I help assess and document AI systems for EU AI Act readiness.' },
+      { title: 'Invoicing', text: 'Invoices in EUR from Dr. Franke Datenwissenschaften OÜ (Estonia), with VAT reverse charge for EU business clients.' },
+      { title: 'Languages', text: 'Contracts and documentation are available in German and English.' },
+      { title: 'Insurance', text: 'Professional liability insurance is in place.' },
+    ],
+  },
+  faq: {
+    eyebrow: 'Questions & answers',
+    title: 'Short answers to common questions',
+    items: [
+      {
+        question: 'What does a data science & AI consultant do?',
+        answer:
+          'A data science & AI consultant turns data into better decisions and into systems that run in production. In my work, that covers data and AI strategy, applied machine learning and LLM systems, data platforms and MLOps—from the first assessment of your data to a documented system your team can operate.',
+      },
+      {
+        question: 'How does a project start?',
+        answer:
+          'With a free initial call of about 30 minutes, booked via Calendly or by email. We clarify the decision or process you want to improve and which data and systems already exist. If there is a real lever, the next step is one focused question, not a large commitment up front.',
+      },
+      {
+        question: 'Do you work remotely?',
+        answer:
+          'Yes, exclusively. I work with clients across Germany, the DACH region and Europe, all of it remotely. Working languages are German and English. Wherever possible, I work directly inside your systems and cloud accounts, so your data stays with you.',
+      },
+      {
+        question: 'Who runs the system afterwards?',
+        answer:
+          'Your team does. Every engagement ends with a reliable, observable and documented system and a clean handover, so the result does not depend on me. Where it helps, I mentor your engineers in clean code, testing and CI/CD so they can operate and extend the system with confidence.',
+      },
+      {
+        question: 'How is confidential data handled?',
+        answer:
+          'Under contract and, wherever possible, inside your own environment. I sign NDAs and, when I process personal data, a data processing agreement under GDPR Art. 28. I prefer to work in your systems and cloud accounts so data does not leave them. Past work includes secure pipelines for sensitive health data.',
+      },
+      {
+        question: 'Do you work with mid-sized companies?',
+        answer:
+          'Yes. Engagements start with one focused question and grow only with measured results, which suits mid-sized companies that need value quickly without first building a large data team. The experience comes from production systems for Audi, Porsche and Volkswagen, scaled to the smallest system that solves your problem.',
       },
     ],
   },
@@ -118,7 +168,7 @@ const de: typeof en = {
     eyebrow: 'Leistungen',
     title: 'Expertise, die Daten',
     accent: 'in Bewegung bringt.',
-    copy: 'Keine Übergaben, kein Theater. Erfahrene Beratung und praktische Umsetzung über den gesamten Datenlebenszyklus.',
+    copy: 'Ein erfahrener Ansprechpartner von der ersten Frage bis zum Produktivbetrieb – ohne Wechsel zwischen Beratern. KI-Beratung, Data-Science-Beratung und praktische Umsetzung über den gesamten Datenlebenszyklus.',
   },
   audienceLabel: 'Für wen',
   deliverablesLabel: 'Typische Ergebnisse',
@@ -179,11 +229,11 @@ const de: typeof en = {
   },
   process: {
     eyebrow: 'Ein schlanker, klarer Prozess',
-    title: ['Drei Schritte.', 'Kein Theater.'],
+    title: ['Drei Schritte.', 'Ohne Umwege.'],
     copy: 'Jedes Projekt ist auf schnelles Lernen, sichtbaren Fortschritt und eine saubere Übergabe ausgelegt.',
     steps: [
       { title: 'Den Hebel finden', text: 'Klären, bei welcher Entscheidung, welchem Engpass oder welcher wiederkehrenden Aufgabe Daten den größten Nutzen stiften.' },
-      { title: 'Den Weg belegen', text: 'Die kleinste glaubwürdige Lösung bauen, an der Realität testen und messen, ob sie es wert ist, skaliert zu werden.' },
+      { title: 'Den Nutzen nachweisen', text: 'Die kleinste glaubwürdige Lösung bauen, an der Realität testen und messen, ob sie es wert ist, skaliert zu werden.' },
       { title: 'Automatisieren & übergeben', text: 'Den erfolgreichen Ansatz zuverlässig, beobachtbar und nachvollziehbar machen – und ihn dann in die Hände Ihres Teams legen.' },
     ],
   },
@@ -205,8 +255,58 @@ const de: typeof en = {
         text: 'Aus dem bewährten Ansatz wird ein zuverlässiges, beobachtbares und dokumentiertes System. Ihr Team wird befähigt, es selbst zu betreiben und weiterzuentwickeln – ohne Abhängigkeit von mir.',
       },
       {
-        title: 'Remote-first, zweisprachig',
-        text: 'Ich arbeite remote-first mit Kunden in ganz Deutschland, im DACH-Raum und in Europa, nach Absprache auch vor Ort. Arbeitssprachen sind Deutsch und Englisch.',
+        title: 'Remote, zweisprachig',
+        text: 'Ich arbeite ausschließlich remote mit Kunden in ganz Deutschland, im DACH-Raum und in Europa. Arbeitssprachen sind Deutsch und Englisch.',
+      },
+    ],
+  },
+  compliance: {
+    eyebrow: 'Verträge & Compliance',
+    title: 'Formalitäten, vorab geklärt',
+    copy: 'Klare Vertragsgrundlagen, bevor Daten ins Spiel kommen – damit Rechtsabteilung und Einkauf zügig zustimmen können.',
+    items: [
+      { title: 'Auftragsverarbeitung', text: 'Verarbeite ich personenbezogene Daten für Sie, schließen wir einen AVV nach Art. 28 DSGVO.' },
+      { title: 'Vertraulichkeit', text: 'Eine Geheimhaltungsvereinbarung (NDA) unterzeichne ich, bevor sensible Details geteilt werden.' },
+      { title: 'Ihre Umgebung', text: 'Ich arbeite bevorzugt direkt in Ihren Systemen und Cloud-Konten – Ihre Daten bleiben dort.' },
+      { title: 'EU AI Act', text: 'Im Rahmen der Model Governance unterstütze ich Sie dabei, KI-Systeme für den EU AI Act zu bewerten und zu dokumentieren.' },
+      { title: 'Rechnungsstellung', text: 'Rechnungen in EUR über die Dr. Franke Datenwissenschaften OÜ (Estland), für Geschäftskunden in der EU im Reverse-Charge-Verfahren.' },
+      { title: 'Sprachen', text: 'Verträge und Dokumentation gibt es auf Deutsch und Englisch.' },
+      { title: 'Versicherung', text: 'Eine Berufshaftpflichtversicherung besteht.' },
+    ],
+  },
+  faq: {
+    eyebrow: 'Fragen & Antworten',
+    title: 'Kurze Antworten auf häufige Fragen',
+    items: [
+      {
+        question: 'Was macht ein Berater für Data Science & KI?',
+        answer:
+          'Data-Science-Beratung und KI-Beratung machen aus Daten bessere Entscheidungen und Systeme, die im Produktivbetrieb laufen. Bei mir umfasst das Daten- und KI-Strategie, angewandtes Machine Learning und LLM-Systeme, Datenplattformen und MLOps – von der ersten Bestandsaufnahme Ihrer Daten bis zu einem dokumentierten System, das Ihr Team selbst betreibt.',
+      },
+      {
+        question: 'Wie beginnt ein Projekt?',
+        answer:
+          'Mit einem kostenlosen Erstgespräch von etwa 30 Minuten, das Sie über Calendly oder per E-Mail vereinbaren. Wir klären, welche Entscheidung oder welchen Prozess Sie verbessern möchten und welche Daten und Systeme es bereits gibt. Gibt es einen echten Hebel, folgt eine fokussierte erste Frage – keine große Vorabverpflichtung.',
+      },
+      {
+        question: 'Arbeiten Sie remote?',
+        answer:
+          'Ja, ausschließlich. Ich arbeite mit Kunden in ganz Deutschland, im DACH-Raum und in Europa – vollständig remote. Arbeitssprachen sind Deutsch und Englisch. Wo möglich, arbeite ich direkt in Ihren Systemen und Cloud-Konten, sodass Ihre Daten bei Ihnen bleiben.',
+      },
+      {
+        question: 'Wer betreibt das System danach?',
+        answer:
+          'Ihr Team. Jedes Projekt endet mit einem zuverlässigen, beobachtbaren und dokumentierten System und einer sauberen Übergabe, damit das Ergebnis nicht von mir abhängt. Wo es hilft, begleite ich Ihre Entwicklerinnen und Entwickler in Clean Code, Testing und CI/CD, damit sie das System sicher betreiben und weiterentwickeln.',
+      },
+      {
+        question: 'Wie gehen Sie mit vertraulichen Daten um?',
+        answer:
+          'Vertraglich abgesichert und, wo immer möglich, innerhalb Ihrer eigenen Umgebung. Ich unterzeichne NDAs und, wenn ich personenbezogene Daten verarbeite, einen AVV nach Art. 28 DSGVO. Ich arbeite bevorzugt in Ihren Systemen und Cloud-Konten, damit die Daten sie nicht verlassen. Zu meinen Projekten gehören sichere Pipelines für sensible Gesundheitsdaten.',
+      },
+      {
+        question: 'Arbeiten Sie auch mit dem Mittelstand?',
+        answer:
+          'Ja. Projekte beginnen mit einer fokussierten Frage und wachsen nur mit gemessenen Ergebnissen – das passt gut zum Mittelstand, der schnell Nutzen braucht, ohne zuerst ein großes Datenteam aufzubauen. Die Erfahrung stammt aus Produktivsystemen für Audi, Porsche und Volkswagen, übertragen auf das kleinste System, das Ihr Problem löst.',
       },
     ],
   },

@@ -5,10 +5,10 @@ const en = {
     eyebrow: 'Start a project',
     title: 'Let’s find the',
     accent: 'highest-leverage move.',
-    copy: 'Tell me what you are trying to improve, automate or understand. An initial conversation is direct, useful and free of sales theatre.',
+    copy: 'Tell me what you are trying to improve, automate or understand. The initial call is free, takes about 30 minutes and is direct and useful, with no sales pitch.',
   },
   direct: 'Direct contact',
-  callPrompt: 'Prefer a call? Choose a time that works for you.',
+  callPrompt: 'Prefer a call? Book a free initial call of about 30 minutes at a time that works for you.',
   calendar: 'Open my calendar ↗',
   calendarAria: 'Open my calendar on Calendly (opens in a new tab)',
   firstMessage: {
@@ -22,7 +22,7 @@ const en = {
   },
   collaboration: {
     title: 'How we work',
-    text: 'Remote-first across Germany, the DACH region and Europe; on site by arrangement. Working languages: German and English.',
+    text: 'Remote only, across Germany, the DACH region and Europe. In German or English, whichever suits your team.',
   },
   response: {
     title: 'Response',
@@ -36,10 +36,10 @@ const de: typeof en = {
     eyebrow: 'Projekt anfragen',
     title: 'Finden wir den',
     accent: 'wirksamsten Hebel.',
-    copy: 'Schreiben Sie mir, was Sie verbessern, automatisieren oder besser verstehen möchten. Ein Erstgespräch ist direkt, nützlich und frei von Verkaufsrhetorik.',
+    copy: 'Schreiben Sie mir, was Sie verbessern, automatisieren oder besser verstehen möchten. Das Erstgespräch ist kostenlos, dauert etwa 30 Minuten und ist direkt, nützlich und frei von Verkaufsrhetorik.',
   },
   direct: 'Direkter Kontakt',
-  callPrompt: 'Lieber telefonieren? Wählen Sie einen passenden Termin.',
+  callPrompt: 'Lieber telefonieren? Vereinbaren Sie ein kostenloses Erstgespräch von etwa 30 Minuten zu einem passenden Termin.',
   calendar: 'Kalender öffnen ↗',
   calendarAria: 'Meinen Kalender bei Calendly öffnen (öffnet in einem neuen Tab)',
   firstMessage: {
@@ -53,7 +53,7 @@ const de: typeof en = {
   },
   collaboration: {
     title: 'Zusammenarbeit',
-    text: 'Remote-first in ganz Deutschland, im DACH-Raum und in Europa; nach Absprache auch vor Ort. Arbeitssprachen: Deutsch und Englisch.',
+    text: 'Ausschließlich remote, in ganz Deutschland, im DACH-Raum und in Europa. Auf Deutsch oder Englisch – ganz wie es für Ihr Team passt.',
   },
   response: {
     title: 'Antwortzeit',

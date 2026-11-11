@@ -6,7 +6,7 @@ import footerLogo from './assets/img/logo-white.webp'
 import headerLogo from './assets/img/logo.webp'
 import headerWordmark from './assets/img/logo-white-text.webp'
 import siteContent, { EMAIL } from './content/site'
-import { useContent, useLocale } from './i18n'
+import { LANGUAGE_COOKIE, useContent, useLocale, type Locale } from './i18n'
 import { notFoundHead, pageHead } from './seo'
 
 const route = useRoute()
@@ -17,7 +17,7 @@ const theme = ref<'dark' | 'light'>('dark')
 
 useHead(computed(() => (pageKey.value ? pageHead(pageKey.value, locale.value) : notFoundHead(locale.value))))
 
-const otherLocale = computed(() => (locale.value === 'en' ? 'de' : 'en'))
+const otherLocale = computed<Locale>(() => (locale.value === 'en' ? 'de' : 'en'))
 
 const applyTheme = (value: 'dark' | 'light') => {
   document.documentElement.dataset.theme = value
@@ -33,6 +33,11 @@ onMounted(() => {
 watch(route, () => {
   menuOpen.value = false
 })
+
+// An explicit language choice overrides the browser language on later visits to /.
+function rememberLanguage(target: Locale) {
+  document.cookie = `${LANGUAGE_COOKIE}=${target}; Path=/; Max-Age=31536000; SameSite=Lax; Secure`
+}
 
 function toggleTheme() {
   theme.value = theme.value === 'dark' ? 'light' : 'dark'
@@ -56,7 +61,6 @@ function toggleTheme() {
         <RouterLink :to="path('contact')">{{ site.nav.contact }}</RouterLink>
         <RouterLink :to="path('case-study')">{{ site.nav.caseStudy }}</RouterLink>
         <RouterLink :to="path('products')">{{ site.nav.products }}</RouterLink>
-        <RouterLink :to="path('locations')">{{ site.nav.locations }}</RouterLink>
       </nav>
 
       <div class="header-actions">
@@ -66,6 +70,7 @@ function toggleTheme() {
           :hreflang="otherLocale"
           :lang="otherLocale"
           :aria-label="site.languageSwitch.aria"
+          @click="rememberLanguage(otherLocale)"
         >{{ site.languageSwitch.short }}</RouterLink>
         <button
           class="theme-toggle"
@@ -102,7 +107,6 @@ function toggleTheme() {
         <RouterLink :to="path('work')">{{ site.nav.work }}</RouterLink>
         <RouterLink :to="path('about')">{{ site.nav.about }}</RouterLink>
         <RouterLink :to="path('products')">{{ site.nav.products }}</RouterLink>
-        <RouterLink :to="path('locations')">{{ site.nav.locations }}</RouterLink>
         <RouterLink :to="path('case-study')">{{ site.nav.caseStudy }}</RouterLink>
       </div>
       <div class="footer-nav">
@@ -110,11 +114,15 @@ function toggleTheme() {
         <a :href="`mailto:${EMAIL}`">{{ site.footer.email }}</a>
         <RouterLink :to="path('contact')">{{ site.footer.bookCall }}</RouterLink>
         <RouterLink :to="path('imprint')">{{ site.footer.imprint }}</RouterLink>
-        <RouterLink :to="alternatePath(otherLocale)" :hreflang="otherLocale" :lang="otherLocale">{{ site.languageSwitch.label }}</RouterLink>
+        <RouterLink
+          :to="alternatePath(otherLocale)"
+          :hreflang="otherLocale"
+          :lang="otherLocale"
+          @click="rememberLanguage(otherLocale)"
+        >{{ site.languageSwitch.label }}</RouterLink>
       </div>
       <div class="footer-bottom">
         <span>© {{ new Date().getFullYear() }} Dr. Franke Datenwissenschaften OÜ</span>
-        <span>{{ site.footer.locations }}</span>
       </div>
     </footer>
   </div>

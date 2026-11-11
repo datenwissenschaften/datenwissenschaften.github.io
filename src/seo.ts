@@ -1,3 +1,4 @@
+import dataContent from './content/data'
 import { EMAIL, GITHUB_URL, LINKEDIN_URL, THESIS_URL } from './content/site'
 import { locales, pages, SITE_URL, type Locale, type Localized, type PageKey } from './i18n'
 
@@ -13,13 +14,13 @@ const meta: Record<PageKey, Localized<PageMeta>> = {
     en: {
       title: 'Data Science & AI Consultant | Dr. Martin Franke',
       description:
-        'Independent data science and AI consultant with 15 years’ experience: AI strategy, machine learning, data platforms and MLOps that run reliably in production.',
+        'Independent Data Science & AI Consultant with 15 years’ experience: AI strategy, machine learning, data platforms and MLOps that run in production.',
       name: 'Home',
     },
     de: {
       title: 'KI-Beratung & Data-Science-Berater | Dr. Martin Franke',
       description:
-        'Unabhängiger Data-Science- und KI-Berater mit 15 Jahren Erfahrung: KI-Strategie, Machine Learning, Datenplattformen und MLOps für den produktiven Einsatz – auch im Mittelstand.',
+        'KI-Beratung und Data-Science-Beratung mit 15 Jahren Erfahrung: KI-Strategie, Machine Learning, Datenplattformen und MLOps für den Mittelstand.',
       name: 'Startseite',
     },
   },
@@ -33,7 +34,7 @@ const meta: Record<PageKey, Localized<PageMeta>> = {
     de: {
       title: 'KI-Beratung & Data-Science-Leistungen | Dr. Franke',
       description:
-        'KI-Strategie, angewandtes Machine Learning, Datenplattformen und MLOps: Senior-Beratung und praktische Umsetzung von der ersten Frage bis zum produktiven System.',
+        'KI-Strategie, Machine Learning, Datenplattformen und MLOps: Senior-Beratung und praktische Umsetzung bis zum produktiven System.',
       name: 'Leistungen',
     },
   },
@@ -41,13 +42,13 @@ const meta: Record<PageKey, Localized<PageMeta>> = {
     en: {
       title: 'Selected Data Science & AI Projects | Dr. Franke',
       description:
-        'Production ML and AI projects for CARIAD (Audi, Porsche, Volkswagen), healthcare, digital publishing and ProSiebenSat.1, with roles, stack and measurable outcomes.',
+        'Production ML and AI work in automotive (CARIAD; Audi, Porsche, VW), healthcare, publishing and media, with roles, stack and outcomes.',
       name: 'Selected work',
     },
     de: {
       title: 'Data-Science- & KI-Projekte | Dr. Franke',
       description:
-        'Produktive ML- und KI-Projekte für CARIAD (Audi, Porsche, Volkswagen), Gesundheit, Digital Publishing und ProSiebenSat.1 – mit Rolle, Technologie und messbaren Ergebnissen.',
+        'Produktive ML- und KI-Projekte in Automotive (CARIAD; Audi, Porsche, VW), Gesundheit und Medien – mit Rolle, Technologie und Ergebnissen.',
       name: 'Projekte',
     },
   },
@@ -55,13 +56,13 @@ const meta: Record<PageKey, Localized<PageMeta>> = {
     en: {
       title: 'About Dr. Martin Franke – Data Scientist & AI Strategist',
       description:
-        'Doctorate in computer science from TU Dresden and 15 years in machine learning, AI strategy and technical leadership across automotive, healthcare, media and research.',
+        'Data Science & AI Consultant with a doctorate in computer science (TU Dresden) and 15 years in machine learning, AI strategy and leadership.',
       name: 'About',
     },
     de: {
       title: 'Über Dr. Martin Franke – Data Scientist & KI-Stratege',
       description:
-        'Promotion in Informatik an der TU Dresden und 15 Jahre Erfahrung in Machine Learning, KI-Strategie und technischer Leitung in Automotive, Gesundheit, Medien und Forschung.',
+        'Berater für Data Science & KI mit Promotion in Informatik (TU Dresden) und 15 Jahren Erfahrung in Machine Learning und KI-Strategie.',
       name: 'Über mich',
     },
   },
@@ -69,13 +70,13 @@ const meta: Record<PageKey, Localized<PageMeta>> = {
     en: {
       title: 'Contact & Book a Call | Dr. Franke Datenwissenschaften',
       description:
-        'Discuss your data or AI challenge by email or book an initial call directly in my calendar. Replies usually within two business days.',
+        'Discuss your data or AI challenge in a free 30-minute initial call, booked directly in my calendar, or by email. Replies within two business days.',
       name: 'Contact',
     },
     de: {
       title: 'Kontakt & Erstgespräch | Dr. Franke Datenwissenschaften',
       description:
-        'Besprechen Sie Ihre Daten- oder KI-Herausforderung per E-Mail oder buchen Sie direkt ein Erstgespräch in meinem Kalender. Antwort meist innerhalb von zwei Werktagen.',
+        'Besprechen Sie Ihre Daten- oder KI-Herausforderung in einem kostenlosen 30-minütigen Erstgespräch – per Kalenderbuchung oder E-Mail.',
       name: 'Kontakt',
     },
   },
@@ -83,13 +84,13 @@ const meta: Record<PageKey, Localized<PageMeta>> = {
     en: {
       title: 'Open-Source Data & AI Case Studies | Dr. Franke',
       description:
-        'Six open-source repositories and Retro Speedlab, a live AI research lab: inspectable evidence of data engineering, reinforcement learning and agentic engineering.',
+        'Six open-source repositories and Retro Speedlab, a live AI research lab: inspectable evidence of data engineering, RL and agentic engineering.',
       name: 'Case studies',
     },
     de: {
       title: 'Open-Source-Fallstudien zu Daten & KI | Dr. Franke',
       description:
-        'Sechs Open-Source-Repositories und Retro Speedlab, ein öffentliches KI-Forschungslabor: nachprüfbare Belege für Data Engineering, Reinforcement Learning und agentisches Engineering.',
+        'Sechs Open-Source-Repositories und das öffentliche KI-Labor Retro Speedlab: nachprüfbare Belege für Data Engineering und agentisches Engineering.',
       name: 'Fallstudien',
     },
   },
@@ -97,28 +98,14 @@ const meta: Record<PageKey, Localized<PageMeta>> = {
     en: {
       title: 'Products & Ventures: Knotbase, Book | Dr. Franke',
       description:
-        'Independent products by Dr. Martin Franke: the Knotbase AI website assistant, the book “From Data Scientist to AI Strategist” and the Helderberg Remote community.',
+        'Products by Dr. Martin Franke: the Knotbase AI website assistant, the book “From Data Scientist to AI Strategist” and Helderberg Remote.',
       name: 'Products',
     },
     de: {
       title: 'Produkte: Knotbase, Buch & mehr | Dr. Franke',
       description:
-        'Eigene Produkte von Dr. Martin Franke: der KI-Website-Assistent Knotbase, das Buch „From Data Scientist to AI Strategist“ und die Community Helderberg Remote.',
+        'Eigene Produkte von Dr. Martin Franke: KI-Website-Assistent Knotbase, das Buch „From Data Scientist to AI Strategist“ und Helderberg Remote.',
       name: 'Produkte',
-    },
-  },
-  locations: {
-    en: {
-      title: 'Locations: Tallinn, Saalfeld, Somerset West | Dr. Franke',
-      description:
-        'Data science and AI consulting from Tallinn (Estonia), Saalfeld (Thuringia, Germany) and Somerset West (South Africa), on site and remotely across Europe.',
-      name: 'Locations',
-    },
-    de: {
-      title: 'Standorte: Saalfeld, Tallinn, Somerset West | Dr. Franke',
-      description:
-        'Data-Science- und KI-Beratung aus Saalfeld in Thüringen, Tallinn (Estland) und Somerset West (Südafrika) – vor Ort und remote in ganz Deutschland und Europa.',
-      name: 'Standorte',
     },
   },
   imprint: {
@@ -137,10 +124,6 @@ const meta: Record<PageKey, Localized<PageMeta>> = {
   },
 }
 
-const serviceNames: Localized<string[]> = {
-  en: ['Data & AI Strategy', 'Applied Machine Learning', 'Data Platforms', 'MLOps & Delivery'],
-  de: ['Daten- & KI-Strategie', 'Angewandtes Machine Learning', 'Datenplattformen', 'MLOps & Umsetzung'],
-}
 
 const pageTypes: Partial<Record<PageKey, string>> = {
   about: 'ProfilePage',
@@ -184,18 +167,28 @@ function structuredData(page: PageKey, locale: Locale) {
     location: [
       { '@type': 'Place', name: 'Tallinn', address: { '@type': 'PostalAddress', addressLocality: 'Tallinn', addressCountry: 'EE' } },
       { '@type': 'Place', name: 'Saalfeld', address: { '@type': 'PostalAddress', addressLocality: 'Saalfeld/Saale', addressRegion: 'Thüringen', addressCountry: 'DE' } },
-      { '@type': 'Place', name: 'Somerset West', address: { '@type': 'PostalAddress', addressLocality: 'Somerset West', addressRegion: 'Western Cape', addressCountry: 'ZA' } },
     ],
-    areaServed: ['DE', 'AT', 'CH', 'EE', 'ZA', 'Europe'],
-    availableLanguage: ['en', 'de'],
+    areaServed: [
+      ...['Germany', 'Austria', 'Switzerland', 'Estonia'].map((name) => ({ '@type': 'Country', name })),
+      { '@type': 'Place', name: 'Europe' },
+    ],
+    knowsLanguage: ['de', 'en'],
     founder: { '@id': PERSON_ID },
     sameAs: [GITHUB_URL],
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: meta.services[locale].name,
-      itemListElement: serviceNames[locale].map((serviceName) => ({
+      itemListElement: dataContent[locale].services.map((service) => ({
         '@type': 'Offer',
-        itemOffered: { '@type': 'Service', name: serviceName, provider: { '@id': ORG_ID } },
+        itemOffered: {
+          '@type': 'Service',
+          '@id': `${pageUrl('services', locale)}#service-${service.number}`,
+          name: service.title,
+          description: service.text,
+          serviceType: service.title,
+          areaServed: { '@type': 'Place', name: 'Europe' },
+          provider: { '@id': ORG_ID },
+        },
       })),
     },
   }
@@ -205,11 +198,11 @@ function structuredData(page: PageKey, locale: Locale) {
     '@id': PERSON_ID,
     name: 'Martin Franke',
     honorificPrefix: 'Dr.',
-    jobTitle: locale === 'de' ? 'Data Scientist und KI-Stratege' : 'Data Scientist and AI Strategist',
+    jobTitle: locale === 'de' ? 'Berater für Data Science & KI' : 'Data Science & AI Consultant',
     description:
       locale === 'de'
-        ? 'Promovierter Informatiker (TU Dresden) und unabhängiger Berater für Data Science, Machine Learning und KI-Strategie.'
-        : 'Computer scientist with a doctorate from TU Dresden and independent consultant for data science, machine learning and AI strategy.',
+        ? 'Promovierter Informatiker (TU Dresden) und unabhängiger Berater für Data Science & KI: KI-Strategie, Machine Learning, Datenplattformen und MLOps.'
+        : 'Computer scientist with a doctorate from TU Dresden and independent Data Science & AI Consultant: AI strategy, machine learning, data platforms and MLOps.',
     url: pageUrl('about', locale),
     image: `${SITE_URL}/martin-franke.jpg`,
     email: EMAIL,
@@ -219,6 +212,8 @@ function structuredData(page: PageKey, locale: Locale) {
     knowsLanguage: ['de', 'en'],
     subjectOf: {
       '@type': 'Thesis',
+      '@id': `${SITE_URL}/#thesis`,
+      author: { '@id': PERSON_ID },
       name: 'Wissensbasierte Tagesrhythmenerfassung und -auswertung in ubiquitären Umgebungen',
       inSupportOf: 'Doctoral degree (Dr.)',
       datePublished: '2016-11-02',
@@ -299,7 +294,8 @@ export function pageHead(page: PageKey, locale: Locale) {
     link: [
       { rel: 'canonical', href: url },
       ...locales.map((value) => ({ rel: 'alternate', hreflang: languageTags[value], href: pageUrl(page, value) })),
-      { rel: 'alternate', hreflang: 'x-default', href: pageUrl(page, 'en') },
+      // The root redirects by browser language, so it is the x-default for the homepage.
+      { rel: 'alternate', hreflang: 'x-default', href: page === 'home' ? `${SITE_URL}/` : pageUrl(page, 'en') },
     ],
     script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(structuredData(page, locale)) }],
   }
