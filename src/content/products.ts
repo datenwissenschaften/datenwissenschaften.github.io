@@ -16,7 +16,6 @@ type Product = {
   imageAlt?: string
   url?: string
   contain?: boolean
-  placeholder?: boolean
 }
 
 const shared = {
@@ -41,11 +40,6 @@ const shared = {
     image: bookImage,
     imageSize: { width: 311, height: 466 },
     url: 'https://www.amazon.com/Data-Scientist-AI-Strategist-Future-Proof-ebook/dp/B0H4WWDQ69?utm_source=datenwissenschaften&utm_medium=referral&utm_campaign=products',
-  },
-  sitari: {
-    name: 'Sitari.life',
-    domain: 'sitari.life',
-    placeholder: true,
   },
 }
 
@@ -80,15 +74,6 @@ const productsEn: Product[] = [
     highlights: ['Five-exposure diagnostic for production readiness', 'Governance toolkit: feature registries, audits, fairness', 'A 90-day plan to start the transition'],
     imageAlt: 'Cover of "From Data Scientist to AI Strategist" by Dr. Martin Franke',
   },
-  {
-    ...shared.sitari,
-    number: '04',
-    label: 'Smart home AI',
-    tagline: 'Smart homes. Shared savings.',
-    description:
-      'An early-stage concept for AI-driven home automation that helps local communities—starting near the Sitari estate by my South African base—monitor and optimise shared resources. The goal is straightforward: less gas, water and electricity wasted, without residents having to think about it.',
-    highlights: ['Water, gas & electricity monitoring', 'AI-driven usage optimisation', 'Built for local community estates'],
-  },
 ]
 
 const productsDe: Product[] = [
@@ -122,15 +107,6 @@ const productsDe: Product[] = [
     highlights: ['Diagnose der Produktionsreife anhand von fünf Kriterien', 'Governance-Toolkit: Feature-Registries, Audits, Fairness', 'Ein 90-Tage-Plan für den Umstieg'],
     imageAlt: 'Cover des Buchs „From Data Scientist to AI Strategist“ von Dr. Martin Franke',
   },
-  {
-    ...shared.sitari,
-    number: '04',
-    label: 'Smart-Home-KI',
-    tagline: 'Smarte Häuser. Gemeinsam sparen.',
-    description:
-      'Ein Konzept im frühen Stadium für KI-gestützte Hausautomatisierung, mit der lokale Gemeinschaften – beginnend in der Nähe des Sitari-Estates bei meinem südafrikanischen Standort – gemeinsam genutzte Ressourcen überwachen und optimieren. Das Ziel ist einfach: weniger verschwendetes Gas, Wasser und Strom, ohne dass die Bewohner darüber nachdenken müssen.',
-    highlights: ['Monitoring von Wasser, Gas & Strom', 'KI-gestützte Verbrauchsoptimierung', 'Entwickelt für Wohnanlagen und lokale Gemeinschaften'],
-  },
 ]
 
 const en = {
@@ -139,18 +115,15 @@ const en = {
   accent: 'a few things I build myself.',
   copy: 'Alongside consulting engagements, I run a small set of independent ventures—products shaped by the same data and AI practice, built and operated on my own time.',
   opening: {
-    eyebrow: 'Independent ventures · Live and in development',
+    eyebrow: 'Independent ventures · Live today',
     title: 'Practice applied to my own ideas.',
-    copy: 'These aren’t client deliverables—they’re products I build and run myself, some already live, some still taking shape, all proof that the same thinking behind my consulting work holds up outside it too.',
+    copy: 'These aren’t client deliverables—they’re products I build and run myself, all live today and all proof that the same thinking behind my consulting work holds up outside it too.',
   },
   listLabel: 'My products',
   statusLive: 'Live',
-  statusPending: 'In development',
   visit: (domain: string) => `Visit ${domain}`,
-  launchingSoon: 'Launching soon',
   buyNow: 'Buy now',
   addToCart: 'Add to cart',
-  resources: { water: 'Water', gas: 'Gas', electricity: 'Electricity' },
   products: productsEn,
 }
 
@@ -160,18 +133,15 @@ const de: typeof en = {
   accent: 'Dinge, die ich selbst baue.',
   copy: 'Parallel zu meinen Beratungsmandaten betreibe ich einige unabhängige Vorhaben – Produkte, die aus derselben Daten- und KI-Praxis entstehen und die ich in eigener Regie entwickle und betreibe.',
   opening: {
-    eyebrow: 'Eigene Vorhaben · Live und in Entwicklung',
+    eyebrow: 'Eigene Vorhaben · Bereits live',
     title: 'Praxis, angewandt auf eigene Ideen.',
-    copy: 'Das sind keine Kundenprojekte, sondern Produkte, die ich selbst entwickle und betreibe – einige bereits live, andere noch im Entstehen. Sie zeigen, dass die Denkweise hinter meiner Beratung auch außerhalb davon trägt.',
+    copy: 'Das sind keine Kundenprojekte, sondern Produkte, die ich selbst entwickle und betreibe und die bereits live sind. Sie zeigen, dass die Denkweise hinter meiner Beratung auch außerhalb davon trägt.',
   },
   listLabel: 'Meine Produkte',
   statusLive: 'Live',
-  statusPending: 'In Entwicklung',
   visit: (domain: string) => `${domain} besuchen`,
-  launchingSoon: 'Startet in Kürze',
   buyNow: 'Jetzt kaufen',
   addToCart: 'In den Einkaufswagen',
-  resources: { water: 'Wasser', gas: 'Gas', electricity: 'Strom' },
   products: productsDe,
 }
 

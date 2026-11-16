@@ -100,10 +100,6 @@
   text-transform: uppercase;
 }
 
-.status-dot-pending {
-  background: #e8a33d;
-  box-shadow: 0 0 0 4px rgba(232, 163, 61, 0.14);
-}
 
 .product-highlights {
   display: flex;
@@ -147,14 +143,6 @@
   border-color: var(--accent);
 }
 
-.product-pending-note {
-  display: inline-block;
-  padding-bottom: 4px;
-  border-bottom: 1px solid var(--line);
-  color: var(--muted);
-  font-size: 13px;
-  font-weight: 600;
-}
 
 .product-media {
   display: grid;
@@ -296,63 +284,13 @@
   color: var(--text);
 }
 
-.placeholder-shot {
-  border-style: dashed;
-  box-shadow: none;
-}
 
-.placeholder-shot:hover {
-  box-shadow: none;
-  transform: none;
-}
 
-.placeholder-visual {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  align-items: center;
-  justify-content: center;
-  aspect-ratio: 16 / 9.4;
-  padding: 40px;
-  color: var(--muted);
-  text-align: center;
-}
 
-.placeholder-icon {
-  width: 56px;
-  height: 56px;
-  stroke: var(--muted);
-}
 
-.placeholder-badges {
-  display: flex;
-  gap: 14px;
-}
 
-.placeholder-badges span {
-  display: flex;
-  width: 36px;
-  height: 36px;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid var(--line);
-  border-radius: 50%;
-}
 
-.placeholder-badges svg {
-  width: 16px;
-  height: 16px;
-  stroke: var(--accent);
-}
 
-.placeholder-caption {
-  margin: 0;
-  color: var(--muted);
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-align: center;
-  text-transform: uppercase;
-}
 
 @media (max-width: 900px) {
   .products-opening {

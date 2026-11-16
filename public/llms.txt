@@ -11,7 +11,7 @@ The site is available in English (/en) and German (/de). The initial call is fre
 - [Selected work](https://www.datenwissenschaften.com/en/work): Roles in automotive (CARIAD, Cognizant Mobility), healthcare, digital publishing and media
 - [About](https://www.datenwissenschaften.com/en/about): Background, doctorate, experience and toolkit
 - [Case studies](https://www.datenwissenschaften.com/en/case-study): Open-source repositories and Retro Speedlab, a live AI research lab
-- [Products](https://www.datenwissenschaften.com/en/products): Knotbase (AI website assistant), the book "From Data Scientist to AI Strategist", the Helderberg Remote community and the Sitari.life concept
+- [Products](https://www.datenwissenschaften.com/en/products): Knotbase (AI website assistant), the book "From Data Scientist to AI Strategist" and the Helderberg Remote community
 - [Contact](https://www.datenwissenschaften.com/en/contact): Email martin.franke@datenwissenschaften.com or book a call
 - [Imprint & privacy](https://www.datenwissenschaften.com/en/imprint)
 
