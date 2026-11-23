@@ -4,21 +4,18 @@ import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import 'vite-ssg'
-import { locales, pages, SITE_URL, type PageKey } from './src/i18n'
+import { locales, pageAlternates, pages, pageUrl, SITE_URL, type PageKey } from './src/i18n'
 
 const pageKeys = Object.keys(pages) as PageKey[]
-
-// The root redirects by browser language, so it is the x-default for the homepage.
-const xDefaultUrl = (page: PageKey) => (page === 'home' ? `${SITE_URL}/` : `${SITE_URL}${pages[page].en}`)
+const pagePaths = pageKeys.flatMap((page) => locales.map((locale) => pages[page][locale]))
 
 function sitemap() {
   const urls = pageKeys.flatMap((page) =>
     locales.map((locale) => {
-      const alternates = locales
-        .map((value) => `    <xhtml:link rel="alternate" hreflang="${value}" href="${SITE_URL}${pages[page][value]}"/>`)
-        .concat(`    <xhtml:link rel="alternate" hreflang="x-default" href="${xDefaultUrl(page)}"/>`)
+      const alternates = pageAlternates(page)
+        .map(({ language, href }) => `    <xhtml:link rel="alternate" hreflang="${language}" href="${href}"/>`)
         .join('\n')
-      return `  <url>\n    <loc>${SITE_URL}${pages[page][locale]}</loc>\n${alternates}\n  </url>`
+      return `  <url>\n    <loc>${pageUrl(page, locale)}</loc>\n${alternates}\n  </url>`
     }),
   )
   return `<?xml version="1.0" encoding="UTF-8"?>
@@ -39,7 +36,7 @@ export default defineConfig({
   },
   ssgOptions: {
     dirStyle: 'nested',
-    includedRoutes: () => [...pageKeys.flatMap((page) => locales.map((locale) => pages[page][locale])), '/404', '/de/404'],
+    includedRoutes: () => [...pagePaths, '/404', '/de/404'],
     onFinished() {
       const dist = fileURLToPath(new URL('./dist', import.meta.url))
       // nginx serves these files with a real 404 status for unknown URLs.
@@ -50,6 +47,15 @@ export default defineConfig({
       // The root redirects by language (nginx.conf); the bare app shell is never served.
       rmSync(resolve(dist, 'index.html'))
       writeFileSync(resolve(dist, 'sitemap.xml'), sitemap())
+      writeFileSync(
+        resolve(dist, 'robots.txt'),
+        `# All crawlers, including AI search and training crawlers, are welcome.\nUser-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}/sitemap.xml\n`,
+      )
+      // Use the same paths for prerendering, indexing and nginx URL normalization.
+      const redirects = pagePaths.flatMap((path) =>
+        [path, `${path}/`, `${path}/index.html`].map((alias) => `${alias} ${path};`),
+      )
+      writeFileSync(resolve(dist, 'page-paths.map'), `${redirects.join('\n')}\n`)
     },
   },
 })

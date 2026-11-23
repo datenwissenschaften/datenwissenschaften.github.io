@@ -11,9 +11,8 @@ interface ServiceDetail {
 
 const en = {
   intro: {
-    eyebrow: 'Services',
-    title: 'Expertise that turns',
-    accent: 'data into movement.',
+    title: 'Data Science &',
+    accent: 'AI services',
     copy: 'One senior point of contact from the first question to production, with no hand-offs between consultants. Strategic guidance and practical implementation across the full data lifecycle.',
   },
   audienceLabel: 'Who it is for',
@@ -124,31 +123,37 @@ const en = {
     title: 'Short answers to common questions',
     items: [
       {
+        id: 'consulting-scope',
         question: 'What does a data science & AI consultant do?',
         answer:
           'A data science & AI consultant turns data into better decisions and into systems that run in production. In my work, that covers data and AI strategy, applied machine learning and LLM systems, data platforms and MLOps—from the first assessment of your data to a documented system your team can operate.',
       },
       {
+        id: 'getting-started',
         question: 'How does a project start?',
         answer:
           'With a free initial call of about 30 minutes, booked via Calendly or by email. We clarify the decision or process you want to improve and which data and systems already exist. If there is a real lever, the next step is one focused question, not a large commitment up front.',
       },
       {
+        id: 'remote-consulting',
         question: 'Do you work remotely?',
         answer:
           'Yes, exclusively. I work with clients across Germany, the DACH region and Europe, all of it remotely. Working languages are German and English. Wherever possible, I work directly inside your systems and cloud accounts, so your data stays with you.',
       },
       {
+        id: 'handover',
         question: 'Who runs the system afterwards?',
         answer:
           'Your team does. Every engagement ends with a reliable, observable and documented system and a clean handover, so the result does not depend on me. Where it helps, I mentor your engineers in clean code, testing and CI/CD so they can operate and extend the system with confidence.',
       },
       {
+        id: 'confidential-data',
         question: 'How is confidential data handled?',
         answer:
           'Under contract and, wherever possible, inside your own environment. I sign NDAs and, when I process personal data, a data processing agreement under GDPR Art. 28. I prefer to work in your systems and cloud accounts so data does not leave them. Past work includes secure pipelines for sensitive health data.',
       },
       {
+        id: 'mid-sized-companies',
         question: 'Do you work with mid-sized companies?',
         answer:
           'Yes. Engagements start with one focused question and grow only with measured results, which suits mid-sized companies that need value quickly without first building a large data team. The experience comes from production systems for Audi, Porsche and Volkswagen, scaled to the smallest system that solves your problem.',
@@ -164,9 +169,8 @@ const en = {
 
 const de: typeof en = {
   intro: {
-    eyebrow: 'Leistungen',
-    title: 'Expertise, die Daten',
-    accent: 'in Bewegung bringt.',
+    title: 'KI-Beratung &',
+    accent: 'Data-Science-Leistungen',
     copy: 'Ein erfahrener Ansprechpartner von der ersten Frage bis zum Produktivbetrieb – ohne Wechsel zwischen Beratern. KI-Beratung, Data-Science-Beratung und praktische Umsetzung über den gesamten Datenlebenszyklus.',
   },
   audienceLabel: 'Für wen',
@@ -277,31 +281,37 @@ const de: typeof en = {
     title: 'Kurze Antworten auf häufige Fragen',
     items: [
       {
+        id: 'consulting-scope',
         question: 'Was macht ein Berater für Data Science & KI?',
         answer:
           'Data-Science-Beratung und KI-Beratung machen aus Daten bessere Entscheidungen und Systeme, die im Produktivbetrieb laufen. Bei mir umfasst das Daten- und KI-Strategie, angewandtes Machine Learning und LLM-Systeme, Datenplattformen und MLOps – von der ersten Bestandsaufnahme Ihrer Daten bis zu einem dokumentierten System, das Ihr Team selbst betreibt.',
       },
       {
+        id: 'getting-started',
         question: 'Wie beginnt ein Projekt?',
         answer:
           'Mit einem kostenlosen Erstgespräch von etwa 30 Minuten, das Sie über Calendly oder per E-Mail vereinbaren. Wir klären, welche Entscheidung oder welchen Prozess Sie verbessern möchten und welche Daten und Systeme es bereits gibt. Gibt es einen echten Hebel, folgt eine fokussierte erste Frage – keine große Vorabverpflichtung.',
       },
       {
+        id: 'remote-consulting',
         question: 'Arbeiten Sie remote?',
         answer:
           'Ja, ausschließlich. Ich arbeite mit Kunden in ganz Deutschland, im DACH-Raum und in Europa – vollständig remote. Arbeitssprachen sind Deutsch und Englisch. Wo möglich, arbeite ich direkt in Ihren Systemen und Cloud-Konten, sodass Ihre Daten bei Ihnen bleiben.',
       },
       {
+        id: 'handover',
         question: 'Wer betreibt das System danach?',
         answer:
           'Ihr Team. Jedes Projekt endet mit einem zuverlässigen, beobachtbaren und dokumentierten System und einer sauberen Übergabe, damit das Ergebnis nicht von mir abhängt. Wo es hilft, begleite ich Ihre Entwicklerinnen und Entwickler in Clean Code, Testing und CI/CD, damit sie das System sicher betreiben und weiterentwickeln.',
       },
       {
+        id: 'confidential-data',
         question: 'Wie gehen Sie mit vertraulichen Daten um?',
         answer:
           'Vertraglich abgesichert und, wo immer möglich, innerhalb Ihrer eigenen Umgebung. Ich unterzeichne NDAs und, wenn ich personenbezogene Daten verarbeite, einen AVV nach Art. 28 DSGVO. Ich arbeite bevorzugt in Ihren Systemen und Cloud-Konten, damit die Daten sie nicht verlassen. Zu meinen Projekten gehören sichere Pipelines für sensible Gesundheitsdaten.',
       },
       {
+        id: 'mid-sized-companies',
         question: 'Arbeiten Sie auch mit dem Mittelstand?',
         answer:
           'Ja. Projekte beginnen mit einer fokussierten Frage und wachsen nur mit gemessenen Ergebnissen – das passt gut zum Mittelstand, der schnell Nutzen braucht, ohne zuerst ein großes Datenteam aufzubauen. Die Erfahrung stammt aus Produktivsystemen für Audi, Porsche und Volkswagen, übertragen auf das kleinste System, das Ihr Problem löst.',

@@ -1,6 +1,6 @@
 # Dr. Franke Datenwissenschaften
 
-> Dr. Martin Franke is an independent Data Science & AI Consultant (Dr.-Ing. in computer science, TU Dresden, 2016) with 15 years of experience in machine learning, AI strategy, data platforms and MLOps. His company, Dr. Franke Datenwissenschaften OÜ, is registered in Tallinn, Estonia; he works remotely from Saalfeld, Germany, for clients across Germany, the DACH region and Europe, in German and English.
+> Dr. Martin Franke is an independent data science and AI consultant with a doctorate in computer science from TU Dresden. He helps mid-sized companies and data teams with AI strategy, production machine learning, data platforms and MLOps. The consultancy serves Germany, Austria, Switzerland and the rest of Europe remotely, in German and English. Dr. Franke Datenwissenschaften OÜ is registered in Tallinn, Estonia.
 
 The site is available in English (/en) and German (/de). The initial call is free and takes about 30 minutes.
 
@@ -32,3 +32,11 @@ The site is available in English (/en) and German (/de). The initial call is fre
 - [LinkedIn](https://www.linkedin.com/in/datenwissenschaften/)
 - [GitHub](https://github.com/datenwissenschaften)
 - [Doctoral thesis (TU Dresden, 2016)](https://nbn-resolving.org/urn:nbn:de:bsz:14-qucosa-212279)
+
+## Project evidence and answers
+
+- [Automotive machine learning on Azure Databricks](https://www.datenwissenschaften.com/en/work#automotive-ai): Role, methods and outcomes at CARIAD and Cognizant Mobility, 2019–2026.
+- [Churn prediction in digital publishing](https://www.datenwissenschaften.com/en/work#digital-publishing): Reported 28% improvement in marketing ROI at Social Media Interactive and Social Sweethearts, 2017–2018.
+- [Retro Speedlab](https://www.datenwissenschaften.com/en/case-study#retro-speedlab): Public research lab with open-source code, documentation and verifiable runs.
+- [How to start a project](https://www.datenwissenschaften.com/en/services#getting-started): What the initial call covers and how an engagement is scoped.
+- [So beginnt ein Projekt](https://www.datenwissenschaften.com/de/leistungen#getting-started): Ablauf des Erstgesprächs und Planung des ersten Projektschritts.

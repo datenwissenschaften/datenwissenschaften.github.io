@@ -2,9 +2,8 @@ import type { Localized } from '../i18n'
 
 const en = {
   intro: {
-    eyebrow: 'Public case studies',
-    title: 'Public projects,',
-    accent: 'shown in full.',
+    title: 'Open-source data',
+    accent: '& AI case studies',
     copy: 'Six open-source repositories and one live AI research lab—inspectable evidence of how I approach data engineering, machine learning, delivery and operations.',
   },
   repos: {
@@ -179,9 +178,8 @@ const en = {
 
 const de: typeof en = {
   intro: {
-    eyebrow: 'Öffentliche Fallstudien',
-    title: 'Öffentliche Projekte,',
-    accent: 'vollständig einsehbar.',
+    title: 'Öffentliche Fallstudien',
+    accent: 'zu Daten & KI',
     copy: 'Sechs Open-Source-Repositories und ein laufendes KI-Forschungslabor – nachprüfbare Belege dafür, wie ich Data Engineering, Machine Learning, Umsetzung und Betrieb angehe.',
   },
   repos: {

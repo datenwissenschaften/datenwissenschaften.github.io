@@ -4,7 +4,6 @@ type Principle = { title: string; paragraphs: string[] }
 
 const en = {
   intro: {
-    eyebrow: 'Legal',
     title: 'Imprint &',
     accent: 'privacy.',
     copy: 'Company information, intellectual property terms and data protection details for Dr. Franke Datenwissenschaften OÜ.',
@@ -139,7 +138,6 @@ const en = {
 
 const de: typeof en = {
   intro: {
-    eyebrow: 'Rechtliches',
     title: 'Impressum &',
     accent: 'Datenschutz.',
     copy: 'Angaben zum Unternehmen, Hinweise zum geistigen Eigentum und Informationen zum Datenschutz der Dr. Franke Datenwissenschaften OÜ.',

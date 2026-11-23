@@ -140,9 +140,8 @@ const toolkitDe: ToolkitGroup[] = [
 ]
 
 const en = {
-  eyebrow: 'About Dr. Franke',
-  title: 'Rigorous thinking.',
-  accent: 'Practical delivery.',
+  title: 'Dr. Martin Franke',
+  accent: 'Data Science & AI Consultant',
   copy: 'Dr. Martin Franke is a German computer scientist (Dr.-Ing., TU Dresden, 2016) and independent Data Science & AI Consultant. Fifteen years of machine learning, AI transformation and technical leadership across automotive, healthcare, media and research.',
   portraitAlt: 'Dr. Martin Franke, Data Science & AI Consultant',
   portraitCaption: ['Dr. Martin Franke', 'Founder · Data Science & AI Consultant'],
@@ -185,9 +184,8 @@ const en = {
 }
 
 const de: typeof en = {
-  eyebrow: 'Über Dr. Franke',
-  title: 'Gründlich gedacht.',
-  accent: 'Pragmatisch umgesetzt.',
+  title: 'Dr. Martin Franke',
+  accent: 'Berater für Data Science & KI',
   copy: 'Dr. Martin Franke ist deutscher Informatiker (Dr.-Ing., TU Dresden, 2016) und unabhängiger Berater für Data Science & KI. Fünfzehn Jahre Machine Learning, KI-Transformation und technische Führung in Automobilindustrie, Gesundheitswesen, Medien und Forschung.',
   portraitAlt: 'Dr. Martin Franke, Berater für Data Science & KI',
   portraitCaption: ['Dr. Martin Franke', 'Gründer · Berater für Data Science & KI'],

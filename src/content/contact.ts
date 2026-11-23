@@ -2,9 +2,8 @@ import type { Localized } from '../i18n'
 
 const en = {
   intro: {
-    eyebrow: 'Start a project',
-    title: 'Let’s find the',
-    accent: 'highest-leverage move.',
+    title: 'Contact',
+    accent: 'Dr. Martin Franke',
     copy: 'Tell me what you are trying to improve, automate or understand. The initial call is free, takes about 30 minutes and is direct and useful, with no sales pitch.',
   },
   direct: 'Direct contact',
@@ -33,9 +32,8 @@ const en = {
 
 const de: typeof en = {
   intro: {
-    eyebrow: 'Projekt anfragen',
-    title: 'Finden wir den',
-    accent: 'wirksamsten Hebel.',
+    title: 'Kontakt zu',
+    accent: 'Dr. Martin Franke',
     copy: 'Schreiben Sie mir, was Sie verbessern, automatisieren oder besser verstehen möchten. Das Erstgespräch ist kostenlos, dauert etwa 30 Minuten und ist direkt, nützlich und frei von Verkaufsrhetorik.',
   },
   direct: 'Direkter Kontakt',

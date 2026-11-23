@@ -1,6 +1,8 @@
+import { useHead } from '@unhead/vue'
+import { computed } from 'vue'
 import dataContent from './content/data'
 import { EMAIL, GITHUB_URL, LINKEDIN_URL, ORCID_URL, THESIS_URL } from './content/site'
-import { locales, pages, SITE_URL, type Locale, type Localized, type PageKey } from './i18n'
+import { locales, pageAlternates, pageUrl, SITE_URL, useLocale, type Locale, type Localized, type PageKey } from './i18n'
 
 interface PageMeta {
   title: string
@@ -14,13 +16,13 @@ const meta: Record<PageKey, Localized<PageMeta>> = {
     en: {
       title: 'Data Science & AI Consultant | Dr. Martin Franke',
       description:
-        'Independent Data Science & AI Consultant with 15 years’ experience: AI strategy, machine learning, data platforms and MLOps that run in production.',
+        'Independent data science and AI consulting for mid-sized companies in Europe. AI strategy, data platforms and production machine learning in English and German.',
       name: 'Home',
     },
     de: {
-      title: 'KI-Beratung & Data-Science-Berater | Dr. Martin Franke',
+      title: 'KI- & Data-Science-Beratung | Dr. Martin Franke',
       description:
-        'KI-Beratung und Data-Science-Beratung mit 15 Jahren Erfahrung: KI-Strategie, Machine Learning, Datenplattformen und MLOps für den Mittelstand.',
+        'Unabhängige KI-Beratung für den Mittelstand in Deutschland und im DACH-Raum. KI-Strategie, Datenplattformen und Machine Learning im Produktivbetrieb.',
       name: 'Startseite',
     },
   },
@@ -70,13 +72,13 @@ const meta: Record<PageKey, Localized<PageMeta>> = {
     en: {
       title: 'Contact & Book a Call | Dr. Franke Datenwissenschaften',
       description:
-        'Discuss your data or AI challenge in a free 30-minute initial call, booked directly in my calendar, or by email. Replies within two business days.',
+        'Email Dr. Martin Franke or book a free 30-minute call about your data or AI project. Remote consulting in German and English.',
       name: 'Contact',
     },
     de: {
       title: 'Kontakt & Erstgespräch | Dr. Franke Datenwissenschaften',
       description:
-        'Besprechen Sie Ihre Daten- oder KI-Herausforderung in einem kostenlosen 30-minütigen Erstgespräch – per Kalenderbuchung oder E-Mail.',
+        'Kontaktieren Sie Dr. Martin Franke per E-Mail oder buchen Sie ein kostenloses 30-minütiges Erstgespräch. Remote-Beratung auf Deutsch und Englisch.',
       name: 'Kontakt',
     },
   },
@@ -124,7 +126,6 @@ const meta: Record<PageKey, Localized<PageMeta>> = {
   },
 }
 
-
 const pageTypes: Partial<Record<PageKey, string>> = {
   about: 'ProfilePage',
   contact: 'ContactPage',
@@ -133,27 +134,62 @@ const pageTypes: Partial<Record<PageKey, string>> = {
   products: 'CollectionPage',
 }
 
-const languageTags: Record<Locale, string> = { en: 'en', de: 'de' }
-const ogLocales: Record<Locale, string> = { en: 'en_US', de: 'de_DE' }
-
-export const pageUrl = (page: PageKey, locale: Locale) => `${SITE_URL}${pages[page][locale]}`
-
+const ogLocales: Record<Locale, string> = { en: 'en_GB', de: 'de_DE' }
 const ORG_ID = `${SITE_URL}/#organization`
-const PERSON_ID = `${SITE_URL}/#person`
+export const PERSON_ID = `${SITE_URL}/#person`
 const WEBSITE_ID = `${SITE_URL}/#website`
+const PORTRAIT_URL = `${SITE_URL}/martin-franke.jpg`
+const areaServed = [
+  ...['Germany', 'Austria', 'Switzerland'].map((name) => ({ '@type': 'Country', name })),
+  { '@type': 'Place', name: 'Europe' },
+]
+
+export const pageLabel = (page: PageKey, locale: Locale) => meta[page][locale].name
+
+const jsonLd = (data: object) => JSON.stringify(data).replace(/</g, '\\u003c')
+
+// Collection markup lives with its lazy-loaded page, so its content stays out of the home bundle.
+export function useCollectionSchema(
+  page: 'work' | 'case-study' | 'products',
+  items: (url: string, locale: Locale) => object[],
+) {
+  const { locale } = useLocale()
+  useHead(computed(() => {
+    const url = pageUrl(page, locale.value)
+    return {
+      script: [{
+        key: 'collection-jsonld',
+        type: 'application/ld+json',
+        innerHTML: jsonLd({
+          '@context': 'https://schema.org',
+          '@type': 'ItemList',
+          '@id': `${url}#items`,
+          itemListElement: items(url, locale.value).map((item, index) => ({
+            '@type': 'ListItem',
+            position: index + 1,
+            item,
+          })),
+        }),
+      }],
+    }
+  }))
+}
 
 function structuredData(page: PageKey, locale: Locale) {
   const url = pageUrl(page, locale)
-  const { name, description, title } = meta[page][locale]
-
+  const { description, title } = meta[page][locale]
   const organization = {
-    '@type': ['ProfessionalService', 'Organization'],
+    '@type': 'Organization',
     '@id': ORG_ID,
     name: 'Dr. Franke Datenwissenschaften',
     legalName: 'Dr. Franke Datenwissenschaften OÜ',
-    url: `${SITE_URL}/`,
-    logo: `${SITE_URL}/logo.png`,
-    image: `${SITE_URL}/og-image.png`,
+    url: pageUrl('home', 'en'),
+    logo: {
+      '@type': 'ImageObject',
+      contentUrl: `${SITE_URL}/search-logo.png`,
+      width: 512,
+      height: 512,
+    },
     email: EMAIL,
     vatID: 'EE102649275',
     identifier: { '@type': 'PropertyValue', propertyID: 'Estonian Commercial Register', value: '16803592' },
@@ -164,33 +200,15 @@ function structuredData(page: PageKey, locale: Locale) {
       addressLocality: 'Tallinn',
       addressCountry: 'EE',
     },
-    location: [
-      { '@type': 'Place', name: 'Tallinn', address: { '@type': 'PostalAddress', addressLocality: 'Tallinn', addressCountry: 'EE' } },
-      { '@type': 'Place', name: 'Saalfeld', address: { '@type': 'PostalAddress', addressLocality: 'Saalfeld/Saale', addressRegion: 'Thüringen', addressCountry: 'DE' } },
-    ],
-    areaServed: [
-      ...['Germany', 'Austria', 'Switzerland', 'Estonia'].map((name) => ({ '@type': 'Country', name })),
-      { '@type': 'Place', name: 'Europe' },
-    ],
-    knowsLanguage: ['de', 'en'],
+    areaServed,
     founder: { '@id': PERSON_ID },
-    sameAs: [GITHUB_URL],
-    hasOfferCatalog: {
-      '@type': 'OfferCatalog',
-      name: meta.services[locale].name,
-      itemListElement: dataContent[locale].services.map((service) => ({
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Service',
-          '@id': `${pageUrl('services', locale)}#service-${service.number}`,
-          name: service.title,
-          description: service.text,
-          serviceType: service.title,
-          areaServed: { '@type': 'Place', name: 'Europe' },
-          provider: { '@id': ORG_ID },
-        },
-      })),
+    contactPoint: {
+      '@type': 'ContactPoint',
+      url: pageUrl('contact', locale),
+      email: EMAIL,
+      availableLanguage: ['de', 'en'],
     },
+    hasOfferCatalog: { '@id': `${pageUrl('services', locale)}#services` },
   }
 
   const person = {
@@ -199,28 +217,12 @@ function structuredData(page: PageKey, locale: Locale) {
     name: 'Martin Franke',
     honorificPrefix: 'Dr.',
     jobTitle: locale === 'de' ? 'Berater für Data Science & KI' : 'Data Science & AI Consultant',
-    description:
-      locale === 'de'
-        ? 'Promovierter Informatiker (TU Dresden) und unabhängiger Berater für Data Science & KI: KI-Strategie, Machine Learning, Datenplattformen und MLOps.'
-        : 'Computer scientist with a doctorate from TU Dresden and independent Data Science & AI Consultant: AI strategy, machine learning, data platforms and MLOps.',
-    url: pageUrl('about', locale),
-    image: `${SITE_URL}/martin-franke.jpg`,
-    email: EMAIL,
+    url: pageUrl('about', 'en'),
+    image: PORTRAIT_URL,
     worksFor: { '@id': ORG_ID },
-    alumniOf: { '@type': 'CollegeOrUniversity', name: 'Technische Universität Dresden', sameAs: 'https://tu-dresden.de/' },
-    knowsAbout: ['Data science', 'Machine learning', 'Artificial intelligence', 'AI strategy', 'MLOps', 'Data engineering', 'Apache Spark', 'Large language models', 'Model governance'],
+    alumniOf: { '@type': 'CollegeOrUniversity', name: 'Technische Universität Dresden', url: 'https://tu-dresden.de/' },
+    knowsAbout: dataContent[locale].services.map((service) => service.title),
     knowsLanguage: ['de', 'en'],
-    subjectOf: {
-      '@type': 'Thesis',
-      '@id': `${SITE_URL}/#thesis`,
-      author: { '@id': PERSON_ID },
-      name: 'Wissensbasierte Tagesrhythmenerfassung und -auswertung in ubiquitären Umgebungen',
-      inSupportOf: 'Dr.-Ing. (Doctor of Engineering)',
-      datePublished: '2016-11-02',
-      inLanguage: 'de',
-      url: THESIS_URL,
-      sourceOrganization: { '@type': 'CollegeOrUniversity', name: 'Technische Universität Dresden' },
-    },
     identifier: { '@type': 'PropertyValue', propertyID: 'ORCID', value: '0009-0008-3147-5822' },
     sameAs: [ORCID_URL, LINKEDIN_URL, GITHUB_URL],
   }
@@ -230,7 +232,7 @@ function structuredData(page: PageKey, locale: Locale) {
     '@id': WEBSITE_ID,
     url: `${SITE_URL}/`,
     name: 'Dr. Franke Datenwissenschaften',
-    inLanguage: ['en', 'de'],
+    inLanguage: locales,
     publisher: { '@id': ORG_ID },
   }
 
@@ -240,11 +242,10 @@ function structuredData(page: PageKey, locale: Locale) {
     url,
     name: title,
     description,
-    inLanguage: languageTags[locale],
+    inLanguage: locale,
     isPartOf: { '@id': WEBSITE_ID },
     about: { '@id': page === 'about' ? PERSON_ID : ORG_ID },
   }
-  if (page === 'about') webPage.mainEntity = { '@id': PERSON_ID }
 
   const graph: unknown[] = [organization, person, website, webPage]
 
@@ -253,27 +254,97 @@ function structuredData(page: PageKey, locale: Locale) {
     graph.push({
       '@type': 'BreadcrumbList',
       '@id': `${url}#breadcrumb`,
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: meta.home[locale].name, item: pageUrl('home', locale) },
-        { '@type': 'ListItem', position: 2, name, item: url },
-      ],
+      itemListElement: (['home', page] as const).map((key, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: pageLabel(key, locale),
+        item: pageUrl(key, locale),
+      })),
     })
+  }
+
+  if (page === 'home' || page === 'contact' || page === 'imprint') {
+    webPage.mainEntity = { '@id': ORG_ID }
+  }
+
+  if (page === 'about') {
+    const thesis = {
+      '@type': 'Thesis',
+      '@id': THESIS_URL,
+      url: THESIS_URL,
+      author: { '@id': PERSON_ID },
+      name: 'Wissensbasierte Tagesrhythmenerfassung und -auswertung in ubiquitären Umgebungen',
+      inSupportOf: 'Dr.-Ing.',
+      datePublished: '2016',
+      inLanguage: 'de',
+      sourceOrganization: person.alumniOf,
+    }
+    webPage.mainEntity = { '@id': PERSON_ID }
+    webPage.mentions = { '@id': THESIS_URL }
+    webPage.primaryImageOfPage = { '@type': 'ImageObject', contentUrl: PORTRAIT_URL }
+    graph.push(thesis)
+  }
+
+  if (page === 'services') {
+    const catalogId = `${url}#services`
+    webPage.mainEntity = { '@id': catalogId }
+    graph.push({
+      '@type': 'OfferCatalog',
+      '@id': catalogId,
+      name: pageLabel(page, locale),
+      itemListElement: dataContent[locale].services.map((service) => {
+        const anchor = `${url}#${service.id}`
+        return {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            '@id': anchor,
+            url: anchor,
+            name: service.title,
+            description: service.text,
+            provider: { '@id': ORG_ID },
+            areaServed,
+            availableChannel: {
+              '@type': 'ServiceChannel',
+              serviceUrl: pageUrl('contact', locale),
+              availableLanguage: ['de', 'en'],
+            },
+          },
+        }
+      }),
+    })
+  }
+
+  if (page === 'work' || page === 'case-study' || page === 'products') {
+    webPage.mainEntity = { '@id': `${url}#items` }
   }
 
   return { '@context': 'https://schema.org', '@graph': graph }
 }
 
-/** Head entries (title, meta, links, JSON-LD) for a page, consumed by useHead. */
+function socialImage(page: PageKey, locale: Locale) {
+  if (page === 'about') {
+    return { url: PORTRAIT_URL, width: 600, height: 900, alt: 'Dr. Martin Franke' }
+  }
+  return {
+    url: `${SITE_URL}/social-${locale}.jpg`,
+    width: 1200,
+    height: 630,
+    alt: locale === 'de' ? 'Dr. Martin Franke · KI-Beratung & Data Science' : 'Dr. Martin Franke · Data Science & AI Consulting',
+  }
+}
+
 export function pageHead(page: PageKey, locale: Locale) {
   const { title, description } = meta[page][locale]
   const url = pageUrl(page, locale)
-  const image = `${SITE_URL}/og-image.png`
-  const otherLocale = locales.find((value) => value !== locale) as Locale
+  const image = socialImage(page, locale)
+  const otherLocale = locale === 'en' ? 'de' : 'en'
 
   return {
     title,
-    htmlAttrs: { lang: languageTags[locale] },
+    htmlAttrs: { lang: locale },
     meta: [
+      { name: 'robots', content: 'max-image-preview:large' },
       { name: 'description', content: description },
       { property: 'og:type', content: page === 'about' ? 'profile' : 'website' },
       { property: 'og:site_name', content: 'Dr. Franke Datenwissenschaften' },
@@ -282,28 +353,31 @@ export function pageHead(page: PageKey, locale: Locale) {
       { property: 'og:title', content: title },
       { property: 'og:description', content: description },
       { property: 'og:url', content: url },
-      { property: 'og:image', content: image },
-      { property: 'og:image:type', content: 'image/png' },
-      { property: 'og:image:width', content: '974' },
-      { property: 'og:image:height', content: '577' },
-      { property: 'og:image:alt', content: 'Dr. Franke Datenwissenschaften logo' },
-      { name: 'twitter:card', content: 'summary_large_image' },
+      { property: 'og:image', content: image.url },
+      { property: 'og:image:type', content: 'image/jpeg' },
+      { property: 'og:image:width', content: String(image.width) },
+      { property: 'og:image:height', content: String(image.height) },
+      { property: 'og:image:alt', content: image.alt },
+      { name: 'twitter:card', content: page === 'about' ? 'summary' : 'summary_large_image' },
       { name: 'twitter:title', content: title },
       { name: 'twitter:description', content: description },
-      { name: 'twitter:image', content: image },
+      { name: 'twitter:image', content: image.url },
+      { name: 'twitter:image:alt', content: image.alt },
     ],
     link: [
       { rel: 'canonical', href: url },
-      ...locales.map((value) => ({ rel: 'alternate', hreflang: languageTags[value], href: pageUrl(page, value) })),
-      // The root redirects by browser language, so it is the x-default for the homepage.
-      { rel: 'alternate', hreflang: 'x-default', href: page === 'home' ? `${SITE_URL}/` : pageUrl(page, 'en') },
+      ...pageAlternates(page).map(({ language, href }) => ({ rel: 'alternate', hreflang: language, href })),
     ],
-    script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(structuredData(page, locale)) }],
+    script: [{
+      key: 'site-jsonld',
+      type: 'application/ld+json',
+      innerHTML: jsonLd(structuredData(page, locale)),
+    }],
   }
 }
 
 export const notFoundHead = (locale: Locale) => ({
   title: locale === 'de' ? 'Seite nicht gefunden | Dr. Franke Datenwissenschaften' : 'Page not found | Dr. Franke Datenwissenschaften',
-  htmlAttrs: { lang: languageTags[locale] },
+  htmlAttrs: { lang: locale },
   meta: [{ name: 'robots', content: 'noindex' }],
 })

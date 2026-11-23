@@ -16,6 +16,7 @@ const views = {
 const NotFoundView = () => import('./views/NotFoundView.vue')
 
 export const routes: RouteRecordRaw[] = [
+  { path: '/', redirect: pages.home.en },
   ...(Object.keys(pages) as PageKey[]).flatMap((page) =>
     locales.map((locale) => ({
       path: pages[page][locale],
@@ -38,11 +39,13 @@ export const scrollBehavior: RouterScrollBehavior = (to, _from, savedPosition) =
       let attempts = 0
 
       const resolveWhenReady = () => {
-        if (document.querySelector(to.hash)) {
+        const target = document.getElementById(to.hash.slice(1))
+        if (target) {
           // The target mounts when the out-in page transition begins. Wait for
           // that entrance animation to finish so its transform cannot disrupt
           // the final scroll position.
-          window.setTimeout(() => resolve({ el: to.hash, behavior: 'smooth' }), 230)
+          const top = parseFloat(getComputedStyle(target).scrollMarginTop) || 0
+          window.setTimeout(() => resolve({ el: target, top, behavior: 'smooth' }), 230)
           return
         }
 

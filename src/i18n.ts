@@ -22,6 +22,15 @@ export const pages = {
 
 export type PageKey = keyof typeof pages
 
+export const pageUrl = (page: PageKey, locale: Locale) => `${SITE_URL}${pages[page][locale]}`
+
+export function pageAlternates(page: PageKey) {
+  return [
+    ...locales.map((locale) => ({ language: locale, href: pageUrl(page, locale) })),
+    { language: 'x-default', href: pageUrl(page, 'en') },
+  ]
+}
+
 /** Remembers an explicit language choice so the root redirect respects it. */
 export const LANGUAGE_COOKIE = 'lang'
 

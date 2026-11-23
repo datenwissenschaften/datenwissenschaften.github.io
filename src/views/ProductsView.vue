@@ -1,16 +1,25 @@
 <script setup lang="ts">
 import PageIntro from '../components/PageIntro.vue'
 import productsContent from '../content/products'
-import { useContent } from '../i18n'
+import { SITE_URL, useContent } from '../i18n'
+import { PERSON_ID, useCollectionSchema } from '../seo'
 
 const c = useContent(productsContent)
+
+useCollectionSchema('products', (url) => c.value.products.map((product) => ({
+  '@type': product.schemaType,
+  '@id': `${url}#${product.id}`,
+  url: product.url?.split('?')[0],
+  name: product.name,
+  description: product.description,
+  image: product.image && `${SITE_URL}${product.image}`,
+  ...(product.schemaType === 'Book' && { author: { '@id': PERSON_ID }, inLanguage: 'en' }),
+})))
 </script>
 
 <template>
   <div>
-    <PageIntro :title="c.title" :accent="c.accent" :copy="c.copy">
-      <template #eyebrow>{{ c.eyebrow }}</template>
-    </PageIntro>
+    <PageIntro :title="c.title" :accent="c.accent" :copy="c.copy" />
 
     <section class="products-opening wrap" aria-labelledby="products-opening-title">
       <p class="eyebrow">{{ c.opening.eyebrow }}</p>
@@ -21,7 +30,7 @@ const c = useContent(productsContent)
     </section>
 
     <section class="products-list wrap" :aria-label="c.listLabel">
-      <article v-for="product in c.products" :key="product.name" class="product-card">
+      <article v-for="product in c.products" :id="product.id" :key="product.id" class="product-card">
         <div class="product-copy">
           <span class="product-number">{{ product.number }}</span>
           <p class="eyebrow">{{ product.label }}</p>

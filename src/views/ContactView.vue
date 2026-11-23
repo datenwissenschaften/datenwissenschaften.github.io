@@ -10,9 +10,7 @@ const [emailUser, emailDomain] = EMAIL.split('@')
 
 <template>
   <div>
-    <PageIntro :title="c.intro.title" :accent="c.intro.accent" :copy="c.intro.copy">
-      <template #eyebrow>{{ c.intro.eyebrow }}</template>
-    </PageIntro>
+    <PageIntro :title="c.intro.title" :accent="c.intro.accent" :copy="c.intro.copy" />
     <section class="wrap contact-grid">
       <div class="contact-primary">
         <p class="eyebrow">{{ c.direct }}</p>

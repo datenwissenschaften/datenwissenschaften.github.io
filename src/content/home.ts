@@ -2,9 +2,9 @@ import type { Localized } from '../i18n'
 
 const en = {
   hero: {
-    eyebrow: 'Data Science & AI Consultant',
-    title: ['Less complexity.', 'More intelligence.'],
-    lead: 'I’m Dr. Martin Franke, an independent data science and AI consultant. With 15 years in machine learning and AI transformation, I design production-grade systems that turn complex data into faster, safer decisions.',
+    eyebrow: 'Independent consulting',
+    title: ['Data Science &', 'AI Consulting'],
+    lead: 'I’m Dr. Martin Franke. I help mid-sized companies and in-house data teams plan AI projects, build data platforms and put machine learning into production. I work remotely across Germany, Austria, Switzerland and the rest of Europe, in English and German.',
     primaryCta: 'Book an initial call',
     secondaryCta: 'Explore selected work',
     proof: ['15 years’ experience', 'PhD-trained thinking', 'Production-grade delivery', 'Team leadership'],
@@ -53,7 +53,6 @@ const en = {
     eyebrow: 'Selected work',
     title: 'Experience, applied.',
     viewProject: (title: string) => `View ${title} project`,
-    imageAlt: (sector: string) => `${sector} project`,
     case: 'Case',
     viewAll: 'View all work',
     caseStudies: 'Explore the public case studies',
@@ -68,9 +67,9 @@ const en = {
 
 const de: typeof en = {
   hero: {
-    eyebrow: 'Berater für Data Science & KI',
-    title: ['Weniger Komplexität.', 'Mehr Intelligenz.'],
-    lead: 'Ich bin Dr. Martin Franke, unabhängiger Berater für Data Science und KI. Mit 15 Jahren Erfahrung in Machine Learning und KI-Transformation entwickle ich produktionsreife Systeme, die aus komplexen Daten schnellere und sicherere Entscheidungen machen.',
+    eyebrow: 'Unabhängige Beratung',
+    title: ['KI-Beratung &', 'Data Science'],
+    lead: 'Ich bin Dr. Martin Franke. Ich unterstütze mittelständische Unternehmen und Datenteams bei der KI-Strategie, beim Aufbau von Datenplattformen und beim Einsatz von Machine Learning im laufenden Betrieb. Ich arbeite remote mit Teams in Deutschland, Österreich, der Schweiz und dem übrigen Europa, auf Deutsch und Englisch.',
     primaryCta: 'Erstgespräch vereinbaren',
     secondaryCta: 'Ausgewählte Projekte ansehen',
     proof: ['15 Jahre Erfahrung', 'Wissenschaftlich fundiert', 'Produktionsreife Umsetzung', 'Erfahrung in Teamführung'],
@@ -119,7 +118,6 @@ const de: typeof en = {
     eyebrow: 'Ausgewählte Projekte',
     title: 'Erfahrung in der Praxis.',
     viewProject: (title: string) => `Projekt „${title}“ ansehen`,
-    imageAlt: (sector: string) => `Projekt ${sector}`,
     case: 'Projekt',
     viewAll: 'Alle Projekte ansehen',
     caseStudies: 'Zu den öffentlichen Fallstudien',

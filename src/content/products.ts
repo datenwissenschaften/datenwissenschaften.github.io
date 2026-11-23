@@ -4,6 +4,8 @@ import helderbergImage from '../assets/img/products/helderberg-remote.webp'
 import bookImage from '../assets/img/products/book.avif'
 
 type Product = {
+  id: string
+  schemaType: 'SoftwareApplication' | 'WebSite' | 'Book'
   number: string
   label: string
   name: string
@@ -20,6 +22,8 @@ type Product = {
 
 const shared = {
   knotbase: {
+    id: 'knotbase',
+    schemaType: 'SoftwareApplication',
     name: 'Knotbase',
     domain: 'knotbase.io',
     image: knotbaseImage,
@@ -27,6 +31,8 @@ const shared = {
     url: 'https://knotbase.io/?utm_source=datenwissenschaften&utm_medium=referral&utm_campaign=products',
   },
   helderberg: {
+    id: 'helderberg-remote',
+    schemaType: 'WebSite',
     name: 'Helderberg Remote',
     domain: 'helderbergremote.com',
     image: helderbergImage,
@@ -34,6 +40,8 @@ const shared = {
     url: 'https://www.helderbergremote.com/?utm_source=datenwissenschaften&utm_medium=referral&utm_campaign=products',
   },
   book: {
+    id: 'ai-strategist-book',
+    schemaType: 'Book',
     name: 'From Data Scientist to AI Strategist',
     domain: 'amazon.com',
     contain: true,
@@ -41,7 +49,7 @@ const shared = {
     imageSize: { width: 311, height: 466 },
     url: 'https://www.amazon.com/Data-Scientist-AI-Strategist-Future-Proof-ebook/dp/B0H4WWDQ69?utm_source=datenwissenschaften&utm_medium=referral&utm_campaign=products',
   },
-}
+} as const
 
 const productsEn: Product[] = [
   {
@@ -110,9 +118,8 @@ const productsDe: Product[] = [
 ]
 
 const en = {
-  eyebrow: 'Side projects',
-  title: 'Beyond client work,',
-  accent: 'a few things I build myself.',
+  title: 'Products &',
+  accent: 'ventures',
   copy: 'Alongside consulting engagements, I run a small set of independent ventures—products shaped by the same data and AI practice, built and operated on my own time.',
   opening: {
     eyebrow: 'Independent ventures · Live today',
@@ -128,9 +135,8 @@ const en = {
 }
 
 const de: typeof en = {
-  eyebrow: 'Eigene Projekte',
-  title: 'Neben der Beratung:',
-  accent: 'Dinge, die ich selbst baue.',
+  title: 'Produkte &',
+  accent: 'eigene Projekte',
   copy: 'Parallel zu meinen Beratungsmandaten betreibe ich einige unabhängige Vorhaben – Produkte, die aus derselben Daten- und KI-Praxis entstehen und die ich in eigener Regie entwickle und betreibe.',
   opening: {
     eyebrow: 'Eigene Vorhaben · Bereits live',

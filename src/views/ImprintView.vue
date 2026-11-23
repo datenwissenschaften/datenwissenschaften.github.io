@@ -10,9 +10,7 @@ const year = new Date().getFullYear()
 
 <template>
   <div>
-    <PageIntro :title="c.intro.title" :accent="c.intro.accent" :copy="c.intro.copy">
-      <template #eyebrow>{{ c.intro.eyebrow }}</template>
-    </PageIntro>
+    <PageIntro :title="c.intro.title" :accent="c.intro.accent" :copy="c.intro.copy" />
     <section class="wrap legal-grid">
       <aside :aria-label="c.nav.label">
         <a href="#company">{{ c.nav.company }}</a>

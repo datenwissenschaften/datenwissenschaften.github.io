@@ -192,7 +192,7 @@ onBeforeUnmount(() => globalThis.cancelAnimationFrame(animationFrame))
         <p>{{ c.services.copy }}</p>
       </div>
       <div class="service-list">
-        <RouterLink v-for="service in data.services" :key="service.number" :to="path('services')" class="service-row">
+        <RouterLink v-for="service in data.services" :key="service.id" :to="path('services', service.id)" class="service-row">
           <span>{{ service.number }}</span>
           <h3>{{ service.title }}</h3>
           <p>{{ service.outcome }}</p>
@@ -233,10 +233,11 @@ onBeforeUnmount(() => globalThis.cancelAnimationFrame(animationFrame))
           <RouterLink :to="path('work', project.id)" class="project-image" :aria-label="c.work.viewProject(project.title)">
             <img
               :src="project.image"
-              :alt="c.work.imageAlt(project.sector)"
+              :alt="project.imageAlt"
               :width="project.imageSize.width"
               :height="project.imageSize.height"
               loading="lazy"
+              decoding="async"
             />
           </RouterLink>
           <div class="project-meta"><span>{{ project.sector }}</span><span>{{ c.work.case }} {{ String(index + 1).padStart(2, '0') }}</span></div>

@@ -2,10 +2,9 @@
 import { RouterLink } from 'vue-router'
 import ArrowIcon from '../components/ArrowIcon.vue'
 import PageIntro from '../components/PageIntro.vue'
-import portrait from '../assets/img/portfolio/profile-picture.jpg'
 import aboutContent from '../content/about'
 import dataContent from '../content/data'
-import { GITHUB_URL, LINKEDIN_URL, THESIS_URL } from '../content/site'
+import { GITHUB_URL, LINKEDIN_URL, ORCID_URL, THESIS_URL } from '../content/site'
 import { useContent, useLocale } from '../i18n'
 
 const { path } = useLocale()
@@ -15,12 +14,10 @@ const data = useContent(dataContent)
 
 <template>
   <div>
-    <PageIntro :title="c.title" :accent="c.accent" :copy="c.copy">
-      <template #eyebrow>{{ c.eyebrow }}</template>
-    </PageIntro>
+    <PageIntro :title="c.title" :accent="c.accent" :copy="c.copy" />
     <section class="wrap about-profile">
       <div class="portrait-frame">
-        <img :src="portrait" :alt="c.portraitAlt" width="600" height="900" />
+        <img src="/martin-franke.jpg" :alt="c.portraitAlt" width="600" height="900" decoding="async" />
         <span>{{ c.portraitCaption[0] }}<br />{{ c.portraitCaption[1] }}</span>
       </div>
       <div class="profile-copy">
@@ -36,6 +33,7 @@ const data = useContent(dataContent)
           <RouterLink :to="path('contact')" class="text-link">{{ c.workWithMe }} <ArrowIcon /></RouterLink>
           <a :href="LINKEDIN_URL" class="text-link" target="_blank" rel="noopener me">{{ c.linkedin }}</a>
           <a :href="GITHUB_URL" class="text-link" target="_blank" rel="noopener me">{{ c.github }}</a>
+          <a :href="ORCID_URL" class="text-link" target="_blank" rel="noopener me">ORCID</a>
         </div>
       </div>
     </section>

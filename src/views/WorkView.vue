@@ -4,28 +4,41 @@ import ArrowIcon from '../components/ArrowIcon.vue'
 import PageIntro from '../components/PageIntro.vue'
 import dataContent from '../content/data'
 import workContent from '../content/work'
-import { useContent, useLocale } from '../i18n'
+import { SITE_URL, useContent, useLocale } from '../i18n'
+import { PERSON_ID, useCollectionSchema } from '../seo'
 
 const { path } = useLocale()
 const data = useContent(dataContent)
 const c = useContent(workContent)
+
+useCollectionSchema('work', (url, locale) => data.value.projects.map((project) => ({
+  '@type': 'CreativeWork',
+  '@id': `${url}#${project.id}`,
+  url: `${url}#${project.id}`,
+  name: project.title,
+  description: project.text,
+  abstract: project.result,
+  image: `${SITE_URL}${project.image}`,
+  keywords: project.tags,
+  author: { '@id': PERSON_ID },
+  inLanguage: locale,
+})))
 </script>
 
 <template>
   <div>
-    <PageIntro :title="c.title" :accent="c.accent" :copy="c.copy">
-      <template #eyebrow>{{ c.eyebrow }}</template>
-    </PageIntro>
+    <PageIntro :title="c.title" :accent="c.accent" :copy="c.copy" />
     <section class="wrap work-list">
       <article v-for="(project, index) in data.projects" :id="project.id" :key="project.id" class="work-case">
         <div class="case-index">{{ String(index + 1).padStart(2, '0') }}</div>
         <div class="project-image">
           <img
             :src="project.image"
-            :alt="c.imageAlt(project.sector)"
+            :alt="project.imageAlt"
             :width="project.imageSize.width"
             :height="project.imageSize.height"
             :loading="index === 0 ? 'eager' : 'lazy'"
+            decoding="async"
           />
         </div>
         <div class="case-copy">

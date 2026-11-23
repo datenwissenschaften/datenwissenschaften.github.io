@@ -1,11 +1,9 @@
 import type { Localized } from '../i18n'
 
 const en = {
-  eyebrow: 'Selected work',
-  title: 'Proof lives in',
-  accent: 'working systems.',
-  copy: 'Selected engagements across industries where data science moved from technical possibility to practical value.',
-  imageAlt: (sector: string) => `${sector} data science work`,
+  title: 'Data Science &',
+  accent: 'AI projects',
+  copy: 'Four examples from my work in automotive, healthcare, digital publishing and media. Each shows my role, what we built, the tools we used and the outcome.',
   outcome: 'Outcome',
   cta: {
     eyebrow: 'Your challenge could be next',
@@ -35,11 +33,9 @@ const en = {
 }
 
 const de: typeof en = {
-  eyebrow: 'Ausgewählte Projekte',
-  title: 'Der Beweis steckt in',
-  accent: 'laufenden Systemen.',
-  copy: 'Ausgewählte Projekte aus verschiedenen Branchen, in denen Data Science den Schritt von der technischen Möglichkeit zum praktischen Nutzen geschafft hat.',
-  imageAlt: (sector: string) => `Data-Science-Projekt: ${sector}`,
+  title: 'Data-Science- &',
+  accent: 'KI-Projekte',
+  copy: 'Vier Beispiele aus meiner Arbeit in der Automobilindustrie, im Gesundheitswesen, im Digital Publishing und in den Medien. Zu jedem Projekt finden Sie meine Rolle, die eingesetzten Technologien und das Ergebnis.',
   outcome: 'Ergebnis',
   cta: {
     eyebrow: 'Ihre Herausforderung könnte die nächste sein',

@@ -13,12 +13,10 @@ const data = useContent(dataContent)
 
 <template>
   <div>
-    <PageIntro :title="c.intro.title" :accent="c.intro.accent" :copy="c.intro.copy">
-      <template #eyebrow>{{ c.intro.eyebrow }}</template>
-    </PageIntro>
+    <PageIntro :title="c.intro.title" :accent="c.intro.accent" :copy="c.intro.copy" />
 
-    <section class="wrap service-detail-list">
-      <article v-for="service in data.services" :key="service.number" class="service-detail">
+    <section id="services" class="wrap service-detail-list">
+      <article v-for="service in data.services" :id="service.id" :key="service.id" class="service-detail">
         <span class="service-number">{{ service.number }}</span>
         <div>
           <h2>{{ service.title }}</h2>
@@ -91,7 +89,7 @@ const data = useContent(dataContent)
         <p class="eyebrow">{{ c.faq.eyebrow }}</p><h2 id="faq-title">{{ c.faq.title }}</h2>
       </div>
       <ol class="legal-principles">
-        <li v-for="item in c.faq.items" :key="item.question">
+        <li v-for="item in c.faq.items" :id="item.id" :key="item.id">
           <h3>{{ item.question }}</h3>
           <p>{{ item.answer }}</p>
         </li>

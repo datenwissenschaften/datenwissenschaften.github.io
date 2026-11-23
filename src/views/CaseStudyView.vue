@@ -4,18 +4,35 @@ import PageIntro from '../components/PageIntro.vue'
 import labImage from '../assets/img/speedlab/lab.webp'
 import methodImage from '../assets/img/speedlab/method.webp'
 import { useContent } from '../i18n'
-import { GITHUB_URL } from '../content/site'
+import { GITHUB_URL, SPEEDLAB_URL } from '../content/site'
 import content from '../content/case-study'
+import { useCollectionSchema } from '../seo'
 
 const c = useContent(content)
 const pad = (index: number) => String(index + 1).padStart(2, '0')
+
+useCollectionSchema('case-study', (url) => [
+  ...c.value.repos.items.map((repo) => ({
+    '@type': 'SoftwareSourceCode',
+    '@id': `${url}#${repo.name}`,
+    url: `${url}#${repo.name}`,
+    name: repo.name,
+    description: repo.description,
+    codeRepository: `${GITHUB_URL}/${repo.name}`,
+  })),
+  {
+    '@type': 'CreativeWork',
+    '@id': `${url}#retro-speedlab`,
+    url: `${url}#retro-speedlab`,
+    name: 'Retro Speedlab',
+    sameAs: SPEEDLAB_URL,
+  },
+])
 </script>
 
 <template>
   <div>
-    <PageIntro :title="c.intro.title" :accent="c.intro.accent" :copy="c.intro.copy">
-      <template #eyebrow>{{ c.intro.eyebrow }}</template>
-    </PageIntro>
+    <PageIntro :title="c.intro.title" :accent="c.intro.accent" :copy="c.intro.copy" />
 
     <section class="case-repo-section">
       <div class="wrap">
@@ -30,6 +47,7 @@ const pad = (index: number) => String(index + 1).padStart(2, '0')
         <div class="case-repo-grid">
           <article
             v-for="repository in c.repos.items"
+            :id="repository.name"
             :key="repository.name"
             class="case-repo"
             :class="{ 'is-speedlab': repository.speedlab }"
@@ -85,7 +103,7 @@ const pad = (index: number) => String(index + 1).padStart(2, '0')
         <div class="case-link-row">
           <a
             class="button button-primary"
-            href="https://www.retrospeedlab.com/"
+            :href="SPEEDLAB_URL"
             target="_blank"
             rel="noopener noreferrer"
           >{{ c.overview.visitLab }}</a>

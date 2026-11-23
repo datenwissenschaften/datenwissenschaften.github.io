@@ -6,10 +6,12 @@ export const LINKEDIN_URL = 'https://www.linkedin.com/in/datenwissenschaften/'
 export const GITHUB_URL = 'https://github.com/datenwissenschaften'
 export const ORCID_URL = 'https://orcid.org/0009-0008-3147-5822'
 export const THESIS_URL = 'https://nbn-resolving.org/urn:nbn:de:bsz:14-qucosa-212279'
+export const SPEEDLAB_URL = 'https://www.retrospeedlab.com/'
 
 const en = {
   homeLabel: 'Dr. Franke Datenwissenschaften home',
   brandName: 'Dr. Franke Datenwissenschaften',
+  breadcrumb: 'Breadcrumb',
   nav: {
     label: 'Main navigation',
     services: 'Services',
@@ -43,6 +45,7 @@ const en = {
 const de: typeof en = {
   homeLabel: 'Dr. Franke Datenwissenschaften Startseite',
   brandName: 'Dr. Franke Datenwissenschaften',
+  breadcrumb: 'Navigationspfad',
   nav: {
     label: 'Hauptnavigation',
     services: 'Leistungen',
