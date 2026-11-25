@@ -27,6 +27,15 @@ npm run check:seo
 - `vite.config.ts` prerenders the pages and localized 404s. It generates `sitemap.xml`,
   `robots.txt` and the nginx path map from the site configuration.
 
+## Blog
+
+`/blog` is an English engineering blog. A post is `src/content/blog/<slug>.md` with front matter (`title`,
+`description`, `date` as YYYY-MM-DD, `tags`, `cover`, `coverAlt`) and its images in `public/blog/<slug>/`, referenced
+as `/blog/<slug>/<file>`. Headings start at `##`, since the title is the page's H1. The build renders the Markdown
+(raw HTML off), prerenders the index and every post with `BlogPosting` JSON-LD, adds them to the sitemap and writes
+`/blog/rss.xml`. Without a post there is no blog page, nav link or feed. Approved articles arrive as commits from the
+Retro Speedlab backend after the owner's approval in Discord.
+
 ## SEO audits
 
 `npm run check:seo` checks the built HTML in CI, including sitemap coverage, reciprocal
