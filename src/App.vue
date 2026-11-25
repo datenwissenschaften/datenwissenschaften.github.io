@@ -5,6 +5,7 @@ import { RouterLink, RouterView, useRoute } from 'vue-router'
 import footerLogo from './assets/img/logo-white.webp'
 import headerLogo from './assets/img/logo.webp'
 import headerWordmark from './assets/img/logo-white-text.webp'
+import { BLOG_PATH } from './blog'
 import siteContent, { EMAIL } from './content/site'
 import { LANGUAGE_COOKIE, useContent, useLocale, type Locale } from './i18n'
 import { notFoundHead, pageHead } from './seo'
@@ -13,9 +14,14 @@ const route = useRoute()
 const { locale, pageKey, path, alternatePath } = useLocale()
 const site = useContent(siteContent)
 const menuOpen = ref(false)
+const blogLive = __BLOG_LIVE__
 const theme = ref<'dark' | 'light'>('dark')
 
-useHead(computed(() => (pageKey.value ? pageHead(pageKey.value, locale.value) : notFoundHead(locale.value))))
+// Blog pages set their own head.
+useHead(computed(() => {
+  if (pageKey.value) return pageHead(pageKey.value, locale.value)
+  return route.meta.blog ? {} : notFoundHead(locale.value)
+}))
 
 const otherLocale = computed<Locale>(() => (locale.value === 'en' ? 'de' : 'en'))
 
@@ -61,6 +67,7 @@ function toggleTheme() {
         <RouterLink :to="path('contact')">{{ site.nav.contact }}</RouterLink>
         <RouterLink :to="path('case-study')">{{ site.nav.caseStudy }}</RouterLink>
         <RouterLink :to="path('products')">{{ site.nav.products }}</RouterLink>
+        <RouterLink v-if="blogLive" :to="BLOG_PATH" hreflang="en">{{ site.nav.blog }}</RouterLink>
       </nav>
 
       <div class="header-actions">
@@ -108,6 +115,7 @@ function toggleTheme() {
         <RouterLink :to="path('about')">{{ site.nav.about }}</RouterLink>
         <RouterLink :to="path('products')">{{ site.nav.products }}</RouterLink>
         <RouterLink :to="path('case-study')">{{ site.nav.caseStudy }}</RouterLink>
+        <RouterLink v-if="blogLive" :to="BLOG_PATH" hreflang="en">{{ site.nav.blog }}</RouterLink>
       </div>
       <div class="footer-nav">
         <p class="eyebrow">{{ site.footer.connect }}</p>

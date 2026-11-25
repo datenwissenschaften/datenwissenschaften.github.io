@@ -1,5 +1,6 @@
 import { useHead } from '@unhead/vue'
 import { computed } from 'vue'
+import { BLOG_DESCRIPTION, BLOG_PATH, BLOG_TITLE, blogUrl, FEED_PATH, postPath, type Post } from './blog'
 import dataContent from './content/data'
 import { EMAIL, GITHUB_URL, LINKEDIN_URL, ORCID_URL, THESIS_URL } from './content/site'
 import { locales, pageAlternates, pageUrl, SITE_URL, useLocale, type Locale, type Localized, type PageKey } from './i18n'
@@ -381,3 +382,86 @@ export const notFoundHead = (locale: Locale) => ({
   htmlAttrs: { lang: locale },
   meta: [{ name: 'robots', content: 'noindex' }],
 })
+
+const BLOG_IMAGE = { url: `${SITE_URL}/social-en.jpg`, alt: 'Dr. Martin Franke · Data Science & AI Consulting' }
+
+function blogPage(path: string, title: string, description: string, image: typeof BLOG_IMAGE, entity: { '@id': string }) {
+  const url = blogUrl(path)
+  const webPage = {
+    '@type': 'WebPage',
+    '@id': `${url}#webpage`,
+    url,
+    name: title,
+    description,
+    inLanguage: 'en',
+    isPartOf: { '@id': WEBSITE_ID },
+    mainEntity: { '@id': entity['@id'] },
+  }
+  return {
+    title,
+    htmlAttrs: { lang: 'en' },
+    meta: [
+      { name: 'robots', content: 'max-image-preview:large' },
+      { name: 'description', content: description },
+      { property: 'og:site_name', content: 'Dr. Franke Datenwissenschaften' },
+      { property: 'og:locale', content: ogLocales.en },
+      { property: 'og:title', content: title },
+      { property: 'og:description', content: description },
+      { property: 'og:url', content: url },
+      { property: 'og:image', content: image.url },
+      { property: 'og:image:alt', content: image.alt },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:title', content: title },
+      { name: 'twitter:description', content: description },
+      { name: 'twitter:image', content: image.url },
+      { name: 'twitter:image:alt', content: image.alt },
+    ],
+    link: [
+      { rel: 'canonical', href: url },
+      { rel: 'alternate', type: 'application/rss+xml', title: BLOG_TITLE, href: blogUrl(FEED_PATH) },
+    ],
+    script: [{
+      key: 'site-jsonld',
+      type: 'application/ld+json',
+      innerHTML: jsonLd({ '@context': 'https://schema.org', '@graph': [webPage, entity] }),
+    }],
+  }
+}
+
+const posting = (post: Post) => ({
+  '@type': 'BlogPosting',
+  '@id': `${blogUrl(postPath(post.slug))}#article`,
+  url: blogUrl(postPath(post.slug)),
+  headline: post.title,
+  description: post.description,
+  image: blogUrl(post.cover),
+  datePublished: post.date,
+  keywords: post.tags,
+  inLanguage: 'en',
+  author: { '@id': PERSON_ID },
+  publisher: { '@id': ORG_ID },
+})
+
+export function blogIndexHead(posts: Post[]) {
+  const blog = {
+    '@type': 'Blog',
+    '@id': `${blogUrl(BLOG_PATH)}#blog`,
+    name: BLOG_TITLE,
+    description: BLOG_DESCRIPTION,
+    publisher: { '@id': ORG_ID },
+    blogPost: posts.map(posting),
+  }
+  const head = blogPage(BLOG_PATH, BLOG_TITLE, BLOG_DESCRIPTION, BLOG_IMAGE, blog)
+  return { ...head, meta: [...head.meta, { property: 'og:type', content: 'website' }] }
+}
+
+export function postHead(post: Post) {
+  const image = { url: blogUrl(post.cover), alt: post.coverAlt }
+  const head = blogPage(postPath(post.slug), `${post.title} | Dr. Franke`, post.description, image, posting(post))
+  const article = [
+    { property: 'og:type', content: 'article' },
+    { property: 'article:published_time', content: post.date },
+    ...post.tags.map((tag) => ({ property: 'article:tag', content: tag })),
+  ]
+  return { ...head, meta: [...head.meta, ...article] }
+}

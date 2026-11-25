@@ -1,0 +1,143 @@
+/* Blog */
+.blog-list {
+  display: grid;
+  gap: 60px;
+  padding-block: 60px 140px;
+}
+
+.blog-card {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  gap: 40px;
+  align-items: center;
+  padding-bottom: 60px;
+  border-bottom: 1px solid var(--line);
+}
+
+.blog-card img,
+.blog-cover {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border: 1px solid var(--line);
+}
+
+.blog-card h2 {
+  margin-block: 12px 18px;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  line-height: 1.08;
+}
+
+.blog-card h2 a:hover {
+  color: var(--accent);
+}
+
+.blog-card p {
+  color: var(--muted);
+}
+
+.blog-post-header {
+  max-width: 900px;
+  padding-block: 150px 50px;
+}
+
+.blog-post-header h1 {
+  font-size: clamp(2.6rem, 5.4vw, 5rem);
+}
+
+.blog-cover {
+  display: block;
+  max-width: 1100px;
+}
+
+.blog-body {
+  max-width: 780px;
+  padding-block: 60px 140px;
+  overflow-wrap: anywhere;
+}
+
+.blog-body h2 {
+  margin-top: 70px;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  line-height: 1.1;
+}
+
+.blog-body h3 {
+  margin-top: 45px;
+  font-size: 1.3rem;
+}
+
+.blog-body a {
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.blog-body a:hover {
+  color: var(--accent);
+}
+
+.blog-body img {
+  width: 100%;
+  height: auto;
+  margin-block: 35px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+
+.blog-body code {
+  padding: 2px 5px;
+  background: var(--surface);
+  font-size: 0.9em;
+}
+
+.blog-body pre {
+  padding: 20px;
+  overflow-x: auto;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  line-height: 1.5;
+}
+
+.blog-body pre code {
+  padding: 0;
+  background: none;
+}
+
+.blog-body blockquote {
+  padding-left: 22px;
+  margin: 35px 0;
+  color: var(--muted);
+  border-left: 2px solid var(--accent);
+}
+
+.blog-body table {
+  display: block;
+  width: 100%;
+  margin-block: 35px;
+  overflow-x: auto;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.blog-body th,
+.blog-body td {
+  padding: 10px 14px;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+}
+
+.blog-body th {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+@media (max-width: 760px) {
+  .blog-card {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .blog-post-header {
+    padding-top: 110px;
+  }
+}

@@ -1,4 +1,5 @@
 import type { RouteRecordRaw, RouterScrollBehavior } from 'vue-router'
+import { BLOG_PATH } from './blog'
 import { locales, pages, type PageKey } from './i18n'
 import HomeView from './views/HomeView.vue'
 
@@ -25,6 +26,8 @@ export const routes: RouteRecordRaw[] = [
       meta: { page, locale },
     })),
   ),
+  { path: BLOG_PATH, name: 'blog', component: () => import('./views/BlogIndexView.vue'), meta: { locale: 'en', blog: true } },
+  { path: `${BLOG_PATH}/:slug`, name: 'blog-post', component: () => import('./views/BlogPostView.vue'), meta: { locale: 'en', blog: true } },
   // Prerendered to 404.html and de/404.html; nginx serves them with a real 404 status.
   { path: '/404', name: 'not-found', component: NotFoundView, meta: { locale: 'en' } },
   { path: '/de/404', name: 'not-found-de-page', component: NotFoundView, meta: { locale: 'de' } },

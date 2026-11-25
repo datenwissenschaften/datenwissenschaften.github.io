@@ -1,13 +1,30 @@
 import { renameSync, rmSync, writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { defineConfig } from 'vite'
+import { defineConfig, type Plugin } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import 'vite-ssg'
+import { loadPosts, rss } from './scripts/blog'
+import { BLOG_PATH, blogUrl, FEED_PATH, postPath } from './src/blog'
 import { locales, pageAlternates, pages, pageUrl, SITE_URL, type PageKey } from './src/i18n'
 
+const BLOG_MODULE = 'virtual:blog'
+const RESOLVED_BLOG_MODULE = `\0${BLOG_MODULE}`
 const pageKeys = Object.keys(pages) as PageKey[]
-const pagePaths = pageKeys.flatMap((page) => locales.map((locale) => pages[page][locale]))
+const posts = loadPosts()
+// The blog goes live with its first post.
+const blogPaths = posts.length ? [BLOG_PATH, ...posts.map((post) => postPath(post.slug))] : []
+const pagePaths = [...pageKeys.flatMap((page) => locales.map((locale) => pages[page][locale])), ...blogPaths]
+
+// Markdown is rendered at build time, so the browser bundle carries only the finished posts.
+// shortcut: every post's HTML ships in one lazy chunk; split it per post once that chunk passes ~500 kB.
+function blog(): Plugin {
+  return {
+    name: 'blog',
+    resolveId: (id) => (id === BLOG_MODULE ? RESOLVED_BLOG_MODULE : undefined),
+    load: (id) => (id === RESOLVED_BLOG_MODULE ? `export default ${JSON.stringify(posts)}` : undefined),
+  }
+}
 
 function sitemap() {
   const urls = pageKeys.flatMap((page) =>
@@ -18,15 +35,17 @@ function sitemap() {
       return `  <url>\n    <loc>${pageUrl(page, locale)}</loc>\n${alternates}\n  </url>`
     }),
   )
+  const blogUrls = blogPaths.map((path) => `  <url>\n    <loc>${blogUrl(path)}</loc>\n  </url>`)
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-${urls.join('\n')}
+${[...urls, ...blogUrls].join('\n')}
 </urlset>
 `
 }
 
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [vue(), blog()],
+  define: { __BLOG_LIVE__: JSON.stringify(posts.length > 0) },
   server: {
     watch: {
       // Avoid exhausting Linux's per-user inotify instance limit.
@@ -47,6 +66,7 @@ export default defineConfig({
       // The root redirects by language (nginx.conf); the bare app shell is never served.
       rmSync(resolve(dist, 'index.html'))
       writeFileSync(resolve(dist, 'sitemap.xml'), sitemap())
+      if (posts.length) writeFileSync(resolve(dist, FEED_PATH.slice(1)), rss(posts))
       writeFileSync(
         resolve(dist, 'robots.txt'),
         `# All crawlers, including AI search and training crawlers, are welcome.\nUser-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}/sitemap.xml\n`,

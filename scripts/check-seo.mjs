@@ -9,6 +9,9 @@ const alternates = (markup) => Object.fromEntries(
   [...markup.matchAll(/hreflang="([^"]+)" href="([^"]+)"/g)].map(([, lang, url]) => [lang, url]),
 )
 
+// The blog is English only, so its pages declare no language alternates.
+const isBlog = (url) => /^\/blog(\/|$)/.test(new URL(url).pathname)
+
 const sitemap = read('sitemap.xml')
 const entries = [...sitemap.matchAll(/<url>\s*<loc>([^<]+)<\/loc>([\s\S]*?)<\/url>/g)]
 const urls = new Set(entries.map(([, url]) => url))
@@ -19,18 +22,22 @@ assert.equal(urls.size, entries.length, 'Duplicate sitemap entry')
 
 for (const [, url, sitemapLinks] of entries) {
   const html = read(index(url))
-  const lang = new URL(url).pathname.split('/')[1]
+  const lang = isBlog(url) ? 'en' : new URL(url).pathname.split('/')[1]
   const head = html.split('</head>')[0]
   const links = alternates(head)
   assert.match(html, new RegExp(`<html lang="${lang}"`), url)
   assert.deepEqual([...head.matchAll(/<link rel="canonical" href="([^"]+)"/g)].map((m) => m[1]), [url])
   assert.deepEqual(links, alternates(sitemapLinks), url)
-  assert.deepEqual(Object.keys(links).sort(), ['de', 'en', 'x-default'], url)
-  assert.equal(links[lang], url)
-  assert.equal(links['x-default'], links.en)
-  for (const alternate of [links.en, links.de]) {
-    assert(urls.has(alternate), alternate)
-    assert.deepEqual(alternates(read(index(alternate)).split('</head>')[0]), links, alternate)
+  if (isBlog(url)) {
+    assert.deepEqual(links, {}, url)
+  } else {
+    assert.deepEqual(Object.keys(links).sort(), ['de', 'en', 'x-default'], url)
+    assert.equal(links[lang], url)
+    assert.equal(links['x-default'], links.en)
+    for (const alternate of [links.en, links.de]) {
+      assert(urls.has(alternate), alternate)
+      assert.deepEqual(alternates(read(index(alternate)).split('</head>')[0]), links, alternate)
+    }
   }
   assert.equal([...html.matchAll(/<h1\b[^>]*>[^<]+/g)].length, 1, `Expected one visible H1 on ${url}`)
   assert.doesNotMatch(head, /noindex/i, url)
@@ -81,6 +88,14 @@ for (const file of ['404.html', 'de/404.html']) {
   const head = read(file).split('</head>')[0]
   assert.match(head, /name="robots" content="noindex"/, file)
   assert.doesNotMatch(head, /rel="canonical"|hreflang=|application\/ld\+json/, file)
+}
+
+const posts = [...urls].filter((url) => isBlog(url) && new URL(url).pathname !== '/blog')
+if (posts.length) {
+  const feed = read('blog/rss.xml')
+  for (const url of posts) assert(feed.includes(`<link>${url}</link>`), `${url} is missing from the RSS feed`)
+} else {
+  assert(!existsSync(join(dist, 'blog')), 'The blog has no posts, so it must not be published')
 }
 
 const map = read('page-paths.map')
