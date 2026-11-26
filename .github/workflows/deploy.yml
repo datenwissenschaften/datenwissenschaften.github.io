@@ -52,6 +52,6 @@ jobs:
       - name: Push to Dokku
         uses: dokku/github-action@v1.7.0
         with:
-          git_remote_url: ssh://dokku@178.104.84.157:22/datenwissenschaften
+          git_remote_url: ${{ secrets.DOKKU_GIT_REMOTE_URL }}
           ssh_private_key: ${{ secrets.DOKKU_SSH_PRIVATE_KEY }}
           branch: main
